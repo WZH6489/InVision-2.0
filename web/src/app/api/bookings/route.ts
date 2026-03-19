@@ -34,6 +34,8 @@ export async function POST(req: Request) {
       : typeof b.phone === "string"
         ? b.phone.trim().slice(0, 40) || null
         : null;
+  const trajectory = typeof b.trajectory === "string" ? b.trajectory.slice(0, 64) : "";
+  const tension = typeof b.tension === "string" ? b.tension.slice(0, 64) : "";
 
   if (!TIERS.has(tier)) {
     return NextResponse.json({ ok: false, error: "tier" }, { status: 400 });
@@ -47,6 +49,9 @@ export async function POST(req: Request) {
   if (!validEmail(email)) {
     return NextResponse.json({ ok: false, error: "email" }, { status: 400 });
   }
+  if (!trajectory || !tension) {
+    return NextResponse.json({ ok: false, error: "intake" }, { status: 400 });
+  }
 
   const supabase = getSupabaseAdmin();
   if (supabase) {
@@ -59,6 +64,8 @@ export async function POST(req: Request) {
       full_name: fullName,
       email,
       phone,
+      trajectory,
+      tension,
       created_at: new Date().toISOString(),
     };
 

@@ -13,9 +13,13 @@ function validEmail(s: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim());
 }
 
+const STEPS = 6;
+
 export function BookingModal({ open, onClose, locale }: Props) {
   const t = useTranslations("Booking");
   const [step, setStep] = useState(0);
+  const [trajectory, setTrajectory] = useState<string | null>(null);
+  const [tension, setTension] = useState<string | null>(null);
   const [tier, setTier] = useState<string | null>(null);
   const [date, setDate] = useState("");
   const [timeSlot, setTimeSlot] = useState("morning");
@@ -30,6 +34,8 @@ export function BookingModal({ open, onClose, locale }: Props) {
 
   const reset = useCallback(() => {
     setStep(0);
+    setTrajectory(null);
+    setTension(null);
     setTier(null);
     setDate("");
     setTimeSlot("morning");
@@ -48,7 +54,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
     onClose();
   };
 
-  const validateStep2Contact = () => {
+  const validateContact = () => {
     if (!fullName.trim()) {
       setFormError(t("nameRequired"));
       return false;
@@ -62,9 +68,14 @@ export function BookingModal({ open, onClose, locale }: Props) {
   };
 
   const goNext = () => {
-    if (step === 2 && !validateStep2Contact()) return;
+    if (step === 0 && !trajectory) return;
+    if (step === 1 && !tension) return;
+    if (step === 2 && !tier) return;
+    if (step === 4) {
+      if (!validateContact()) return;
+    }
     setFormError("");
-    setStep((s) => Math.min(s + 1, 3));
+    setStep((s) => Math.min(s + 1, STEPS - 1));
   };
 
   const goBack = () => {
@@ -75,6 +86,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
   if (!open) return null;
 
   const submit = async () => {
+    if (!validateContact()) return;
     setPending(true);
     setFormError("");
     try {
@@ -82,6 +94,8 @@ export function BookingModal({ open, onClose, locale }: Props) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          trajectory,
+          tension,
           tier,
           date,
           timeSlot,
@@ -105,10 +119,15 @@ export function BookingModal({ open, onClose, locale }: Props) {
   };
 
   const stepTitle = (i: number) => {
-    if (i === 0) return t("step1");
-    if (i === 1) return t("step2");
-    if (i === 2) return t("step3");
-    return t("step4");
+    const keys = [
+      "conciergeStep0",
+      "conciergeStep1",
+      "conciergeStep2",
+      "conciergeStep3",
+      "conciergeStep4",
+      "conciergeStep5",
+    ] as const;
+    return t(keys[i]);
   };
 
   const inputStyle = {
@@ -118,9 +137,22 @@ export function BookingModal({ open, onClose, locale }: Props) {
     border: "1px solid var(--line)",
     borderRadius: "2px",
     background: "rgba(255,255,255,0.03)",
-    color: "#e8ecf4",
+    color: "var(--ink-bright, #e4e8ef)",
     font: "inherit",
   };
+
+  const trajOpts = [
+    ["career", "trajectoryCareer"],
+    ["legacy", "trajectoryLegacy"],
+    ["personal", "trajectoryPersonal"],
+  ] as const;
+
+  const tensionOpts = [
+    ["clarity", "tensionClarity"],
+    ["decision", "tensionDecision"],
+    ["relation", "tensionRelation"],
+    ["other", "tensionOther"],
+  ] as const;
 
   return (
     <div
@@ -142,7 +174,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
 
         {done ? (
           <>
-            <p style={{ color: "rgba(232,236,244,0.92)" }}>{t("success")}</p>
+            <p style={{ color: "var(--ink-bright, #e8ecf4)" }}>{t("success")}</p>
             <p style={{ fontSize: "0.875rem", color: "var(--mist)" }}>{t("successDetail")}</p>
             {queueId ? (
               <p style={{ fontSize: "0.8125rem", color: "var(--signal)", marginTop: "0.75rem" }}>
@@ -159,35 +191,63 @@ export function BookingModal({ open, onClose, locale }: Props) {
               {stepTitle(step)}
             </p>
             <div className="booking-steps" aria-hidden>
-              {[0, 1, 2, 3].map((i) => (
+              {Array.from({ length: STEPS }, (_, i) => (
                 <span key={i} className={step >= i ? "is-on" : ""} />
               ))}
             </div>
 
             {step === 0 && (
-              <div>
-                <div className="tier-grid">
-                  {(
-                    [
-                      ["essential", "tierEssential"],
-                      ["standard", "tierStandard"],
-                      ["full", "tierFull"],
-                    ] as const
-                  ).map(([id, labelKey]) => (
-                    <button
-                      key={id}
-                      type="button"
-                      className={`tier-btn${tier === id ? " is-selected" : ""}`}
-                      onClick={() => setTier(id)}
-                    >
-                      {t(labelKey)}
-                    </button>
-                  ))}
-                </div>
+              <div className="tier-grid">
+                {trajOpts.map(([id, labelKey]) => (
+                  <button
+                    key={id}
+                    type="button"
+                    className={`tier-btn${trajectory === id ? " is-selected" : ""}`}
+                    onClick={() => setTrajectory(id)}
+                  >
+                    {t(labelKey)}
+                  </button>
+                ))}
               </div>
             )}
 
             {step === 1 && (
+              <div className="tier-grid">
+                {tensionOpts.map(([id, labelKey]) => (
+                  <button
+                    key={id}
+                    type="button"
+                    className={`tier-btn${tension === id ? " is-selected" : ""}`}
+                    onClick={() => setTension(id)}
+                  >
+                    {t(labelKey)}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {step === 2 && (
+              <div className="tier-grid">
+                {(
+                  [
+                    ["essential", "tierEssential"],
+                    ["standard", "tierStandard"],
+                    ["full", "tierFull"],
+                  ] as const
+                ).map(([id, labelKey]) => (
+                  <button
+                    key={id}
+                    type="button"
+                    className={`tier-btn${tier === id ? " is-selected" : ""}`}
+                    onClick={() => setTier(id)}
+                  >
+                    {t(labelKey)}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {step === 3 && (
               <div className="form-grid" style={{ display: "grid", gap: "1rem" }}>
                 <div>
                   <label htmlFor="bk-date">{t("dateLabel")}</label>
@@ -215,7 +275,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
               </div>
             )}
 
-            {step === 2 && (
+            {step === 4 && (
               <div className="form-grid" style={{ display: "grid", gap: "0.85rem" }}>
                 <div>
                   <label htmlFor="bk-name">{t("nameLabel")}</label>
@@ -253,7 +313,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
               </div>
             )}
 
-            {step === 3 && (
+            {step === 5 && (
               <div>
                 <label htmlFor="bk-notes">{t("questionLabel")}</label>
                 <textarea
@@ -267,7 +327,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
             )}
 
             {formError ? (
-              <p role="alert" style={{ color: "#f87171", fontSize: "0.8125rem", marginTop: "0.75rem" }}>
+              <p role="alert" style={{ color: "#e8a598", fontSize: "0.8125rem", marginTop: "0.75rem" }}>
                 {formError}
               </p>
             ) : null}
@@ -281,12 +341,21 @@ export function BookingModal({ open, onClose, locale }: Props) {
                   {t("back")}
                 </button>
               )}
-              {step < 3 && (
-                <button type="button" className="btn" disabled={step === 0 && !tier} onClick={goNext}>
+              {step < STEPS - 1 && (
+                <button
+                  type="button"
+                  className="btn"
+                  disabled={
+                    (step === 0 && !trajectory) ||
+                    (step === 1 && !tension) ||
+                    (step === 2 && !tier)
+                  }
+                  onClick={goNext}
+                >
                   {t("next")}
                 </button>
               )}
-              {step === 3 && (
+              {step === STEPS - 1 && (
                 <button type="button" className="btn" disabled={pending} onClick={submit}>
                   {pending ? "…" : t("submit")}
                 </button>

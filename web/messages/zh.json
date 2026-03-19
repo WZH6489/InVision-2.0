@@ -16,6 +16,8 @@
     "langZh": "简体",
     "langZhHant": "繁體",
     "langEn": "English",
+    "langGlobeAria": "选择语言",
+    "langMenuTitle": "语言",
     "menuOpen": "打开菜单",
     "menuClose": "关闭"
   },
@@ -64,7 +66,12 @@
     "teaserFaqCta": "打开问答",
     "footnote": "需要书面服务说明或企业采购？请见 <services>服务详情</services> 或 <contact>联络我们</contact>。「视未」为概念站点；实际服务以协议与监管为准。",
     "stickyCta": "预约观测",
-    "stickyHint": "合规队列 · 一个工作日内回访"
+    "stickyHint": "合规队列 · 一个工作日内回访",
+    "timelineTitle": "时间轴：从此刻到十年",
+    "timelineHint": "拖动滑块，感受前瞻范围如何延展。",
+    "timelinePresent": "当下",
+    "timelineY10": "第十年",
+    "timelineYearsUnit": "年"
   },
   "Footer": {
     "tagline": "独家未来观测服务。",
@@ -80,7 +87,20 @@
     "meta": "概念站点 · 仅供展示"
   },
   "Booking": {
-    "title": "预约观测",
+    "title": "礼宾预约",
+    "conciergeStep0": "您希望观测的主轴是？",
+    "conciergeStep1": "当前最消耗你的是什么？",
+    "conciergeStep2": "选择方案档位",
+    "conciergeStep3": "意向日期与时间",
+    "conciergeStep4": "联络方式",
+    "conciergeStep5": "最后一步 · 合规与备注",
+    "trajectoryCareer": "事业与职业轨迹",
+    "trajectoryLegacy": "传承与长期影响",
+    "trajectoryPersonal": "个人成长与关系",
+    "tensionClarity": "看不清方向",
+    "tensionDecision": "重大决策犹豫",
+    "tensionRelation": "关系与承诺",
+    "tensionOther": "其他 / 暂不归类",
     "step1": "选择方案档位",
     "step2": "意向日期与时间",
     "step3": "联络方式",

@@ -1,9 +1,15 @@
 :root {
-  --void: #050508;
-  --mist: #8b93a7;
-  --signal: #6ee7ff;
-  --signal-dim: rgba(110, 231, 255, 0.12);
-  --line: rgba(255, 255, 255, 0.06);
+  /* Obsidian / charcoal base — avoid pure #000 / #fff */
+  --void: #0a0b0e;
+  --void-elevated: #12141a;
+  --ink-bright: #e4e8ef;
+  --mist: #a8b0bc;
+  --mist-dim: #7e8794;
+  /* Brushed champagne / tungsten accent */
+  --signal: #c4b59a;
+  --signal-muted: #9a8f7a;
+  --signal-dim: rgba(196, 181, 154, 0.14);
+  --line: rgba(255, 255, 255, 0.1);
   --header-h: 4.25rem;
   --sticky-book-h: 5.75rem;
 }
@@ -67,8 +73,9 @@ body::before {
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(30, 58, 95, 0.35), transparent 55%),
-    radial-gradient(ellipse 80% 50% at 100% 50%, rgba(45, 30, 80, 0.12), transparent 50%),
+    radial-gradient(ellipse 130% 90% at 50% -15%, rgba(80, 62, 42, 0.22), transparent 58%),
+    radial-gradient(ellipse 90% 60% at 100% 40%, rgba(42, 48, 58, 0.35), transparent 52%),
+    radial-gradient(ellipse 70% 50% at 0% 80%, rgba(30, 38, 48, 0.25), transparent 45%),
     var(--void);
   pointer-events: none;
 }
@@ -100,9 +107,9 @@ body::before {
   height: var(--header-h);
   display: flex;
   align-items: center;
-  background: rgba(5, 5, 10, 0.78);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(10, 11, 14, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -124,7 +131,7 @@ body::before {
 }
 
 .site-header__mark:hover .mark span {
-  text-shadow: 0 0 20px rgba(110, 231, 255, 0.45);
+  text-shadow: 0 0 24px rgba(196, 181, 154, 0.4);
 }
 
 .site-nav {
@@ -164,7 +171,7 @@ body::before {
 .site-nav-m a[aria-current="page"],
 .site-nav-m a.is-active {
   color: var(--signal);
-  border-color: rgba(110, 231, 255, 0.35);
+  border-color: rgba(196, 181, 154, 0.35);
   background: var(--signal-dim);
 }
 
@@ -202,7 +209,7 @@ body::before {
 
 .lang-switch__btn:hover {
   color: var(--signal);
-  border-color: rgba(110, 231, 255, 0.35);
+  border-color: rgba(196, 181, 154, 0.35);
   background: var(--signal-dim);
 }
 
@@ -225,7 +232,7 @@ body::before {
   scrollbar-width: none;
   padding: 0.5rem clamp(1rem, 4vw, 2rem);
   border-bottom: 1px solid var(--line);
-  background: rgba(5, 5, 10, 0.82);
+  background: rgba(10, 11, 14, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   position: fixed;

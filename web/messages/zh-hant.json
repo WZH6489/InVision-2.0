@@ -16,6 +16,8 @@
     "langZh": "简体",
     "langZhHant": "繁體",
     "langEn": "English",
+    "langGlobeAria": "選擇語言",
+    "langMenuTitle": "語言",
     "menuOpen": "打開選單",
     "menuClose": "關閉"
   },
@@ -64,7 +66,12 @@
     "teaserFaqCta": "打開問答",
     "footnote": "需要書面服務說明或企業採購？請見 <services>服務詳情</services> 或 <contact>聯絡我們</contact>。「視未」為概念站點；實際服務以協議與監管為準。",
     "stickyCta": "預約觀測",
-    "stickyHint": "合規隊列 · 一個工作日內回訪"
+    "stickyHint": "合規隊列 · 一個工作日內回訪",
+    "timelineTitle": "時間軸：從此刻到十年",
+    "timelineHint": "拖動滑塊，感受前瞻範圍如何延展。",
+    "timelinePresent": "當下",
+    "timelineY10": "第十年",
+    "timelineYearsUnit": "年"
   },
   "Footer": {
     "tagline": "獨家未來觀測服務。",
@@ -80,7 +87,20 @@
     "meta": "概念站點 · 僅供展示"
   },
   "Booking": {
-    "title": "預約觀測",
+    "title": "禮賓預約",
+    "conciergeStep0": "您希望觀測的主軸是？",
+    "conciergeStep1": "當前最消耗你的是什麼？",
+    "conciergeStep2": "選擇方案檔位",
+    "conciergeStep3": "意向日期與時間",
+    "conciergeStep4": "聯絡方式",
+    "conciergeStep5": "最後一步 · 合規與備註",
+    "trajectoryCareer": "事業與職業軌跡",
+    "trajectoryLegacy": "傳承與長期影響",
+    "trajectoryPersonal": "個人成長與關係",
+    "tensionClarity": "看不清方向",
+    "tensionDecision": "重大決策猶豫",
+    "tensionRelation": "關係與承諾",
+    "tensionOther": "其他 / 暫不歸類",
     "step1": "選擇方案檔位",
     "step2": "意向日期與時間",
     "step3": "聯絡方式",
