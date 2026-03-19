@@ -1,5 +1,42 @@
 (function () {
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var LANG = document.body.getAttribute("data-lang") || "zh-Hans";
+
+  var TIMELINE_I18N = {
+    "zh-Hans": {
+      hints: ["此刻", "+2 年", "+5 年", "+8 年", "+10 年 视界上限"],
+      msgs: [
+        "你的下一程，尚未对焦。",
+        "噪点沉降，轮廓开始显影。",
+        "主路径概率抬升，备选分支衰减。",
+        "决策窗口收窄——行动与观望的代价可被读见。",
+        "十年视界内，「可规划的你」趋于稳定（模型隐喻，非命运断言）。",
+      ],
+    },
+    "zh-Hant": {
+      hints: ["此刻", "+2 年", "+5 年", "+8 年", "+10 年 視界上限"],
+      msgs: [
+        "你的下一程，尚未對焦。",
+        "噪點沉降，輪廓開始顯影。",
+        "主路徑機率抬升，備選分支衰減。",
+        "決策窗口收窄——行動與觀望的代價可被讀見。",
+        "十年視界內，「可規劃的你」趨於穩定（模型隱喻，非命運斷言）。",
+      ],
+    },
+    en: {
+      hints: ["Now", "+2 yrs", "+5 yrs", "+8 yrs", "+10 yr horizon (max)"],
+      msgs: [
+        "Your next chapter is still out of focus.",
+        "Noise settles; contours emerge.",
+        "Main-path likelihood rises; alternate branches fade.",
+        "The decision window narrows—tradeoffs between acting and waiting become legible.",
+        "Within ten years, a “plannable you” stabilizes (model metaphor, not destiny).",
+      ],
+    },
+  };
+
+  var glyphPool =
+    LANG === "en" ? "█▓░╱ETHICS01OBS#@$%&X" : "█▓░╱伦理合规01边界观测";
 
   /* —— Timeline slider —— */
   var range = document.getElementById("timelineRange");
@@ -7,14 +44,9 @@
   var hint = document.getElementById("timelineHint");
   var fut = document.getElementById("timelineFuturist");
   if (range && stage) {
-    var hints = ["此刻", "+2 年", "+5 年", "+8 年", "+10 年 视界上限"];
-    var msgs = [
-      "你的下一程，尚未对焦。",
-      "噪点沉降，轮廓开始显影。",
-      "主路径概率抬升，备选分支衰减。",
-      "决策窗口收窄——行动与观望的代价可被读见。",
-      "十年视界内，「可规划的你」趋于稳定（模型隐喻，非命运断言）。",
-    ];
+    var pack = TIMELINE_I18N[LANG] || TIMELINE_I18N["zh-Hans"];
+    var hints = pack.hints;
+    var msgs = pack.msgs;
     function syncTimeline() {
       var v = Number(range.value) / 100;
       stage.style.setProperty("--timeline-t", String(v));
@@ -30,7 +62,7 @@
   /* —— Spec section decrypt —— */
   var spec = document.getElementById("spec");
   if (spec && !reduceMotion) {
-    var glyphs = "█▓░╱伦理合规01边界观测";
+    var glyphs = LANG === "zh-Hant" ? "█▓░╱倫理合規01邊界觀測" : glyphPool;
     var articles = spec.querySelectorAll("article");
     articles.forEach(function (art) {
       var h2 = art.querySelector("h2");
@@ -85,13 +117,15 @@
 
   function repeatGlyph(n) {
     var s = "";
-    for (var i = 0; i < n; i++) s += glyphs[i % glyphs.length];
+    var g = glyphs;
+    for (var i = 0; i < n; i++) s += g[i % g.length];
     return s;
   }
 
   function decryptTo(el, finalText, msPerTick, onDone) {
     var len = finalText.length;
     var shown = 0;
+    var g = glyphs;
     var id = setInterval(function () {
       if (shown >= len) {
         clearInterval(id);
@@ -103,7 +137,7 @@
       var out = "";
       for (var k = 0; k < len; k++) {
         if (k < shown) out += finalText[k];
-        else out += glyphs[Math.floor(Math.random() * glyphs.length)];
+        else out += g[Math.floor(Math.random() * g.length)];
       }
       el.textContent = out;
     }, msPerTick);
