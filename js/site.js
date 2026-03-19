@@ -1,6 +1,35 @@
 (function () {
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  var pageFile = window.location.pathname.split("/").pop() || "";
+  if (!pageFile || pageFile === "") pageFile = "index.html";
+  document.querySelectorAll(".site-nav a[href], .site-nav-m a[href]").forEach(function (a) {
+    var href = a.getAttribute("href");
+    if (!href || href.charAt(0) === "#") return;
+    var target = href.split("/").pop().split("?")[0];
+    a.classList.remove("is-active");
+    a.removeAttribute("aria-current");
+    if (target === pageFile) {
+      a.classList.add("is-active");
+      a.setAttribute("aria-current", "page");
+    }
+  });
+
+  var sentinel = document.getElementById("hero-sentinel");
+  var sticky = document.getElementById("sticky-book");
+  if (sentinel && sticky && !reduceMotion) {
+    var stickyObs = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (e.target !== sentinel) return;
+          sticky.classList.toggle("is-visible", !e.isIntersecting);
+        });
+      },
+      { root: null, threshold: 0, rootMargin: "0px" }
+    );
+    stickyObs.observe(sentinel);
+  }
+
   if (!reduceMotion) {
     var nodes = document.querySelectorAll(".reveal");
     if (nodes.length) {

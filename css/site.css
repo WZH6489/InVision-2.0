@@ -95,7 +95,7 @@ body::before {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 200;
+  z-index: 280;
   height: var(--header-h);
   display: flex;
   align-items: center;
@@ -231,7 +231,7 @@ body::before {
   top: var(--header-h);
   left: 0;
   right: 0;
-  z-index: 199;
+  z-index: 279;
 }
 
 .site-nav-m::-webkit-scrollbar {
@@ -1986,4 +1986,113 @@ section.spec.spec--terminal::before {
       transform: none;
     }
   }
+}
+
+/* —— Hub homepage: ribbon, problem/solution, teaser hover, sticky CTA —— */
+.value-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  padding: 0.85rem 1.25rem;
+  margin: 0 auto;
+  max-width: 56rem;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(110, 231, 255, 0.06),
+    rgba(255, 255, 255, 0.02),
+    rgba(110, 231, 255, 0.05)
+  );
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.value-ribbon__sep {
+  color: var(--mist);
+  opacity: 0.45;
+  user-select: none;
+}
+
+.problem-split {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .problem-split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.problem-split__solution {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  border-radius: 4px;
+  background: var(--signal-dim);
+}
+
+.teaser-card-interactive {
+  position: relative;
+  overflow: hidden;
+}
+
+.teaser-card-interactive::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(110, 231, 255, 0.14),
+    transparent 65%
+  );
+}
+
+.teaser-card-interactive:hover::before,
+.teaser-card-interactive:focus-within::before {
+  opacity: 1;
+}
+
+.teaser-card-interactive > * {
+  position: relative;
+  z-index: 1;
+}
+
+.sticky-book {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 250;
+  padding: 0.65rem clamp(1rem, 4vw, 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: rgba(5, 5, 10, 0.92);
+  border-top: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transform: translateY(110%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sticky-book.is-visible {
+  transform: translateY(0);
+}
+
+.sticky-book__hint {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--mist);
 }
