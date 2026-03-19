@@ -1,0 +1,170 @@
+"use client";
+
+import { useLocale, useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
+import { Link, usePathname } from "@/i18n/navigation";
+import { useBooking } from "./BookingProvider";
+
+const NAV = [
+  { href: "/process", key: "process" as const },
+  { href: "/rules", key: "rules" as const },
+  { href: "/testimonials", key: "testimonials" as const },
+  { href: "/pricing", key: "pricing" as const },
+  { href: "/team", key: "team" as const },
+  { href: "/faq", key: "faq" as const },
+];
+
+export function SiteHeader() {
+  const t = useTranslations("Nav");
+  const loc = useLocale();
+  const pathname = usePathname();
+  const { openBooking } = useBooking();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  const active = (href: string) =>
+    pathname === href || (href !== "/" && pathname.startsWith(href + "/"));
+
+  return (
+    <>
+      <header className="site-header">
+        <div className="site-header__inner">
+          <Link href="/" className="site-header__mark">
+            <p className="mark">
+              {loc === "en" ? (
+                <>
+                  Shì <span>Wèi</span>
+                  <span className="sub">Future observation</span>
+                </>
+              ) : (
+                <>
+                  {loc === "zh-hant" ? (
+                    <>
+                      視<span>未</span>
+                      <span className="sub">未來觀測 · 獨家服務</span>
+                    </>
+                  ) : (
+                    <>
+                      视<span>未</span>
+                      <span className="sub">未来观测 · 独家服务</span>
+                    </>
+                  )}
+                </>
+              )}
+            </p>
+          </Link>
+
+          <nav
+            className="site-nav"
+            aria-label={
+              loc === "en" ? "Primary navigation" : loc === "zh-hant" ? "主要導覽" : "主导航"
+            }
+          >
+            {NAV.map(({ href, key }) => (
+              <Link
+                key={href}
+                href={href}
+                className={active(href) ? "is-active" : undefined}
+                aria-current={active(href) ? "page" : undefined}
+              >
+                {t(key)}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="site-header__cta">
+            <nav className="lang-switch" aria-label="Language">
+              <Link
+                href={pathname}
+                locale="zh"
+                className={`lang-switch__btn${loc === "zh" ? " is-active" : ""}`}
+                hrefLang="zh-Hans"
+                aria-current={loc === "zh" ? "page" : undefined}
+              >
+                {t("langZh")}
+              </Link>
+              <Link
+                href={pathname}
+                locale="zh-hant"
+                className={`lang-switch__btn${loc === "zh-hant" ? " is-active" : ""}`}
+                hrefLang="zh-Hant"
+                aria-current={loc === "zh-hant" ? "page" : undefined}
+              >
+                {t("langZhHant")}
+              </Link>
+              <Link
+                href={pathname}
+                locale="en"
+                className={`lang-switch__btn${loc === "en" ? " is-active" : ""}`}
+                hrefLang="en"
+                aria-current={loc === "en" ? "page" : undefined}
+              >
+                {t("langEn")}
+              </Link>
+            </nav>
+
+            <Link href="/portal" className="btn btn-ghost btn--sm">
+              {t("portal")}
+            </Link>
+
+            <button type="button" className="btn btn--sm" onClick={openBooking}>
+              {t("book")}
+              <span className="btn__arrow" aria-hidden>
+                →
+              </span>
+            </button>
+
+            <button
+              type="button"
+              className="header-burger"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-drawer"
+              onClick={() => setMenuOpen((o) => !o)}
+            >
+              <span className="sr-only">{menuOpen ? t("menuClose") : t("menuOpen")}</span>
+              <svg width="18" height="14" viewBox="0 0 18 14" aria-hidden>
+                <path
+                  fill="currentColor"
+                  d="M0 1h18v2H0V1zm0 5h18v2H0V6zm0 5h18v2H0v-2z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div
+        className={`mobile-menu__backdrop${menuOpen ? " is-open" : ""}`}
+        aria-hidden
+        onClick={() => setMenuOpen(false)}
+      />
+      <nav
+        id="mobile-drawer"
+        className={`mobile-menu${menuOpen ? " is-open" : ""}`}
+        aria-label={
+          loc === "en" ? "Primary navigation" : loc === "zh-hant" ? "主要導覽" : "主导航"
+        }
+      >
+        {NAV.map(({ href, key }) => (
+          <Link
+            key={href}
+            href={href}
+            className={active(href) ? "is-active" : undefined}
+            onClick={() => setMenuOpen(false)}
+          >
+            {t(key)}
+          </Link>
+        ))}
+        <Link href="/portal" onClick={() => setMenuOpen(false)}>
+          {t("portal")}
+        </Link>
+        <button type="button" className="tier-btn" style={{ marginTop: "0.5rem" }} onClick={() => { setMenuOpen(false); openBooking(); }}>
+          {t("book")}
+        </button>
+      </nav>
+    </>
+  );
+}
