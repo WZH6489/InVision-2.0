@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>关于视未</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Syne:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body class="page-inner">
+  <div class="stars" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__mark">
+        <p class="mark">视<span>未</span><span class="sub">未来观测</span></p>
+      </a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="services.html">服务</a>
+        <a href="about.html" aria-current="page">关于</a>
+        <a href="contact.html">联络</a>
+      </nav>
+      <div class="site-header__cta">
+        <button type="button" class="btn btn--sm" data-open-reserve>立即预约 <span class="btn__arrow">→</span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <main>
+      <header class="page-hero reveal is-visible">
+        <h1>关于视未</h1>
+        <p>成立于一个对「确定性」过度承诺的时代。我们选择相反的方向：把清晰留给个人，把边界写进协议。</p>
+      </header>
+
+      <div class="prose reveal is-visible">
+        <h2>我们的故事</h2>
+        <p>
+          创始团队来自高校伦理智库、服务设计与认知科学实验室。一次跨学科工作坊中，我们意识到许多人并非需要「被告诉答案」，而是需要在安全边界内与「可能的自己」打一次照面。
+        </p>
+        <p>视未由此诞生：不是贩卖命运，而是提供一次有期限、有伦理、可复盘的前瞻体验。</p>
+
+        <h2>价值观</h2>
+        <ul>
+          <li><strong style="color: rgba(232,236,244,0.9)">个人优先</strong>：只服务本人轨迹，技术上隔离任何第三方窥探路径。</li>
+          <li><strong style="color: rgba(232,236,244,0.9)">透明优先</strong>：不能做什么，与能做什么同等重要。</li>
+          <li><strong style="color: rgba(232,236,244,0.9)">当下优先</strong>：一切观测的终点是回到此刻的行动。</li>
+        </ul>
+
+        <p style="margin-top: 2rem">
+          <a class="btn btn-ghost" href="index.html#team">查看团队 <span class="btn__arrow">→</span></a>
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <p class="mark" style="margin: 0">视<span>未</span></p>
+          <p>独家未来观测服务。</p>
+        </div>
+        <div class="site-footer__col">
+          <h4>服务</h4>
+          <ul>
+            <li><a href="services.html">服务详情</a></li>
+            <li><a href="index.html#pricing">方案定价</a></li>
+            <li><a href="contact.html">联络我们</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>公司</h4>
+          <ul>
+            <li><a href="about.html">关于视未</a></li>
+            <li><a href="index.html">回首页</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>法律</h4>
+          <ul>
+            <li><a href="terms.html">服务条款</a></li>
+            <li><a href="privacy.html">隐私政策</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__meta">
+        <span>© <span id="y"></span> 视未</span>
+      </div>
+    </footer>
+  </div>
+
+  <dialog id="reserve">
+    <h3>已记录意向</h3>
+    <p>你的预约请求已进入队列。顾问将在一个工作日内与你对齐时段、知情同意与合规说明。</p>
+    <button type="button" class="btn" id="closeReserve">知道了</button>
+  </dialog>
+  <script src="js/site.js"></script>
+</body>
+</html>
