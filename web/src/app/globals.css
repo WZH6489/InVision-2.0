@@ -1,0 +1,318 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Shared tokens + overrides on top of parent site.css (imported from [locale]/layout). */
+:root {
+  --z-chrome: 300;
+  --z-sticky-cta: 250;
+  --z-hero-canvas: 0;
+}
+
+body[data-app="next"] {
+  padding-top: var(--header-h);
+  font-family: var(--font-noto-sc), var(--font-dm), "PingFang SC", system-ui, sans-serif;
+}
+
+body[data-app="next"][data-locale="en"] {
+  font-family: var(--font-dm), var(--font-noto-sc), system-ui, sans-serif;
+}
+
+body[data-app="next"][data-locale="zh-Hant"] {
+  font-family: var(--font-noto-tc), "PingFang TC", var(--font-noto-sc), system-ui, sans-serif;
+}
+
+.mark {
+  font-family: var(--font-syne), var(--font-noto-sc), sans-serif;
+}
+
+body[data-app="next"] .site-header {
+  z-index: var(--z-chrome);
+}
+
+body[data-app="next"] .site-nav-m {
+  z-index: calc(var(--z-chrome) - 1);
+}
+
+/* Next app uses drawer menu on small screens instead of the horizontal strip */
+@media (max-width: 899px) {
+  body.page-next .site-nav-m {
+    display: none !important;
+  }
+
+  body.page-next {
+    padding-top: var(--header-h) !important;
+  }
+}
+
+.hero-webgl {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-hero-canvas);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.hero-webgl canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.value-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  padding: 0.85rem 1.25rem;
+  margin: 0 auto;
+  max-width: 56rem;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(110, 231, 255, 0.06),
+    rgba(255, 255, 255, 0.02),
+    rgba(110, 231, 255, 0.05)
+  );
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.value-ribbon__sep {
+  color: var(--mist);
+  opacity: 0.45;
+  user-select: none;
+}
+
+.problem-split {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .problem-split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.problem-split__solution {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  border-radius: 4px;
+  background: var(--signal-dim);
+}
+
+.teaser-card-interactive {
+  position: relative;
+  overflow: hidden;
+}
+
+.teaser-card-interactive .teaser-card__hover {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(110, 231, 255, 0.12),
+    transparent 65%
+  );
+}
+
+.teaser-card-interactive > :not(.teaser-card__hover) {
+  position: relative;
+  z-index: 1;
+}
+
+.teaser-card-interactive:hover .teaser-card__hover,
+.teaser-card-interactive:focus-within .teaser-card__hover {
+  opacity: 1;
+}
+
+.teaser-card__glyph {
+  width: 4.5rem;
+  height: 4.5rem;
+  color: var(--signal);
+  opacity: 0.9;
+}
+
+.sticky-book {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-sticky-cta);
+  padding: 0.65rem clamp(1rem, 4vw, 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: rgba(5, 5, 10, 0.92);
+  border-top: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transform: translateY(110%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sticky-book.is-visible {
+  transform: translateY(0);
+}
+
+.sticky-book__hint {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--mist);
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  top: var(--header-h);
+  z-index: calc(var(--z-chrome) - 2);
+  background: rgba(5, 5, 10, 0.96);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+.mobile-menu a {
+  color: var(--mist);
+  text-decoration: none;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 1rem;
+}
+
+.mobile-menu a.is-active {
+  color: var(--signal);
+}
+
+.mobile-menu__backdrop {
+  position: fixed;
+  inset: 0;
+  top: var(--header-h);
+  z-index: calc(var(--z-chrome) - 3);
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu__backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.header-burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--mist);
+  cursor: pointer;
+}
+
+.header-burger:hover {
+  color: var(--signal);
+  border-color: rgba(110, 231, 255, 0.35);
+}
+
+@media (min-width: 900px) {
+  .header-burger {
+    display: none;
+  }
+}
+
+.booking-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+}
+
+.booking-dialog {
+  width: min(28rem, 100%);
+  max-height: min(90vh, 40rem);
+  overflow: auto;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--void);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.booking-steps {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.booking-steps span {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--line);
+}
+
+.booking-steps span.is-on {
+  background: var(--signal);
+}
+
+.tier-grid {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.tier-btn {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--mist);
+  cursor: pointer;
+  font: inherit;
+}
+
+.tier-btn:hover,
+.tier-btn.is-selected {
+  border-color: rgba(110, 231, 255, 0.45);
+  color: var(--signal);
+  background: var(--signal-dim);
+}
