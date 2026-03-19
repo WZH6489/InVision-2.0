@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Syne:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/site.css" />
 </head>
-<body>
+<body data-page="home">
   <div class="stars" aria-hidden="true"></div>
 
   <header class="site-header">
@@ -22,10 +22,12 @@
         </p>
       </a>
       <nav class="site-nav" aria-label="主导航">
+        <a href="#timeline">时间轴</a>
         <a href="#how">流程</a>
         <a href="#spec">规则</a>
         <a href="#proof">口碑</a>
         <a href="#pricing">方案</a>
+        <a href="#artifact">交付物</a>
         <a href="#team">团队</a>
         <a href="#mission">使命</a>
         <a href="#faq">常见问题</a>
@@ -40,10 +42,12 @@
   </header>
 
   <nav class="site-nav-m" aria-label="页面章节">
+    <a href="#timeline">时间轴</a>
     <a href="#how">流程</a>
     <a href="#spec">规则</a>
     <a href="#proof">口碑</a>
     <a href="#pricing">方案</a>
+    <a href="#artifact">交付</a>
     <a href="#team">团队</a>
     <a href="#faq">问答</a>
   </nav>
@@ -82,6 +86,25 @@
           <p class="visual-caption">观测视界 · 仅映你一人</p>
         </div>
       </div>
+
+      <section id="timeline" class="timeline-narrative reveal" aria-labelledby="timeline-title">
+        <p class="section-kicker">Narrative axis</p>
+        <h2 id="timeline-title" class="section-title">从「此刻」拖向 +10 年</h2>
+        <p class="section-lead">
+          沿时间轴推进时，噪点沉降、可读性上升——这是我们在模型里对「个人轨迹置信度」的隐喻，而非预言。
+        </p>
+        <div class="timeline-stage" id="timelineStage" style="--timeline-t: 0">
+          <div class="timeline-stage__inner">
+            <p class="timeline-future-text" id="timelineFuturist">你的下一程，尚未对焦。</p>
+            <p class="timeline-hint" id="timelineHint">此刻</p>
+          </div>
+        </div>
+        <label class="timeline-control" for="timelineRange">
+          <span>此刻</span>
+          <input type="range" id="timelineRange" min="0" max="100" value="0" aria-valuetext="时间轴位置" />
+          <span>+10 年</span>
+        </label>
+      </section>
 
       <section id="how" class="reveal" aria-labelledby="how-title">
         <p class="section-kicker">How it works</p>
@@ -128,7 +151,7 @@
         </div>
       </section>
 
-      <section class="spec reveal" id="spec" aria-labelledby="spec-title">
+      <section class="spec spec--terminal reveal" id="spec" aria-labelledby="spec-title">
         <p class="section-kicker">Rules &amp; boundaries</p>
         <h2 id="spec-title" class="section-title">规则与边界</h2>
         <p class="section-lead">以下条款保障服务伦理与每位使用者的安全。预约即视为已阅读并理解。</p>
@@ -162,44 +185,89 @@
           <span>东方人物周刊</span>
           <span>FutureNow 播客</span>
         </div>
-        <div class="testimonials">
-          <figure class="testimonial">
-            <blockquote>
-              「我只问了升学路径，却第一次看清自己真正在意的是什么。回到现实后我改了志愿排序——那是我做过最清醒的决定。」
-            </blockquote>
-            <footer>— <cite>L.｜应届生</cite></footer>
-          </figure>
-          <figure class="testimonial">
-            <blockquote>
-              「十分钟里像看了一部关于自己的纪录片。不能干预反而让我更专注在『现在能做什么』。」
-            </blockquote>
-            <footer>— <cite>M.｜产品经理</cite></footer>
-          </figure>
-          <figure class="testimonial">
-            <blockquote>
-              「合规流程很严，反而安心。团队对『不能看他人』的解释非常清楚，没有灰色地带。」
-            </blockquote>
-            <footer>— <cite>R.｜法务背景</cite></footer>
-          </figure>
+        <div class="carousel" data-carousel aria-label="客户见证滑动浏览">
+          <div class="carousel__meta">
+            <span class="carousel__counter" aria-live="polite"
+              ><span class="carousel__curr">01</span><span class="carousel__sep">/</span><span class="carousel__total">03</span></span
+            >
+            <div class="carousel__progress" aria-hidden="true"><span class="carousel__progress-fill"></span></div>
+          </div>
+          <div class="carousel__viewport">
+            <div class="carousel__track">
+              <div class="carousel__slide">
+                <figure class="testimonial">
+                  <blockquote>
+                    「我只问了升学路径，却第一次看清自己真正在意的是什么。回到现实后我改了志愿排序——那是我做过最清醒的决定。」
+                  </blockquote>
+                  <footer>— <cite>L.｜应届生</cite></footer>
+                </figure>
+              </div>
+              <div class="carousel__slide">
+                <figure class="testimonial">
+                  <blockquote>
+                    「十分钟里像看了一部关于自己的纪录片。不能干预反而让我更专注在『现在能做什么』。」
+                  </blockquote>
+                  <footer>— <cite>M.｜产品经理</cite></footer>
+                </figure>
+              </div>
+              <div class="carousel__slide">
+                <figure class="testimonial">
+                  <blockquote>
+                    「合规流程很严，反而安心。团队对『不能看他人』的解释非常清楚，没有灰色地带。」
+                  </blockquote>
+                  <footer>— <cite>R.｜法务背景</cite></footer>
+                </figure>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="case-row">
           <div class="case-card">
-            <h3>案例 A｜职业转折</h3>
+            <h3>案例 A｜职业转折 · 轨迹分歧</h3>
+            <svg class="case-viz case-viz-paths" viewBox="0 0 320 140" role="img" aria-label="基线概率与观测后优化路径对比示意图">
+              <text class="axis-label" x="8" y="14">累积行动指数</text>
+              <text class="axis-label" x="8" y="130">时间 →</text>
+              <line x1="40" y1="20" x2="40" y2="115" stroke="rgba(255,255,255,0.08)" />
+              <line x1="40" y1="115" x2="300" y2="115" stroke="rgba(255,255,255,0.08)" />
+              <path
+                class="curve-base"
+                d="M 48 108 C 90 104, 130 100, 160 92 S 230 78, 298 68"
+              />
+              <path
+                class="curve-opt"
+                d="M 48 108 C 95 106, 125 88, 155 72 S 210 38, 298 28"
+              />
+            </svg>
             <div class="case-metrics">
-              <span class="before">决策犹豫 6 个月</span>
+              <span class="before">犹豫期 6 个月</span>
               <span class="arrow">→</span>
-              <span class="after">4 周内行动</span>
+              <span class="after">4 周内首动</span>
             </div>
-            <p>复盘后聚焦一条主路径，砍掉两条消耗型备选，三个月后完成转岗。</p>
+            <p>灰色：基线主观概率下的行动曲线；青色：观测复盘后的优化路径（合成指标，仅供叙事）。</p>
           </div>
           <div class="case-card">
-            <h3>案例 B｜学业规划</h3>
-            <div class="case-metrics">
-              <span class="before">平均焦虑自评 7.8/10</span>
-              <span class="arrow">→</span>
-              <span class="after">6 周后 4.2/10</span>
+            <h3>案例 B｜焦虑分布迁移</h3>
+            <div class="case-viz-bars" aria-label="自评焦虑量表前后对比">
+              <div class="case-bars">
+                <div class="case-bar-row case-bar-row--a">
+                  <span>前测</span>
+                  <div class="bar-track"><div class="bar-fill"></div></div>
+                  <span>7.8</span>
+                </div>
+                <div class="case-bar-row case-bar-row--b">
+                  <span>6 周后</span>
+                  <div class="bar-track"><div class="bar-fill"></div></div>
+                  <span>4.2</span>
+                </div>
+              </div>
             </div>
-            <p>结合所见与顾问规划表，将目标拆解为学期里程碑，随访显示依从性提升。</p>
+            <div class="case-metrics">
+              <span class="before">分布均值 μ 偏高</span>
+              <span class="arrow">→</span>
+              <span class="after">方差 σ² 收敛</span>
+            </div>
+            <p>条形为自陈量表可视化；并非临床诊断。配合里程碑拆解后，随访依从性提升。</p>
           </div>
         </div>
       </section>
@@ -254,31 +322,85 @@
         </div>
       </section>
 
+      <section id="artifact" class="artifact reveal" aria-labelledby="artifact-title">
+        <p class="section-kicker">Deliverable</p>
+        <h2 id="artifact-title" class="section-title">你会收到的「交付物」长什么样</h2>
+        <p class="section-lead">
+          标准化复盘摘要与路径图模板并非玄学纸条，而是加密档案中的结构化记录——可离线、可脱敏涂黑、可审计。
+        </p>
+        <div class="artifact__grid">
+          <div>
+            <h3 class="section-title" style="font-size: 1.0625rem; margin-bottom: 0.75rem">两种载体</h3>
+            <p style="font-size: 0.9375rem; max-width: 36em">
+              <strong style="color: rgba(232,236,244,0.92)">加密数字舱</strong>：仅你持有密钥的离线包，内含时间戳与完整性校验。
+              <strong style="color: rgba(232,236,244,0.92)">密封摘要册</strong>：实体脱敏版本，适合需要物理存档的机构客户。
+            </p>
+          </div>
+          <div class="artifact__mock" aria-hidden="true">
+            <div class="artifact__mock-header">
+              <span>SW-ARCHIVE / AES-256</span>
+              <div class="artifact__mock-dots"><span></span><span></span><span></span></div>
+            </div>
+            <div class="artifact__mock-body">
+              <span class="artifact__seal">已脱敏</span>
+              <div class="artifact__rows">
+                <div class="artifact__row"></div>
+                <div class="artifact__row artifact__row--short"></div>
+                <div class="artifact__row artifact__row--redact"></div>
+                <div class="artifact__row"></div>
+              </div>
+              <div class="artifact__panel">
+                <div class="artifact__panel-title">PATH · 优化分支概率</div>
+                <div class="artifact__path-lines">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="team" class="reveal" aria-labelledby="team-title">
         <p class="section-kicker">Who we are</p>
         <h2 id="team-title" class="section-title">核心团队</h2>
         <p class="section-lead">
           视未由认知科学、伦理委员会与体验设计背景的成员共同创立——我们相信「看见」必须伴随边界与责任。
         </p>
-        <div class="team-grid">
-          <article class="team-member">
-            <div class="team-member__avatar" aria-hidden="true">岚</div>
-            <h3>沈岚</h3>
-            <p class="role">联合创始人 · 首席伦理官</p>
-            <p>前高校应用伦理研究中心顾问，主导「个人轨迹」算法红线与合规流程设计。</p>
-          </article>
-          <article class="team-member">
-            <div class="team-member__avatar" aria-hidden="true">澈</div>
-            <h3>周澈</h3>
-            <p class="role">联合创始人 · 体验架构</p>
-            <p>资深服务设计师，负责观测环境与复盘框架，让抽象体验可被安全地言说与记录。</p>
-          </article>
-          <article class="team-member">
-            <div class="team-member__avatar" aria-hidden="true">衡</div>
-            <h3>赵衡</h3>
-            <p class="role">科学顾问</p>
-            <p>认知神经科学方向，确保所有对外表述与预期管理建立在可解释模型之上。</p>
-          </article>
+        <div class="carousel carousel--team" data-carousel aria-label="团队成员滑动浏览">
+          <div class="carousel__meta">
+            <span class="carousel__counter" aria-live="polite"
+              ><span class="carousel__curr">01</span><span class="carousel__sep">/</span><span class="carousel__total">03</span></span
+            >
+            <div class="carousel__progress" aria-hidden="true"><span class="carousel__progress-fill"></span></div>
+          </div>
+          <div class="carousel__viewport">
+            <div class="carousel__track">
+              <div class="carousel__slide">
+                <article class="team-member">
+                  <div class="team-member__avatar" aria-hidden="true">岚</div>
+                  <h3>沈岚</h3>
+                  <p class="role">联合创始人 · 首席伦理官</p>
+                  <p>前高校应用伦理研究中心顾问，主导「个人轨迹」算法红线与合规流程设计。</p>
+                </article>
+              </div>
+              <div class="carousel__slide">
+                <article class="team-member">
+                  <div class="team-member__avatar" aria-hidden="true">澈</div>
+                  <h3>周澈</h3>
+                  <p class="role">联合创始人 · 体验架构</p>
+                  <p>资深服务设计师，负责观测环境与复盘框架，让抽象体验可被安全地言说与记录。</p>
+                </article>
+              </div>
+              <div class="carousel__slide">
+                <article class="team-member">
+                  <div class="team-member__avatar" aria-hidden="true">衡</div>
+                  <h3>赵衡</h3>
+                  <p class="role">科学顾问</p>
+                  <p>认知神经科学方向，确保所有对外表述与预期管理建立在可解释模型之上。</p>
+                </article>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -375,5 +497,6 @@
   </dialog>
 
   <script src="js/site.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>
