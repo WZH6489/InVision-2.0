@@ -3,24 +3,45 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { localeToHtmlLang } from "@/lib/htmlLang";
 import type { AppLocale } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
-import { DM_Sans, Noto_Sans_SC, Noto_Sans_TC, Syne } from "next/font/google";
+import {
+  Inter,
+  Noto_Sans_SC,
+  Noto_Sans_TC,
+  Noto_Serif_SC,
+  Noto_Serif_TC,
+  Playfair_Display,
+} from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import "../../../../css/site.css";
 import "../globals.css";
 
-const syne = Syne({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-syne",
+  weight: ["400", "600", "700"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  variable: "--font-dm",
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const notoSerifSC = Noto_Serif_SC({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-noto-serif-sc",
+  display: "swap",
+});
+
+const notoSerifTC = Noto_Serif_TC({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-noto-serif-tc",
   display: "swap",
 });
 
@@ -58,6 +79,12 @@ export async function generateMetadata({
   };
 }
 
+function typographyAttr(locale: string): "en" | "zh-hant" | "zh" {
+  if (locale === "en") return "en";
+  if (locale === "zh-hant") return "zh-hant";
+  return "zh";
+}
+
 export default async function LocaleLayout({
   children,
   params,
@@ -73,7 +100,14 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
   const htmlLang = localeToHtmlLang(locale as AppLocale);
-  const fontVars = [syne.variable, dmSans.variable, notoSC.variable, notoTC.variable].join(" ");
+  const fontVars = [
+    playfair.variable,
+    inter.variable,
+    notoSerifSC.variable,
+    notoSerifTC.variable,
+    notoSC.variable,
+    notoTC.variable,
+  ].join(" ");
 
   return (
     <html lang={htmlLang} suppressHydrationWarning>
@@ -82,6 +116,7 @@ export default async function LocaleLayout({
         data-app="next"
         data-lang={htmlLang}
         data-locale={locale}
+        data-typography={typographyAttr(locale)}
       >
         <NextIntlClientProvider messages={messages}>
           <BookingProvider locale={locale}>

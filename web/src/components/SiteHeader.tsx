@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useBooking } from "./BookingProvider";
+import { LangGlobeMenu } from "./LangGlobeMenu";
 
 const NAV = [
   { href: "/process", key: "process" as const },
@@ -76,35 +77,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="site-header__cta">
-            <nav className="lang-switch" aria-label="Language">
-              <Link
-                href={pathname}
-                locale="zh"
-                className={`lang-switch__btn${loc === "zh" ? " is-active" : ""}`}
-                hrefLang="zh-Hans"
-                aria-current={loc === "zh" ? "page" : undefined}
-              >
-                {t("langZh")}
-              </Link>
-              <Link
-                href={pathname}
-                locale="zh-hant"
-                className={`lang-switch__btn${loc === "zh-hant" ? " is-active" : ""}`}
-                hrefLang="zh-Hant"
-                aria-current={loc === "zh-hant" ? "page" : undefined}
-              >
-                {t("langZhHant")}
-              </Link>
-              <Link
-                href={pathname}
-                locale="en"
-                className={`lang-switch__btn${loc === "en" ? " is-active" : ""}`}
-                hrefLang="en"
-                aria-current={loc === "en" ? "page" : undefined}
-              >
-                {t("langEn")}
-              </Link>
-            </nav>
+            <LangGlobeMenu />
 
             <Link href="/portal" className="btn btn-ghost btn--sm">
               {t("portal")}
@@ -164,6 +137,16 @@ export function SiteHeader() {
         <button type="button" className="tier-btn" style={{ marginTop: "0.5rem" }} onClick={() => { setMenuOpen(false); openBooking(); }}>
           {t("book")}
         </button>
+        <p className="mobile-menu__lang-label">{t("langMenuTitle")}</p>
+        <Link href={pathname} locale="zh" className={loc === "zh" ? "is-active" : ""} onClick={() => setMenuOpen(false)}>
+          {t("langZh")}
+        </Link>
+        <Link href={pathname} locale="zh-hant" className={loc === "zh-hant" ? "is-active" : ""} onClick={() => setMenuOpen(false)}>
+          {t("langZhHant")}
+        </Link>
+        <Link href={pathname} locale="en" className={loc === "en" ? "is-active" : ""} onClick={() => setMenuOpen(false)}>
+          {t("langEn")}
+        </Link>
       </nav>
     </>
   );

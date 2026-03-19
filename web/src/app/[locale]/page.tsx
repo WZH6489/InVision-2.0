@@ -6,9 +6,11 @@ import {
   SolutionPanelArt,
   ValueArt,
 } from "@/components/home/HomeSectionArt";
+import { RevealSection } from "@/components/RevealSection";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyBookBar } from "@/components/StickyBookBar";
 import { TeaserGlyph } from "@/components/TeaserGlyph";
+import { TimelineSlider } from "@/components/TimelineSlider";
 import { Link } from "@/i18n/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
@@ -40,7 +42,8 @@ export default async function HomePage({
   return (
     <div className="wrap wrap--wide wrap--sticky-safe page-next-home">
       <main>
-        <section className="hero hero--premium" style={{ position: "relative" }}>
+        <section className="hero hero--premium hero--atmospheric" style={{ position: "relative" }}>
+          <div className="hero-light-leak" aria-hidden />
           <div
             id="hero-sentinel"
             style={{
@@ -85,111 +88,125 @@ export default async function HomePage({
               <div className="visual" style={{ position: "relative", overflow: "hidden", borderRadius: "50%" }}>
                 <HeroGridOverlay />
                 <HeroFluid />
-                <div className="glow" style={{ zIndex: 2, mixBlendMode: "screen", opacity: 0.45 }} />
+                <div className="glow" style={{ zIndex: 2, mixBlendMode: "screen", opacity: 0.4 }} />
                 <div className="portal-ring" style={{ zIndex: 3 }} />
-                <div className="portal" style={{ zIndex: 2, opacity: 0.82 }} />
+                <div className="portal" style={{ zIndex: 2, opacity: 0.78 }} />
               </div>
             </div>
             <p className="visual-caption">{t("caption")}</p>
           </div>
         </section>
 
-        <div className="value-ribbon reveal is-visible hub-section" role="presentation">
-          <span>{t("ribbon1")}</span>
-          <span className="value-ribbon__sep">|</span>
-          <span>{t("ribbon2")}</span>
-          <span className="value-ribbon__sep">|</span>
-          <span>{t("ribbon3")}</span>
-        </div>
+        <RevealSection>
+          <div className="value-ribbon hub-section" role="presentation">
+            <span>{t("ribbon1")}</span>
+            <span className="value-ribbon__sep">|</span>
+            <span>{t("ribbon2")}</span>
+            <span className="value-ribbon__sep">|</span>
+            <span>{t("ribbon3")}</span>
+          </div>
+        </RevealSection>
 
-        <section className="problem-split reveal is-visible hub-section" aria-labelledby="problem-h">
-          <div className="problem-split__col problem-split__col--art">
-            <ProblemPainArt />
-            <div>
-              <p className="section-kicker">{t("problemKicker")}</p>
-              <h2 id="problem-h" className="section-title">
-                {t("problemTitle")}
-              </h2>
-              <p className="section-lead problem-split__prose">
-                {t.rich("problemBody", {
+        <RevealSection>
+          <TimelineSlider />
+        </RevealSection>
+
+        <RevealSection>
+          <section className="problem-split hub-section" aria-labelledby="problem-h">
+            <div className="problem-split__col problem-split__col--art">
+              <ProblemPainArt />
+              <div>
+                <p className="section-kicker">{t("problemKicker")}</p>
+                <h2 id="problem-h" className="section-title">
+                  {t("problemTitle")}
+                </h2>
+                <p className="section-lead problem-split__prose">
+                  {t.rich("problemBody", {
+                    strong: (chunks) => <strong>{chunks}</strong>,
+                  })}
+                </p>
+              </div>
+            </div>
+            <div className="problem-split__solution problem-split__solution--rich">
+              <SolutionPanelArt />
+              <h3 className="section-title" style={{ fontSize: "1.125rem", marginTop: 0 }}>
+                {t("solutionTitle")}
+              </h3>
+              <p className="problem-split__prose" style={{ margin: 0, fontSize: "0.9375rem", color: "var(--mist)" }}>
+                {t.rich("solutionBody", {
                   strong: (chunks) => <strong>{chunks}</strong>,
                 })}
               </p>
             </div>
-          </div>
-          <div className="problem-split__solution problem-split__solution--rich">
-            <SolutionPanelArt />
-            <h3 className="section-title" style={{ fontSize: "1.125rem", marginTop: 0 }}>
-              {t("solutionTitle")}
-            </h3>
-            <p className="problem-split__prose" style={{ margin: 0, fontSize: "0.9375rem", color: "var(--mist)" }}>
-              {t.rich("solutionBody", {
-                strong: (chunks) => <strong>{chunks}</strong>,
-              })}
-            </p>
-          </div>
-        </section>
+          </section>
+        </RevealSection>
 
-        <section className="hub-values reveal is-visible hub-section" aria-labelledby="hv-title">
-          <h2 id="hv-title" className="section-title section-title--hub">
-            {t("valuesTitle")}
-          </h2>
-          <div className="hub-values hub-values--icons">
-            <div className="hub-value">
-              <ValueArt variant="clarity" />
-              <h3>{t("v1h")}</h3>
-              <p>{t("v1p")}</p>
+        <RevealSection>
+          <section className="hub-values hub-section" aria-labelledby="hv-title">
+            <h2 id="hv-title" className="section-title section-title--hub">
+              {t("valuesTitle")}
+            </h2>
+            <div className="hub-values hub-values--icons">
+              <div className="hub-value">
+                <ValueArt variant="clarity" />
+                <h3>{t("v1h")}</h3>
+                <p>{t("v1p")}</p>
+              </div>
+              <div className="hub-value">
+                <ValueArt variant="boundary" />
+                <h3>{t("v2h")}</h3>
+                <p>{t("v2p")}</p>
+              </div>
+              <div className="hub-value">
+                <ValueArt variant="deliver" />
+                <h3>{t("v3h")}</h3>
+                <p>{t("v3p")}</p>
+              </div>
             </div>
-            <div className="hub-value">
-              <ValueArt variant="boundary" />
-              <h3>{t("v2h")}</h3>
-              <p>{t("v2p")}</p>
-            </div>
-            <div className="hub-value">
-              <ValueArt variant="deliver" />
-              <h3>{t("v3h")}</h3>
-              <p>{t("v3p")}</p>
-            </div>
-          </div>
-        </section>
+          </section>
+        </RevealSection>
 
-        <section className="reveal is-visible hub-section explore-section" aria-labelledby="teasers-title">
-          <p className="section-kicker">{t("exploreKicker")}</p>
-          <h2 id="teasers-title" className="section-title section-title--hub">
-            {t("exploreTitle")}
-          </h2>
-          <p className="section-lead section-lead--explore">{t("exploreLead")}</p>
+        <RevealSection>
+          <section className="hub-section explore-section" aria-labelledby="teasers-title">
+            <p className="section-kicker">{t("exploreKicker")}</p>
+            <h2 id="teasers-title" className="section-title section-title--hub">
+              {t("exploreTitle")}
+            </h2>
+            <p className="section-lead section-lead--explore">{t("exploreLead")}</p>
 
-          <div className="hub-teasers">
-            {teasers.map((item) => (
-              <article key={item.id} className="teaser-card teaser-card-interactive explore-card">
-                <div className="teaser-card__hover">
-                  <TeaserGlyph id={item.id} />
-                </div>
-                <h2>{t(item.h)}</h2>
-                <p>{t(item.p)}</p>
-                <Link className="btn btn-ghost explore-card__cta" href={item.href}>
-                  {t(item.c)} <span className="btn__arrow">→</span>
+            <div className="hub-teasers">
+              {teasers.map((item) => (
+                <article key={item.id} className="teaser-card teaser-card-interactive explore-card explore-card--glass">
+                  <div className="teaser-card__hover">
+                    <TeaserGlyph id={item.id} />
+                  </div>
+                  <h2>{t(item.h)}</h2>
+                  <p>{t(item.p)}</p>
+                  <Link className="btn btn-ghost explore-card__cta" href={item.href}>
+                    {t(item.c)} <span className="btn__arrow">→</span>
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </section>
+        </RevealSection>
+
+        <RevealSection>
+          <p className="footnote" style={{ border: "none", paddingTop: 0 }}>
+            {t.rich("footnote", {
+              services: (chunks) => (
+                <Link href="/services" style={{ color: "var(--signal)" }}>
+                  {chunks}
                 </Link>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <p className="footnote reveal is-visible" style={{ border: "none", paddingTop: 0 }}>
-          {t.rich("footnote", {
-            services: (chunks) => (
-              <Link href="/services" style={{ color: "var(--signal)" }}>
-                {chunks}
-              </Link>
-            ),
-            contact: (chunks) => (
-              <Link href="/contact" style={{ color: "var(--signal)" }}>
-                {chunks}
-              </Link>
-            ),
-          })}
-        </p>
+              ),
+              contact: (chunks) => (
+                <Link href="/contact" style={{ color: "var(--signal)" }}>
+                  {chunks}
+                </Link>
+              ),
+            })}
+          </p>
+        </RevealSection>
       </main>
 
       <SiteFooter />
