@@ -37,6 +37,9 @@ create table public.bookings (
   time_slot text not null,
   notes text,
   locale text,
+  full_name text not null,
+  email text not null,
+  phone text,
   created_at timestamptz default now()
 );
 ```
@@ -44,3 +47,7 @@ create table public.bookings (
 3. Submit the modal in the app; rows appear only when both env vars are set.
 
 The **legacy static HTML** site remains in the parent directory for reference and gradual content migration.
+
+**Languages:** the header uses `next-intl`’s `<Link locale="…">` with the current path — not separate `index-en.html` files — so layout/CSS stay identical across locales.
+
+If you already have a `bookings` table without `full_name` / `email` / `phone`, run an `ALTER TABLE` to add those columns before turning on Supabase in `.env.local`.

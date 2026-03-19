@@ -63,7 +63,7 @@
     <a href="faq.html">问答</a>
   </nav>
 
-  <div class="wrap wrap--wide">
+  <div class="wrap wrap--wide wrap--sticky-safe">
     <main>
       <div class="hero" style="position: relative">
         <div
@@ -92,11 +92,15 @@
         </div>
         <div class="hero-visual">
           <div class="hero-visual__frame" aria-hidden="true">
-            <div class="visual">
-              <div class="glow"></div>
-              <div class="orbit"></div>
-              <div class="portal-ring"></div>
-              <div class="portal"></div>
+            <div class="visual" style="position: relative; overflow: hidden; border-radius: 50%">
+              <div class="hero-grid-overlay">
+                <div class="hero-grid-overlay__grid"></div>
+                <div class="hero-grid-overlay__vignette"></div>
+              </div>
+              <div class="glow" style="z-index: 1; mix-blend-mode: screen; opacity: 0.45"></div>
+              <div class="orbit" style="z-index: 1"></div>
+              <div class="portal-ring" style="z-index: 2"></div>
+              <div class="portal" style="z-index: 1; opacity: 0.85"></div>
             </div>
           </div>
           <p class="visual-caption">观测视界 · 仅映你一人</p>
@@ -151,12 +155,12 @@
         <p class="section-lead">以下页面拆开了原单页长滚动中的每一块内容，并做了扩展。从流程与伦理开始，或直接看你关心的方案与团队。</p>
 
         <div class="hub-teasers">
-          <article class="teaser-card teaser-card-interactive">
+          <article class="teaser-card teaser-card-interactive explore-card">
             <h2>流程与时间轴</h2>
             <p>四步闭环、合规为何严苛、观测室环境如何设计，以及可拖动的「此刻 → +10 年」叙事轴。</p>
             <a class="btn btn-ghost" href="process.html">查看流程 <span class="btn__arrow">→</span></a>
           </article>
-          <article class="teaser-card teaser-card-interactive">
+          <article class="teaser-card teaser-card-interactive explore-card">
             <h2>规则与伦理</h2>
             <p>为何不能看他人、为何上限十年——把限制讲成安全与有效性的基础，而不是冷冰冰的禁止清单。</p>
             <a class="btn btn-ghost" href="rules.html">阅读规则 <span class="btn__arrow">→</span></a>
@@ -166,17 +170,17 @@
             <p>匿名见证、滑动浏览、以及「轨迹分歧」与焦虑条形图等可视化叙事（合成案例）。</p>
             <a class="btn btn-ghost" href="testimonials.html">查看见证 <span class="btn__arrow">→</span></a>
           </article>
-          <article class="teaser-card teaser-card-interactive">
+          <article class="teaser-card teaser-card-interactive explore-card">
             <h2>方案与交付物</h2>
             <p>三档套餐对比表、账单与退款 FAQ、以及加密档案界面示意。</p>
             <a class="btn btn-ghost" href="pricing.html">比较方案 <span class="btn__arrow">→</span></a>
           </article>
-          <article class="teaser-card teaser-card-interactive">
+          <article class="teaser-card teaser-card-interactive explore-card">
             <h2>团队与使命</h2>
             <p>核心成员延展简介、虚构论文与演讲链接、以及我们为何相信「看见」必须有责任。</p>
             <a class="btn btn-ghost" href="team.html">认识团队 <span class="btn__arrow">→</span></a>
           </article>
-          <article class="teaser-card teaser-card-interactive">
+          <article class="teaser-card teaser-card-interactive explore-card">
             <h2>常见问题</h2>
             <p>应验、排期、退款、数据、未成年人等——折叠式问答，便于快速扫读。</p>
             <a class="btn btn-ghost" href="faq.html">打开问答 <span class="btn__arrow">→</span></a>

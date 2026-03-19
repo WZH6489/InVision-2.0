@@ -4,6 +4,10 @@ import { NextResponse } from "next/server";
 const TIERS = new Set(["essential", "standard", "full"]);
 const SLOTS = new Set(["morning", "afternoon", "evening"]);
 
+function validEmail(s: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+}
+
 export async function POST(req: Request) {
   let body: unknown;
   try {
@@ -22,6 +26,14 @@ export async function POST(req: Request) {
   const timeSlot = typeof b.timeSlot === "string" ? b.timeSlot : "";
   const notes = typeof b.notes === "string" ? b.notes.slice(0, 4000) : "";
   const locale = typeof b.locale === "string" ? b.locale.slice(0, 16) : "";
+  const fullName = typeof b.fullName === "string" ? b.fullName.trim().slice(0, 200) : "";
+  const email = typeof b.email === "string" ? b.email.trim().slice(0, 320) : "";
+  const phone =
+    b.phone === null || b.phone === undefined
+      ? null
+      : typeof b.phone === "string"
+        ? b.phone.trim().slice(0, 40) || null
+        : null;
 
   if (!TIERS.has(tier)) {
     return NextResponse.json({ ok: false, error: "tier" }, { status: 400 });
@@ -29,24 +41,38 @@ export async function POST(req: Request) {
   if (!SLOTS.has(timeSlot)) {
     return NextResponse.json({ ok: false, error: "time" }, { status: 400 });
   }
+  if (!fullName) {
+    return NextResponse.json({ ok: false, error: "name" }, { status: 400 });
+  }
+  if (!validEmail(email)) {
+    return NextResponse.json({ ok: false, error: "email" }, { status: 400 });
+  }
 
   const supabase = getSupabaseAdmin();
   if (supabase) {
-    const { error } = await supabase.from("bookings").insert({
+    const row = {
       tier,
       preferred_date: date || null,
       time_slot: timeSlot,
       notes: notes || null,
       locale: locale || null,
+      full_name: fullName,
+      email,
+      phone,
       created_at: new Date().toISOString(),
-    });
+    };
+
+    const { data, error } = await supabase.from("bookings").insert(row).select("id").single();
+
     if (error) {
       return NextResponse.json(
         { ok: false, error: error.message, persisted: false },
         { status: 500 },
       );
     }
-    return NextResponse.json({ ok: true, persisted: true });
+
+    const id = data && typeof data === "object" && "id" in data ? String((data as { id: unknown }).id) : undefined;
+    return NextResponse.json({ ok: true, persisted: true, id });
   }
 
   return NextResponse.json({ ok: true, persisted: false });

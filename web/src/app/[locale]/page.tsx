@@ -1,5 +1,11 @@
 import { BookButton } from "@/components/BookButton";
+import { HeroGridOverlay } from "@/components/hero/HeroGridOverlay";
 import { HeroFluid } from "@/components/hero/HeroFluid";
+import {
+  ProblemPainArt,
+  SolutionPanelArt,
+  ValueArt,
+} from "@/components/home/HomeSectionArt";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyBookBar } from "@/components/StickyBookBar";
 import { TeaserGlyph } from "@/components/TeaserGlyph";
@@ -32,9 +38,9 @@ export default async function HomePage({
   ];
 
   return (
-    <div className="wrap wrap--wide">
+    <div className="wrap wrap--wide wrap--sticky-safe page-next-home">
       <main>
-        <section className="hero" style={{ position: "relative" }}>
+        <section className="hero hero--premium" style={{ position: "relative" }}>
           <div
             id="hero-sentinel"
             style={{
@@ -75,19 +81,20 @@ export default async function HomePage({
             </p>
           </div>
           <div className="hero-visual">
-            <div className="hero-visual__frame">
+            <div className="hero-visual__frame hero-visual__frame--rich">
               <div className="visual" style={{ position: "relative", overflow: "hidden", borderRadius: "50%" }}>
+                <HeroGridOverlay />
                 <HeroFluid />
-                <div className="glow" style={{ zIndex: 1, mixBlendMode: "screen", opacity: 0.5 }} />
-                <div className="portal-ring" style={{ zIndex: 2 }} />
-                <div className="portal" style={{ zIndex: 1, opacity: 0.85 }} />
+                <div className="glow" style={{ zIndex: 2, mixBlendMode: "screen", opacity: 0.45 }} />
+                <div className="portal-ring" style={{ zIndex: 3 }} />
+                <div className="portal" style={{ zIndex: 2, opacity: 0.82 }} />
               </div>
             </div>
             <p className="visual-caption">{t("caption")}</p>
           </div>
         </section>
 
-        <div className="value-ribbon reveal is-visible" role="presentation">
+        <div className="value-ribbon reveal is-visible hub-section" role="presentation">
           <span>{t("ribbon1")}</span>
           <span className="value-ribbon__sep">|</span>
           <span>{t("ribbon2")}</span>
@@ -95,23 +102,27 @@ export default async function HomePage({
           <span>{t("ribbon3")}</span>
         </div>
 
-        <section className="problem-split reveal is-visible" aria-labelledby="problem-h">
-          <div>
-            <p className="section-kicker">{t("problemKicker")}</p>
-            <h2 id="problem-h" className="section-title">
-              {t("problemTitle")}
-            </h2>
-            <p className="section-lead">
-              {t.rich("problemBody", {
-                strong: (chunks) => <strong>{chunks}</strong>,
-              })}
-            </p>
+        <section className="problem-split reveal is-visible hub-section" aria-labelledby="problem-h">
+          <div className="problem-split__col problem-split__col--art">
+            <ProblemPainArt />
+            <div>
+              <p className="section-kicker">{t("problemKicker")}</p>
+              <h2 id="problem-h" className="section-title">
+                {t("problemTitle")}
+              </h2>
+              <p className="section-lead problem-split__prose">
+                {t.rich("problemBody", {
+                  strong: (chunks) => <strong>{chunks}</strong>,
+                })}
+              </p>
+            </div>
           </div>
-          <div className="problem-split__solution">
+          <div className="problem-split__solution problem-split__solution--rich">
+            <SolutionPanelArt />
             <h3 className="section-title" style={{ fontSize: "1.125rem", marginTop: 0 }}>
               {t("solutionTitle")}
             </h3>
-            <p style={{ margin: 0, fontSize: "0.9375rem", color: "var(--mist)" }}>
+            <p className="problem-split__prose" style={{ margin: 0, fontSize: "0.9375rem", color: "var(--mist)" }}>
               {t.rich("solutionBody", {
                 strong: (chunks) => <strong>{chunks}</strong>,
               })}
@@ -119,42 +130,45 @@ export default async function HomePage({
           </div>
         </section>
 
-        <section className="hub-values reveal is-visible" aria-labelledby="hv-title">
-          <h2 id="hv-title" className="section-title" style={{ marginBottom: "1.25rem" }}>
+        <section className="hub-values reveal is-visible hub-section" aria-labelledby="hv-title">
+          <h2 id="hv-title" className="section-title section-title--hub">
             {t("valuesTitle")}
           </h2>
-          <div className="hub-values">
+          <div className="hub-values hub-values--icons">
             <div className="hub-value">
+              <ValueArt variant="clarity" />
               <h3>{t("v1h")}</h3>
               <p>{t("v1p")}</p>
             </div>
             <div className="hub-value">
+              <ValueArt variant="boundary" />
               <h3>{t("v2h")}</h3>
               <p>{t("v2p")}</p>
             </div>
             <div className="hub-value">
+              <ValueArt variant="deliver" />
               <h3>{t("v3h")}</h3>
               <p>{t("v3p")}</p>
             </div>
           </div>
         </section>
 
-        <section className="reveal is-visible" aria-labelledby="teasers-title">
+        <section className="reveal is-visible hub-section explore-section" aria-labelledby="teasers-title">
           <p className="section-kicker">{t("exploreKicker")}</p>
-          <h2 id="teasers-title" className="section-title">
+          <h2 id="teasers-title" className="section-title section-title--hub">
             {t("exploreTitle")}
           </h2>
-          <p className="section-lead">{t("exploreLead")}</p>
+          <p className="section-lead section-lead--explore">{t("exploreLead")}</p>
 
           <div className="hub-teasers">
             {teasers.map((item) => (
-              <article key={item.id} className="teaser-card teaser-card-interactive">
+              <article key={item.id} className="teaser-card teaser-card-interactive explore-card">
                 <div className="teaser-card__hover">
                   <TeaserGlyph id={item.id} />
                 </div>
                 <h2>{t(item.h)}</h2>
                 <p>{t(item.p)}</p>
-                <Link className="btn btn-ghost" href={item.href}>
+                <Link className="btn btn-ghost explore-card__cta" href={item.href}>
                   {t(item.c)} <span className="btn__arrow">→</span>
                 </Link>
               </article>
