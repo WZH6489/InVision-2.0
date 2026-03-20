@@ -18,6 +18,25 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Node.js version
+
+Use **Node 20, 22, or 24** locally. **Node 25+** is too new for the Vercel CLI and some of its dependencies.
+
+This repo pins **22** in `.nvmrc` (Vercel also honors it when the project root is `web`).
+
+```bash
+# nvm
+cd web && nvm install && nvm use
+
+# fnm
+cd web && fnm use
+
+# volta (if configured)
+volta pin node@22
+```
+
+Then run `npm install`, `npm run dev`, or `npx vercel --prod`.
+
 ## Copy & design system
 
 - Shared styles: `../css/site.css` (imported from `src/app/[locale]/layout.tsx`).
