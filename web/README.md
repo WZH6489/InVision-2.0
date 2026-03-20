@@ -51,3 +51,10 @@ The **legacy static HTML** site remains in the parent directory for reference an
 **Languages:** the header uses `next-intl`’s `<Link locale="…">` with the current path — not separate `index-en.html` files — so layout/CSS stay identical across locales.
 
 If you already have a `bookings` table without `full_name` / `email` / `phone`, run an `ALTER TABLE` to add those columns before turning on Supabase in `.env.local`.
+
+Add concierge intake columns:
+
+```sql
+alter table public.bookings add column if not exists trajectory text;
+alter table public.bookings add column if not exists tension text;
+```

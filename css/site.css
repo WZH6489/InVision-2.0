@@ -330,7 +330,7 @@ main {
   font-family: "Noto Sans SC", sans-serif;
   font-size: clamp(1.25rem, 3vw, 1.5rem);
   font-weight: 600;
-  color: #f4f6fa;
+  color: var(--ink-bright, #e4e8ef);
   margin: 0 0 0.35rem;
   letter-spacing: 0.04em;
 }
@@ -383,7 +383,7 @@ main {
   font-size: clamp(1.875rem, 5vw, 2.85rem);
   line-height: 1.18;
   letter-spacing: 0.02em;
-  color: #f4f6fa;
+  color: var(--ink-bright, #e4e8ef);
   margin: 0 0 1rem;
 }
 
@@ -433,7 +433,7 @@ main {
 
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(110, 231, 255, 0.28);
+  box-shadow: 0 10px 36px rgba(196, 181, 154, 0.22);
 }
 
 .btn:hover .btn__arrow {

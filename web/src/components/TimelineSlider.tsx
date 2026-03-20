@@ -10,7 +10,7 @@ export function TimelineSlider() {
   const year = Math.round((v / 100) * 10);
 
   return (
-    <div className="timeline-slider reveal is-visible">
+    <div className="timeline-slider">
       <div className="timeline-slider__head">
         <h3 className="timeline-slider__title">{t("timelineTitle")}</h3>
         <p className="timeline-slider__hint">{t("timelineHint")}</p>
