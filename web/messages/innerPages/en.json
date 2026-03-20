@@ -1,0 +1,291 @@
+{
+  "rules": {
+    "prose": [
+      {
+        "h": "Why can’t you view someone else’s future?",
+        "p": "Third-party trajectories involve privacy that can’t be consented to and consent chains that can’t be verified. We use identity binding plus topic classifiers: even if you say you only want a partner’s career arc, if the object is another person, the session stops. The upside—you’re forced back to your own levers of action, which is the point of the service."
+      },
+      {
+        "h": "Why ten years, not farther?",
+        "p": "Ten years balances explainability, psychological impact, and regulatory caution. Further horizons collapse toward indistinguishable noise while amplifying existential anxiety. Inside ten years, outputs can still align with mid-term plans—school, career, family cadence—and debrief into action."
+      },
+      {
+        "h": "What does “observe, don’t intervene” mean?",
+        "p": "You experience forward imagery, not physical travel to another timeline. You can’t touch or change what you see—this blocks impulsive “bet everything on one vision” decisions. Real change happens after the session, in the next-step list you co-write with your guide."
+      }
+    ],
+    "spec": {
+      "kicker": "Rules & boundaries",
+      "title": "Clause summary (aligned with the booking agreement)",
+      "lead": "These clauses protect ethics and safety for everyone. Booking means you’ve read and understood them.",
+      "articles": [
+        {
+          "h": "Observation only—no intervention",
+          "p": "The service supports viewing only; you can’t touch what you see or change the future inside the session. Images are representations, not objects you can act on."
+        },
+        {
+          "h": "Only your trajectory",
+          "p": "Observation is strictly limited to your personal development path—school admissions, career, self-growth. It must not and cannot be used to spy on or steer other people’s lives."
+        },
+        {
+          "h": "Time horizon and duration",
+          "p": "Scenes may not extend beyond ten years from now. Each session is strictly 10–20 minutes."
+        },
+        {
+          "h": "Plan from the present",
+          "p": "Afterward you return with a clearer reference and adjust your path in the present—that’s the design intent."
+        }
+      ]
+    },
+    "footnote": "Next: read FAQ and Privacy on this site."
+  },
+  "process": {
+    "stepsIntro": {
+      "kicker": "How it works",
+      "title": "Four steps, one observation",
+      "lead": "From intake to debrief, a certified guide stays with you. Bring your question; leave with a path map."
+    },
+    "steps": [
+      {
+        "num": "STEP 01",
+        "h": "Book & intake",
+        "p": "Submit intent and the compliance questionnaire; we confirm your goal is within the allowed “personal trajectory” scope."
+      },
+      {
+        "num": "STEP 02",
+        "h": "Calibrate",
+        "p": "Align on timing, expectations, and contraindications; sign consent and privacy agreements."
+      },
+      {
+        "num": "STEP 03",
+        "h": "Observation session",
+        "p": "10–20 minutes in a controlled setting. View only—no touching, no changing what you see."
+      },
+      {
+        "num": "STEP 04",
+        "h": "Debrief & plan",
+        "p": "Structured review of what emerged and actionable adjustments for now (not medical or investment advice)."
+      }
+    ],
+    "prose": [
+      {
+        "h": "Why compliance is strict",
+        "p": "Every booking is topic-classified and identity-bound—system and human checks that your question is about your own development, not third-party curiosity. If the boundary is fuzzy, we decline or ask you to reframe—so you don’t enter observation in an unsafe frame."
+      },
+      {
+        "h": "Observation room environment",
+        "p": "Temperature, light, and acoustics follow a calm-focus profile; no camera on your face (only access and safety-channel footage as required). Your guide syncs from an adjacent protocol room to reduce performative pressure. City-specific notes ship with your confirmation."
+      }
+    ],
+    "footnote": "Previous: home · Next: Rules & ethics (site navigation)."
+  },
+  "faq": {
+    "faqItems": [
+      {
+        "q": "Will what I see come true?",
+        "a": "No. You see model-conditioned forward imagery for reflection and planning—not a promise or prediction."
+      },
+      {
+        "q": "How long from booking to session?",
+        "a": "Compliance review is typically 3–5 business days; scheduling depends on city and guide load. Rush lanes are for advanced and enterprise tiers."
+      },
+      {
+        "q": "Can I get a refund?",
+        "a": "Full refund up to 48 hours before the session starts; after start or final consent, only as the agreement allows."
+      },
+      {
+        "q": "Do you keep or upload my observation content?",
+        "a": "By default we keep redacted compliance logs only. If you want a personal debrief pack, encrypted offline delivery is available—see Privacy."
+      },
+      {
+        "q": "Can minors book?",
+        "a": "Under 18 requires guardian presence through the full compliance flow; themes must still be limited to the minor’s own developmental path."
+      }
+    ],
+    "footnote": "Concept presentation. This is not medical, legal, or investment advice."
+  },
+  "testimonials": {
+    "trustLogos": [
+      "Nebula EdTech",
+      "Chengmai VC",
+      "Orient Profiles Weekly",
+      "FutureNow Podcast"
+    ],
+    "quotes": [
+      {
+        "quote": "“I only asked about school—and saw what I actually cared about. I re-ranked my choices the next week. Clearest decision I ever made.”",
+        "cite": "L. · New grad"
+      },
+      {
+        "quote": "“Ten minutes felt like a documentary about me. Not being able to intervene made me focus on what I can do now.”",
+        "cite": "M. · PM"
+      },
+      {
+        "quote": "“Strict compliance felt reassuring. The team was crystal clear that other people are off-limits.”",
+        "cite": "R. · Legal background"
+      }
+    ],
+    "cases": [
+      {
+        "h": "Case A · Career pivot, path divergence",
+        "p": "Gray: baseline subjective probability path; highlight: post-debrief optimized path (synthetic metrics for narrative). Months of hesitation compressed to first moves within weeks."
+      },
+      {
+        "h": "Case B · Anxiety distribution shift",
+        "p": "Self-report scale visualization: lower mean and tighter variance after follow-up (not clinical). Milestone breakdown improved adherence."
+      }
+    ],
+    "footnote": "Synthetic narratives and illustrative data—not identifiable real cases."
+  },
+  "pricing": {
+    "prose": [
+      {
+        "h": "Choosing a tier",
+        "p": "Intro “First light”: one 10–20 minute observation plus a standard debrief summary. Advanced “Trajectory”: two sessions (≥90 days apart), a dedicated guide, and 90 days of async Q&A. Enterprise “Institution”: schools and companies—custom compliance and on-site guides per contract."
+      },
+      {
+        "h": "Comparison highlights",
+        "p": "All tiers include compliance review. Intro excludes a dedicated guide and encrypted archive async channel; advanced adds path templates and longer follow-up; enterprise adds SLA and bulk audit hooks per contract."
+      },
+      {
+        "h": "Teams & procurement",
+        "p": "Groups should request a custom quote so we can align compliance and staffing. Billing per your order confirmation."
+      }
+    ],
+    "footnote": "Illustrative pricing; actual fees per contract and order."
+  },
+  "team": {
+    "teamMission": "Our mission",
+    "teamTagline": "Expand what personal success can mean—with rational, executable planning toward the life you want. Shì Wèi brings together cognitive science, ethics, and experience design. Seeing must come with boundaries and responsibility.",
+    "teamMembers": [
+      {
+        "initial": "L",
+        "name": "Shen Lan",
+        "role": "Co-founder · Chief Ethics Officer",
+        "bio": "Former university applied-ethics advisor; led “personal trajectory” red lines and compliance design."
+      },
+      {
+        "initial": "C",
+        "name": "Zhou Che",
+        "role": "Co-founder · Experience architecture",
+        "bio": "Senior service designer; observation environments and debrief frames so abstract experience can be spoken and recorded safely."
+      },
+      {
+        "initial": "H",
+        "name": "Zhao Heng",
+        "role": "Science advisor",
+        "bio": "Cognitive neuroscience; keeps external claims and expectation-setting tied to explainable models."
+      }
+    ],
+    "footnote": "Roles are illustrative for this concept site."
+  },
+  "terms": {
+    "legalProse": [
+      {
+        "h": "1. Nature of service",
+        "p": "Shì Wèi offers forward-looking experiential planning support—not medical care, therapy, legal advice, or investment advice. You own decisions made after sessions."
+      },
+      {
+        "h": "2. Use boundaries",
+        "p": "You won’t use the service to spy on or steer third parties. Themes are limited to your own developmental path; duration and horizon follow the agreement and on-site disclosure."
+      },
+      {
+        "h": "3. Payment & refunds",
+        "p": "Prices follow your order. Full refund up to 48 hours before the session unless otherwise agreed in writing."
+      },
+      {
+        "h": "4. Limitation of liability",
+        "p": "To the fullest extent allowed by law, we’re not liable for indirect, incidental, or consequential damages from using or being unable to use the service."
+      },
+      {
+        "h": "5. Contact",
+        "p": "For terms questions, use the site contact flow."
+      }
+    ],
+    "footnote": "Last updated March 2026. Have counsel review before production use."
+  },
+  "privacy": {
+    "legalProse": [
+      {
+        "h": "What we collect",
+        "p": "May include identity and contact details, booking and payment data, compliance questionnaire answers, and voluntary notes from debrief (encrypted offline delivery stays on media you hold, if selected)."
+      },
+      {
+        "h": "How we use it",
+        "p": "To deliver the service, security audit, improve the product, and meet legal duties. We don’t sell identifiable observation content to ad networks."
+      },
+      {
+        "h": "Storage & security",
+        "p": "Encryption in transit and tiered access. By default we retain redacted compliance logs; personal summary retention follows your order agreement."
+      },
+      {
+        "h": "Your rights",
+        "p": "Where law allows, you may request access, correction, deletion, or restriction—via our contact channels."
+      },
+      {
+        "h": "Minors",
+        "p": "Under 18 requires guardian consent and presence; we only process what’s necessary for the minor’s own use."
+      }
+    ],
+    "footnote": "Last updated March 2026. Align with your real processing practices."
+  },
+  "about": {
+    "legalProse": [
+      {
+        "h": "Our story",
+        "p": "We come from university ethics labs, service design, and cognitive science. In one interdisciplinary workshop we saw that many people don’t need to be told an answer—they need a bounded encounter with a plausible future self. Shì Wèi exists to offer a time-boxed, ethical, reviewable foresight experience—not to sell fate."
+      },
+      {
+        "h": "Values",
+        "p": "Person-first: only your trajectory, with technical isolation from third-party curiosity. Transparency-first: what we won’t do matters as much as what we will. Present-first: every session ends in action you can take now."
+      },
+      {
+        "h": "Model: personal trajectory manifold",
+        "p": "We treat the future as a constrained path in a high-dimensional state space, not a single point. Observation projects only onto your observable sub-manifold—a controlled Bayesian update on self-relevant beliefs. Third-party dimensions are hard-truncated in the math, not left to good intentions."
+      },
+      {
+        "h": "Cognitive science",
+        "p": "Prospective imagery couples measurably with working and episodic memory. Our facilitation aligns dual-system regulation: less amygdala-driven threat fantasy, stronger encoding of executable next steps. We’re reallocating attention, not rewriting destiny."
+      },
+      {
+        "h": "Ethics: three gates",
+        "p": "Technical: identity binding, topic classifiers, session sandboxes. Process: certified guides, dual-signed consent, abort protocols. Governance: quarterly ethics review, external counsel sign-off, user appeals."
+      },
+      {
+        "h": "Explainability",
+        "p": "User-facing probability language traces to discrete decision logs; we avoid unfalsifiable rhetoric. When science or regulation shifts, model versions migrate; legacy retains redacted statistics only—no identifiable session detail."
+      }
+    ],
+    "footnote": "Continue to Team and Services via the site nav."
+  },
+  "services": {
+    "legalProse": [
+      {
+        "h": "Deliverables",
+        "p": "Pre-session compliance summary and window recommendation; one controlled 10–20 minute observation; structured debrief notes (optional encrypted offline pack); advanced tiers add path templates and async Q&A allowance."
+      },
+      {
+        "h": "Tools & methods (overview)",
+        "p": "Ethics-board-reviewed scripts, non-medical biofeedback aids for calm, and redacted logging. Implementation details are confidential; data flows and retention are explained during consult."
+      },
+      {
+        "h": "What we explicitly don’t deliver",
+        "p": "Spying on others or fortune-telling claims; medical, legal, or investment advice; any guarantee that imagery will come true."
+      }
+    ],
+    "footnote": "For bespoke work, use Contact or the booking entry point."
+  },
+  "contact": {
+    "legalProse": [
+      {
+        "h": "How to reach us",
+        "p": "Partnerships, press, and procurement: email hello@shiwei.example (placeholder—replace with your real address). Personal sessions: use Book in the header to open the concierge flow."
+      },
+      {
+        "h": "Response time",
+        "p": "We aim to reply within one business day for general inquiries; enterprise diligence follows project scope."
+      }
+    ],
+    "footnote": "Concept page; forms and ticketing can be wired later."
+  }
+}
