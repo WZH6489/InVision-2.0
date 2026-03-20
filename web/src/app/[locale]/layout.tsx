@@ -32,28 +32,33 @@ const inter = Inter({
 });
 
 const notoSerifSC = Noto_Serif_SC({
-  subsets: ["latin"],
+  // Google Fonts supports chinese-simplified; next/font generated types omit CJK subsets.
+  // @ts-expect-error CJK subset not in generated union
+  subsets: ["latin", "chinese-simplified"],
   weight: ["400", "600", "700"],
   variable: "--font-noto-serif-sc",
   display: "swap",
 });
 
 const notoSerifTC = Noto_Serif_TC({
-  subsets: ["latin"],
+  // @ts-expect-error CJK subset not in generated union
+  subsets: ["latin", "chinese-traditional"],
   weight: ["400", "600", "700"],
   variable: "--font-noto-serif-tc",
   display: "swap",
 });
 
 const notoSC = Noto_Sans_SC({
-  subsets: ["latin"],
+  // @ts-expect-error CJK subset not in generated union
+  subsets: ["latin", "chinese-simplified"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-noto-sc",
   display: "swap",
 });
 
 const notoTC = Noto_Sans_TC({
-  subsets: ["latin"],
+  // @ts-expect-error CJK subset not in generated union
+  subsets: ["latin", "chinese-traditional"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-noto-tc",
   display: "swap",

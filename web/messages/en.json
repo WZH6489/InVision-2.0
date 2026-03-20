@@ -66,7 +66,12 @@
     "teaserFaqCta": "Open FAQ",
     "footnote": "Need a statement of work or enterprise procurement? See <services>Services</services> or <contact>Contact</contact>. Concept site; real offerings subject to contract and regulation.",
     "stickyCta": "Book observation",
-    "stickyHint": "Compliance queue · reply within one business day"
+    "stickyHint": "Compliance queue · reply within one business day",
+    "timelineTitle": "Timeline: from now to year ten",
+    "timelineHint": "Drag the handle to feel how far ahead you’re looking.",
+    "timelinePresent": "Present",
+    "timelineY10": "Year 10",
+    "timelineYearsUnit": "years"
   },
   "Footer": {
     "tagline": "Exclusive future observation.",
