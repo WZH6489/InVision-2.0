@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Generate index-zh-hant.html (OpenCC) and index-en.html from index.html."""
+"""Generate index-zh-hant.html (OpenCC) and index-en.html from index.html.
+
+Deprecated for product i18n: prefer the Next.js app in web/ with next-intl and
+messages/*.json so layout/CSS stay identical across locales. Keep this script
+only if you still ship static HTML fallbacks.
+"""
 from __future__ import annotations
 
 import re

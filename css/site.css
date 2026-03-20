@@ -1866,7 +1866,7 @@ section.spec.spec--terminal::before {
   font-family: "Noto Sans SC", sans-serif;
   font-size: 1.0625rem;
   font-weight: 600;
-  color: #f4f6fa;
+  color: var(--ink-bright, #e4e8ef);
   margin: 0 0 0.5rem;
 }
 

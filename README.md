@@ -1,7 +1,7 @@
 # 视未 — 站点
 
-- **静态多页站点（HTML）**：根目录下的 `*.html` + `css/site.css` + `js/site.js`。适合直接托管或作为设计参考。
-- **Next.js + i18n 应用**：见 [`web/`](./web/README.md)。同一套布局与样式，文案来自 `web/messages/*.json`，路由为 `/`、`/en/...`、`/zh-hant/...`（默认语言无前缀）。
+- **静态多页站点（HTML）**：根目录下的 `*.html` + `css/site.css` + `js/site.js`。适合直接托管或作为设计参考。**语言版本请以 Next 应用为准**；`index-en.html` / `index-zh-hant.html` 等由脚本生成，易与主站脱节。
+- **Next.js + i18n 应用**：见 [`web/`](./web/README.md)。同一套布局与样式，文案来自 `web/messages/*.json`，路由为 `/`、`/en/...`、`/zh-hant/...`（默认语言无前缀）。语言切换为站内路由，无独立 HTML 分叉。
 
 运行 Next 应用：
 

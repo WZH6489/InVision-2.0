@@ -40,6 +40,8 @@ create table public.bookings (
   full_name text not null,
   email text not null,
   phone text,
+  trajectory text,
+  tension text,
   created_at timestamptz default now()
 );
 ```
