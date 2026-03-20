@@ -99,6 +99,12 @@
   },
   "Booking": {
     "title": "Concierge booking",
+    "terminalStepDomain": "Select your primary observation domain",
+    "terminalStepEthics": "Ethical horizon",
+    "terminalStepContact": "Secure contact channel",
+    "terminalEthicsCheckbox": "I acknowledge the 10-year ethical horizon limit.",
+    "processingEncrypt": "Encrypting request…",
+    "processingTransmit": "Transmission successful.",
     "conciergeStep0": "Which trajectory requires clarity?",
     "conciergeStepEthics": "Acknowledge the ten-year ethical boundary",
     "conciergeStep1": "What’s draining you most right now?",
@@ -159,6 +165,9 @@
     "vizPhase0": "Field idle",
     "vizPhase1": "Scan active",
     "vizPhase2": "Output locked",
+    "readoutVariables": "Variables computed",
+    "readoutClarity": "Clarity index",
+    "vizScrollHint": "Paths draw as you scroll",
     "ambientOn": "Ambient · on",
     "ambientOff": "Ambient · off",
     "ambientAria": "Toggle low-frequency ambient sound"

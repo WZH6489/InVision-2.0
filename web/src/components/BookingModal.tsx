@@ -13,23 +13,20 @@ function validEmail(s: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim());
 }
 
-const STEPS = 7;
+const STEPS = 3;
+
+type SubmitUi = "idle" | "encrypting" | "transmit";
 
 export function BookingModal({ open, onClose, locale }: Props) {
   const t = useTranslations("Booking");
   const [step, setStep] = useState(0);
   const [trajectory, setTrajectory] = useState<string | null>(null);
   const [ethicsAck, setEthicsAck] = useState(false);
-  const [tension, setTension] = useState<string | null>(null);
-  const [tier, setTier] = useState<string | null>(null);
-  const [date, setDate] = useState("");
-  const [timeSlot, setTimeSlot] = useState("morning");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [notes, setNotes] = useState("");
   const [done, setDone] = useState(false);
-  const [pending, setPending] = useState(false);
+  const [submitUi, setSubmitUi] = useState<SubmitUi>("idle");
   const [queueId, setQueueId] = useState<string | null>(null);
   const [formError, setFormError] = useState("");
 
@@ -37,16 +34,11 @@ export function BookingModal({ open, onClose, locale }: Props) {
     setStep(0);
     setTrajectory(null);
     setEthicsAck(false);
-    setTension(null);
-    setTier(null);
-    setDate("");
-    setTimeSlot("morning");
     setFullName("");
     setEmail("");
     setPhone("");
-    setNotes("");
     setDone(false);
-    setPending(false);
+    setSubmitUi("idle");
     setQueueId(null);
     setFormError("");
   }, []);
@@ -72,10 +64,10 @@ export function BookingModal({ open, onClose, locale }: Props) {
   const goNext = () => {
     if (step === 0 && !trajectory) return;
     if (step === 1 && !ethicsAck) return;
-    if (step === 2 && !tension) return;
-    if (step === 3 && !tier) return;
-    if (step === 5) {
+    if (step === 2) {
       if (!validateContact()) return;
+      void runSubmit();
+      return;
     }
     setFormError("");
     setStep((s) => Math.min(s + 1, STEPS - 1));
@@ -86,23 +78,23 @@ export function BookingModal({ open, onClose, locale }: Props) {
     setStep((s) => Math.max(s - 1, 0));
   };
 
-  if (!open) return null;
-
-  const submit = async () => {
+  const runSubmit = async () => {
     if (!validateContact()) return;
-    setPending(true);
     setFormError("");
+    setSubmitUi("encrypting");
+    const t0 = Date.now();
+    const minMs = 2000;
     try {
       const res = await fetch("/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           trajectory,
-          tension,
-          tier,
-          date,
-          timeSlot,
-          notes,
+          tension: "clarity",
+          tier: "standard",
+          date: "",
+          timeSlot: "morning",
+          notes: "terminal-flow",
           locale,
           fullName: fullName.trim(),
           email: email.trim(),
@@ -111,40 +103,39 @@ export function BookingModal({ open, onClose, locale }: Props) {
         }),
       });
       const data = (await res.json()) as { ok?: boolean; id?: string; error?: string };
+      const elapsed = Date.now() - t0;
+      if (elapsed < minMs) {
+        await new Promise((r) => setTimeout(r, minMs - elapsed));
+      }
       if (data.ok !== false) {
         setQueueId(typeof data.id === "string" ? data.id : null);
+        setSubmitUi("transmit");
+        await new Promise((r) => setTimeout(r, 900));
         setDone(true);
       } else if (data.error === "ethics") {
         setFormError(t("ethicsRequired"));
+        setSubmitUi("idle");
       } else {
         setFormError(t("submitFailed"));
+        setSubmitUi("idle");
       }
     } catch {
-      setFormError(t("submitFailed"));
-    } finally {
-      setPending(false);
+      const elapsed = Date.now() - t0;
+      if (elapsed < minMs) await new Promise((r) => setTimeout(r, minMs - elapsed));
+      setSubmitUi("transmit");
+      await new Promise((r) => setTimeout(r, 600));
+      setDone(true);
     }
   };
 
-  const stepTitle = (i: number) => {
-    const keys = [
-      "conciergeStep0",
-      "conciergeStepEthics",
-      "conciergeStep1",
-      "conciergeStep2",
-      "conciergeStep3",
-      "conciergeStep4",
-      "conciergeStep5",
-    ] as const;
-    return t(keys[i]);
-  };
+  if (!open) return null;
 
   const inputStyle = {
     width: "100%" as const,
     marginTop: "0.35rem",
     padding: "0.5rem 0.65rem",
-    border: "1px solid var(--line)",
-    borderRadius: "2px",
+    border: "1px solid rgba(255, 255, 255, 0.06)",
+    borderRadius: "4px",
     background: "rgba(255,255,255,0.03)",
     color: "var(--ink-bright, #e4e8ef)",
     font: "inherit",
@@ -152,22 +143,17 @@ export function BookingModal({ open, onClose, locale }: Props) {
 
   const trajOpts = [
     ["career", "trajectoryCareer"],
-    ["legacy", "trajectoryLegacy"],
     ["personal", "trajectoryPersonal"],
+    ["legacy", "trajectoryLegacy"],
   ] as const;
 
-  const tensionOpts = [
-    ["clarity", "tensionClarity"],
-    ["decision", "tensionDecision"],
-    ["relation", "tensionRelation"],
-    ["other", "tensionOther"],
-  ] as const;
+  const stepTitle = (i: number) => {
+    const keys = ["terminalStepDomain", "terminalStepEthics", "terminalStepContact"] as const;
+    return t(keys[i]);
+  };
 
   const nextDisabled =
-    (step === 0 && !trajectory) ||
-    (step === 1 && !ethicsAck) ||
-    (step === 2 && !tension) ||
-    (step === 3 && !tier);
+    (step === 0 && !trajectory) || (step === 1 && !ethicsAck) || submitUi !== "idle";
 
   return (
     <div
@@ -179,7 +165,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
         if (e.target === e.currentTarget) handleClose();
       }}
     >
-      <div className="booking-dialog booking-dialog--immersive">
+      <div className="booking-dialog booking-dialog--immersive booking-dialog--terminal">
         <button
           type="button"
           className="booking-dialog__close cursor-magnetic"
@@ -189,12 +175,18 @@ export function BookingModal({ open, onClose, locale }: Props) {
           ×
         </button>
 
-        <h2 id="booking-title" className="section-title" style={{ marginTop: 0 }}>
+        <h2
+          id="booking-title"
+          className={`section-title${done || submitUi !== "idle" ? " sr-only" : ""}`}
+          style={{ marginTop: 0 }}
+        >
           {t("title")}
         </h2>
-        <p style={{ fontSize: "0.75rem", color: "var(--mist)", marginBottom: "1rem" }}>
-          {t("demoNotice")}
-        </p>
+        {!done && submitUi === "idle" ? (
+          <p style={{ fontSize: "0.75rem", color: "var(--mist)", marginBottom: "1rem" }}>
+            {t("demoNotice")}
+          </p>
+        ) : null}
 
         {done ? (
           <>
@@ -211,7 +203,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
               {t("close")}
             </button>
           </>
-        ) : (
+        ) : submitUi === "idle" ? (
           <>
             <p className="section-title" style={{ fontSize: "0.8125rem", marginBottom: "0.75rem" }}>
               {stepTitle(step)}
@@ -223,99 +215,35 @@ export function BookingModal({ open, onClose, locale }: Props) {
             </div>
 
             {step === 0 && (
-              <div className="tier-grid">
+              <div className="booking-domain-grid">
                 {trajOpts.map(([id, labelKey]) => (
                   <button
                     key={id}
                     type="button"
-                    className={`tier-btn cursor-magnetic${trajectory === id ? " is-selected" : ""}`}
+                    className={`booking-domain-card cursor-magnetic${trajectory === id ? " is-selected" : ""}`}
                     onClick={() => setTrajectory(id)}
                   >
-                    {t(labelKey)}
+                    <span className="booking-domain-card__glow" aria-hidden />
+                    <span className="booking-domain-card__label">{t(labelKey)}</span>
                   </button>
                 ))}
               </div>
             )}
 
             {step === 1 && (
-              <div className="booking-ethics">
-                <p className="booking-ethics__body">{t("ethicsBody")}</p>
-                <label className="booking-ethics__check cursor-magnetic">
+              <div className="booking-ethics booking-ethics--terminal">
+                <label className="booking-ethics__check cursor-magnetic booking-ethics__check--solo">
                   <input
                     type="checkbox"
                     checked={ethicsAck}
                     onChange={(e) => setEthicsAck(e.target.checked)}
                   />
-                  <span>{t("ethicsCheckbox")}</span>
+                  <span>{t("terminalEthicsCheckbox")}</span>
                 </label>
               </div>
             )}
 
             {step === 2 && (
-              <div className="tier-grid">
-                {tensionOpts.map(([id, labelKey]) => (
-                  <button
-                    key={id}
-                    type="button"
-                    className={`tier-btn cursor-magnetic${tension === id ? " is-selected" : ""}`}
-                    onClick={() => setTension(id)}
-                  >
-                    {t(labelKey)}
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {step === 3 && (
-              <div className="tier-grid">
-                {(
-                  [
-                    ["essential", "tierEssential"],
-                    ["standard", "tierStandard"],
-                    ["full", "tierFull"],
-                  ] as const
-                ).map(([id, labelKey]) => (
-                  <button
-                    key={id}
-                    type="button"
-                    className={`tier-btn cursor-magnetic${tier === id ? " is-selected" : ""}`}
-                    onClick={() => setTier(id)}
-                  >
-                    {t(labelKey)}
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {step === 4 && (
-              <div className="form-grid" style={{ display: "grid", gap: "1rem" }}>
-                <div>
-                  <label htmlFor="bk-date">{t("dateLabel")}</label>
-                  <input
-                    id="bk-date"
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    style={inputStyle}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="bk-time">{t("timeLabel")}</label>
-                  <select
-                    id="bk-time"
-                    value={timeSlot}
-                    onChange={(e) => setTimeSlot(e.target.value)}
-                    style={inputStyle}
-                  >
-                    <option value="morning">{t("timeMorning")}</option>
-                    <option value="afternoon">{t("timeAfternoon")}</option>
-                    <option value="evening">{t("timeEvening")}</option>
-                  </select>
-                </div>
-              </div>
-            )}
-
-            {step === 5 && (
               <div className="form-grid" style={{ display: "grid", gap: "0.85rem" }}>
                 <div>
                   <label htmlFor="bk-name">{t("nameLabel")}</label>
@@ -353,19 +281,6 @@ export function BookingModal({ open, onClose, locale }: Props) {
               </div>
             )}
 
-            {step === 6 && (
-              <div>
-                <label htmlFor="bk-notes">{t("questionLabel")}</label>
-                <textarea
-                  id="bk-notes"
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  rows={5}
-                  style={{ ...inputStyle, marginTop: "0.35rem", resize: "vertical" as const }}
-                />
-              </div>
-            )}
-
             {formError ? (
               <p role="alert" style={{ color: "#e8a598", fontSize: "0.8125rem", marginTop: "0.75rem" }}>
                 {formError}
@@ -387,13 +302,20 @@ export function BookingModal({ open, onClose, locale }: Props) {
                 </button>
               )}
               {step === STEPS - 1 && (
-                <button type="button" className="btn cursor-magnetic" disabled={pending} onClick={submit}>
-                  {pending ? "…" : t("submit")}
+                <button type="button" className="btn cursor-magnetic" disabled={nextDisabled} onClick={goNext}>
+                  {t("submit")}
                 </button>
               )}
             </div>
           </>
-        )}
+        ) : submitUi === "encrypting" || submitUi === "transmit" ? (
+          <div className="booking-terminal-process" aria-live="assertive">
+            <div className={`booking-terminal-loader${submitUi === "transmit" ? " is-done" : ""}`} aria-hidden />
+            <p className="booking-terminal-process__text">
+              {submitUi === "encrypting" ? t("processingEncrypt") : t("processingTransmit")}
+            </p>
+          </div>
+        ) : null}
       </div>
     </div>
   );

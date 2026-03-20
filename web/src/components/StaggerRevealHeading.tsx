@@ -22,7 +22,7 @@ export function StaggerRevealHeading({ as: Tag = "h2", className, id, children }
   };
 
   const item = {
-    hidden: { opacity: 0, y: "0.35em" },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,

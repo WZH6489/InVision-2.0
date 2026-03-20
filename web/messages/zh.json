@@ -99,6 +99,12 @@
   },
   "Booking": {
     "title": "礼宾预约",
+    "terminalStepDomain": "选择你的主要观测领域",
+    "terminalStepEthics": "伦理边界",
+    "terminalStepContact": "安全联络方式",
+    "terminalEthicsCheckbox": "我已知悉并同意十年伦理前瞻上限。",
+    "processingEncrypt": "正在加密请求…",
+    "processingTransmit": "传输成功。",
     "conciergeStep0": "哪一条轨迹需要清晰度？",
     "conciergeStepEthics": "确认十年伦理边界",
     "conciergeStep1": "当前最消耗你的是什么？",
@@ -159,6 +165,9 @@
     "vizPhase0": "场域待命",
     "vizPhase1": "扫描进行中",
     "vizPhase2": "输出锁定",
+    "readoutVariables": "变量演算量",
+    "readoutClarity": "清晰度指数",
+    "vizScrollHint": "路径随滚动逐步显现",
     "ambientOn": "环境音 · 开",
     "ambientOff": "环境音 · 关",
     "ambientAria": "切换低频环境音"

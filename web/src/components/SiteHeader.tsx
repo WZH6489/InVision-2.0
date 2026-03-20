@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
+import { MagneticButton } from "@/components/MagneticButton";
 import { useBooking } from "./BookingProvider";
 import { LangGlobeMenu } from "./LangGlobeMenu";
 
@@ -76,12 +77,12 @@ export function SiteHeader() {
               {t("portal")}
             </Link>
 
-            <button type="button" className="btn btn--sm" onClick={openBooking}>
+            <MagneticButton className="btn btn--sm" onClick={openBooking}>
               {t("book")}
               <span className="btn__arrow" aria-hidden>
                 →
               </span>
-            </button>
+            </MagneticButton>
 
             <button
               type="button"

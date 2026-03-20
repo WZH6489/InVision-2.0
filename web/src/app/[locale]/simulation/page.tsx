@@ -1,4 +1,5 @@
 import { RevealSection } from "@/components/RevealSection";
+import { SimulationIntro } from "@/components/simulation/SimulationIntro";
 import { SimulationWalkthrough } from "@/components/simulation/SimulationWalkthrough";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Link } from "@/i18n/navigation";
@@ -37,11 +38,7 @@ export default async function SimulationPage({
         </RevealSection>
 
         <RevealSection>
-          <header className="hub-section">
-            <p className="section-kicker">{t("kicker")}</p>
-            <h1 className="section-title section-title--hub">{t("title")}</h1>
-            <p className="section-lead">{t("lead")}</p>
-          </header>
+          <SimulationIntro />
         </RevealSection>
 
         <RevealSection>

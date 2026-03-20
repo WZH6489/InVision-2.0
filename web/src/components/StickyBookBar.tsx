@@ -1,5 +1,6 @@
 "use client";
 
+import { MagneticButton } from "@/components/MagneticButton";
 import { useEffect, useRef, useState } from "react";
 import { useBooking } from "./BookingProvider";
 
@@ -30,12 +31,12 @@ export function StickyBookBar({ ctaLabel, hint }: Props) {
   return (
     <div className={`sticky-book${visible ? " is-visible" : ""}`} role="region" aria-label={ctaLabel}>
       <p className="sticky-book__hint">{hint}</p>
-      <button type="button" className="btn btn--sm" onClick={openBooking}>
+      <MagneticButton className="btn btn--sm" onClick={openBooking}>
         {ctaLabel}
         <span className="btn__arrow" aria-hidden>
           →
         </span>
-      </button>
+      </MagneticButton>
     </div>
   );
 }

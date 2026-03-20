@@ -9,7 +9,7 @@
   --signal: #c4b59a;
   --signal-muted: #9a8f7a;
   --signal-dim: rgba(196, 181, 154, 0.14);
-  --line: rgba(255, 255, 255, 0.1);
+  --line: rgba(255, 255, 255, 0.05);
   --header-h: 4.25rem;
   --sticky-book-h: 5.75rem;
 }
@@ -107,10 +107,10 @@ body::before {
   height: var(--header-h);
   display: flex;
   align-items: center;
-  background: rgba(10, 11, 14, 0.78);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  background: rgba(10, 11, 14, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .site-header__inner {
@@ -1846,10 +1846,12 @@ section.spec.spec--terminal::before {
 
 .teaser-card.explore-card:hover,
 .teaser-card.explore-card:focus-within {
-  transform: translateY(-8px);
+  transform: scale(1.05);
   box-shadow:
-    0 22px 60px rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(110, 231, 255, 0.12);
+    0 0 20px rgba(213, 192, 152, 0.1),
+    0 18px 48px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .teaser-card.explore-card .btn__arrow {
@@ -1859,7 +1861,7 @@ section.spec.spec--terminal::before {
 
 .teaser-card.explore-card:hover .btn__arrow,
 .teaser-card.explore-card:focus-within .btn__arrow {
-  transform: translateX(7px);
+  transform: translateX(5px);
 }
 
 .teaser-card h2 {

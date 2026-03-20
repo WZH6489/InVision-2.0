@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { MagneticButton } from "@/components/MagneticButton";
 import { useBooking } from "@/components/BookingProvider";
 import { useTranslations } from "next-intl";
 
@@ -14,11 +15,24 @@ type Props = {
 export function BookButton({ className = "btn", variant = "primary", children }: Props) {
   const { openBooking } = useBooking();
   const t = useTranslations("Home");
-  const cls =
-    variant === "ghost" ? `${className} btn-ghost`.trim() : className;
+
+  if (variant === "ghost") {
+    return (
+      <button type="button" className={`${className} btn-ghost`.trim()} onClick={openBooking}>
+        {children ?? (
+          <>
+            {t("ctaBook")}
+            <span className="btn__arrow" aria-hidden>
+              →
+            </span>
+          </>
+        )}
+      </button>
+    );
+  }
 
   return (
-    <button type="button" className={cls} onClick={openBooking}>
+    <MagneticButton className={className} onClick={openBooking}>
       {children ?? (
         <>
           {t("ctaBook")}
@@ -27,6 +41,6 @@ export function BookButton({ className = "btn", variant = "primary", children }:
           </span>
         </>
       )}
-    </button>
+    </MagneticButton>
   );
 }

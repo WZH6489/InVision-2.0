@@ -99,6 +99,12 @@
   },
   "Booking": {
     "title": "禮賓預約",
+    "terminalStepDomain": "選擇你的主要觀測領域",
+    "terminalStepEthics": "倫理邊界",
+    "terminalStepContact": "安全聯絡方式",
+    "terminalEthicsCheckbox": "我已知悉並同意十年倫理前瞻上限。",
+    "processingEncrypt": "正在加密請求…",
+    "processingTransmit": "傳輸成功。",
     "conciergeStep0": "哪一條軌跡需要清晰度？",
     "conciergeStepEthics": "確認十年倫理邊界",
     "conciergeStep1": "當前最消耗你的是什麼？",
@@ -159,6 +165,9 @@
     "vizPhase0": "場域待命",
     "vizPhase1": "掃描進行中",
     "vizPhase2": "輸出鎖定",
+    "readoutVariables": "變數演算量",
+    "readoutClarity": "清晰度指數",
+    "vizScrollHint": "路徑隨捲動逐步顯現",
     "ambientOn": "環境音 · 開",
     "ambientOff": "環境音 · 關",
     "ambientAria": "切換低頻環境音"
