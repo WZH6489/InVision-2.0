@@ -811,3 +811,14 @@ body.page-next .explore-card:focus-within .explore-card__cta .btn__arrow {
   font-weight: 600;
   letter-spacing: 0.06em;
 }
+
+/* Compare table: row header cells (Next inner pricing page). */
+body[data-app="next"] .compare-table tbody th[scope="row"] {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--mist, #a8b0bc);
+  font-weight: 500;
+}
+
+body[data-app="next"] .compare-table tr:last-child th {
+  border-bottom: none;
+}

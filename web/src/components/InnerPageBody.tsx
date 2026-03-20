@@ -1,13 +1,26 @@
 import { Fragment } from "react";
+import { CaseStudyDiagram } from "@/components/inner-diagrams/CaseStudyDiagram";
+import { PricingCompareTable } from "@/components/inner-diagrams/PricingCompareTable";
+import { ProcessFlowDiagram } from "@/components/inner-diagrams/ProcessFlowDiagram";
+import { ProcessTimelineNarrative } from "@/components/inner-diagrams/ProcessTimelineNarrative";
 import type { InnerPagePayload } from "@/types/innerPages";
 
 type Props = {
   data: InnerPagePayload;
+  /** InnerShell route id (enables process/pricing diagrams). */
+  page?: string;
 };
 
-export function InnerPageBody({ data }: Props) {
+export function InnerPageBody({ data, page }: Props) {
+  const showProcessViz = page === "process";
+  const showPricingTable = page === "pricing" && data.compareTable;
+
   return (
     <>
+      {showProcessViz && data.flowLabels ? <ProcessFlowDiagram labels={data.flowLabels} /> : null}
+      {showProcessViz && data.timeline ? <ProcessTimelineNarrative timeline={data.timeline} /> : null}
+      {showPricingTable && data.compareTable ? <PricingCompareTable table={data.compareTable} /> : null}
+
       {data.stepsIntro && data.steps?.length ? (
         <section className="reveal is-visible" aria-labelledby="inner-steps-title">
           <p className="section-kicker">{data.stepsIntro.kicker}</p>
@@ -105,6 +118,14 @@ export function InnerPageBody({ data }: Props) {
           {data.cases.map((c, i) => (
             <div className="case-card" key={i}>
               <h3>{c.h}</h3>
+              {c.diagram ? <CaseStudyDiagram variant={c.diagram} /> : null}
+              {c.metrics ? (
+                <div className="case-metrics">
+                  <span className="before">{c.metrics.before}</span>
+                  <span className="arrow">→</span>
+                  <span className="after">{c.metrics.after}</span>
+                </div>
+              ) : null}
               <p>{c.p}</p>
             </div>
           ))}

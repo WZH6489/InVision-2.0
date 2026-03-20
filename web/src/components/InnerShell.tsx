@@ -42,7 +42,7 @@ export async function InnerShell({ params, page }: Props) {
           <h1>{t(title)}</h1>
           <p>{t(lead)}</p>
         </header>
-        {body ? <InnerPageBody data={body} /> : null}
+        {body ? <InnerPageBody data={body} page={page} /> : null}
       </main>
       <SiteFooter />
     </div>

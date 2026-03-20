@@ -77,7 +77,29 @@
         "p": "Temperature, light, and acoustics follow a calm-focus profile; no camera on your face (only access and safety-channel footage as required). Your guide syncs from an adjacent protocol room to reduce performative pressure. City-specific notes ship with your confirmation."
       }
     ],
-    "footnote": "Previous: home · Next: Rules & ethics (site navigation)."
+    "footnote": "Previous: home · Next: Rules & ethics (site navigation).",
+    "flowLabels": [
+      "Intent",
+      "Compliance",
+      "Calibrate",
+      "Observation",
+      "Debrief"
+    ],
+    "timeline": {
+      "kicker": "Narrative axis",
+      "title": "From now to +10 years",
+      "lead": "As you move along the axis, noise settles and readability rises—a metaphor for confidence in your personal trajectory, not prophecy.",
+      "labelNow": "Now",
+      "labelFuture": "+10 years",
+      "hintNow": "Now",
+      "blurbs": [
+        "Your next chapter is still out of focus.",
+        "Noise is settling; contours become readable.",
+        "Mid-horizon choice points start to appear.",
+        "Far imagery stays thin, but direction vectors emerge.",
+        "At the ten-year cap: structural self-narrative only—not granular fortune-telling."
+      ]
+    }
   },
   "faq": {
     "faqItems": [
@@ -128,11 +150,21 @@
     "cases": [
       {
         "h": "Case A · Career pivot, path divergence",
-        "p": "Gray: baseline subjective probability path; highlight: post-debrief optimized path (synthetic metrics for narrative). Months of hesitation compressed to first moves within weeks."
+        "diagram": "paths",
+        "metrics": {
+          "before": "6 months stuck",
+          "after": "First move within 4 weeks"
+        },
+        "p": "Gray: baseline subjective probability curve; highlight: optimized path after debrief (synthetic metrics for narrative)."
       },
       {
         "h": "Case B · Anxiety distribution shift",
-        "p": "Self-report scale visualization: lower mean and tighter variance after follow-up (not clinical). Milestone breakdown improved adherence."
+        "diagram": "bars",
+        "metrics": {
+          "before": "High mean μ",
+          "after": "Variance σ² tightens"
+        },
+        "p": "Bars visualize self-report scales—not clinical diagnosis. Milestone breakdown improved follow-up adherence."
       }
     ],
     "footnote": "Synthetic narratives and illustrative data—not identifiable real cases."
@@ -152,7 +184,59 @@
         "p": "Groups should request a custom quote so we can align compliance and staffing. Billing per your order confirmation."
       }
     ],
-    "footnote": "Illustrative pricing; actual fees per contract and order."
+    "footnote": "Illustrative pricing; actual fees per contract and order.",
+    "compareTable": {
+      "headers": [
+        "Feature",
+        "Intro · First light",
+        "Advanced · Trajectory",
+        "Enterprise · Institution"
+      ],
+      "rows": [
+        [
+          "Sessions / duration",
+          "1× (10–20 min)",
+          "2× (≥90 days apart)",
+          "Per contract"
+        ],
+        [
+          "Compliance review",
+          "✓",
+          "✓",
+          "✓"
+        ],
+        [
+          "Standard debrief summary",
+          "✓",
+          "✓",
+          "✓"
+        ],
+        [
+          "Dedicated guide",
+          "—",
+          "✓",
+          "✓"
+        ],
+        [
+          "Encrypted archive / async Q&A",
+          "—",
+          "90-day async",
+          "Per SLA"
+        ],
+        [
+          "Path map templates",
+          "—",
+          "✓",
+          "✓"
+        ],
+        [
+          "On-site / anonymized rollup report",
+          "—",
+          "—",
+          "✓"
+        ]
+      ]
+    }
   },
   "team": {
     "teamMission": "Our mission",

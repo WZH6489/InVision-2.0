@@ -15,6 +15,29 @@ export type InnerFaqItem = { q: string; a: string };
 
 export type InnerQuote = { quote: string; cite: string };
 
+export type InnerCaseItem = {
+  h: string;
+  p: string;
+  /** Restores static SVG / bar viz from testimonials.html */
+  diagram?: "paths" | "bars";
+  metrics?: { before: string; after: string };
+};
+
+export type InnerTimeline = {
+  kicker: string;
+  title: string;
+  lead: string;
+  labelNow: string;
+  labelFuture: string;
+  hintNow: string;
+  blurbs: string[];
+};
+
+export type InnerCompareTable = {
+  headers: [string, string, string, string];
+  rows: [string, string, string, string][];
+};
+
 export type InnerTeamMember = {
   initial: string;
   name: string;
@@ -33,7 +56,13 @@ export type InnerPagePayload = {
   faqItems?: InnerFaqItem[];
   trustLogos?: string[];
   quotes?: InnerQuote[];
-  cases?: InnerProseItem[];
+  cases?: InnerCaseItem[];
+  /** Process page: five node labels for the flow SVG (locale-specific). */
+  flowLabels?: [string, string, string, string, string];
+  /** Process page: narrative slider (static process.html). */
+  timeline?: InnerTimeline;
+  /** Pricing page: comparison table. */
+  compareTable?: InnerCompareTable;
   teamMission?: string;
   teamTagline?: string;
   teamMembers?: InnerTeamMember[];
