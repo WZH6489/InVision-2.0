@@ -8,8 +8,14 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ? requested
     : routing.defaultLocale;
 
+  const base = (await import(`../../messages/${locale}.json`)).default;
+  const inner = (await import(`../../messages/innerPages/${locale}.json`)).default;
+
   return {
     locale,
-    messages: (await import(`../../messages/${locale}.json`)).default,
+    messages: {
+      ...base,
+      InnerPages: inner,
+    },
   };
 });
