@@ -236,6 +236,84 @@
           "✓"
         ]
       ]
+    },
+    "pricingTiersSection": {
+      "title": "Choose a plan",
+      "tiers": [
+        {
+          "title": "Intro · First light",
+          "desc": "First session for anyone validating fit before going deeper.",
+          "amount": "¥2,800",
+          "amountSmall": "/ session",
+          "bullets": [
+            "1 observation (10–20 minutes)",
+            "Pre-session questionnaire & compliance review",
+            "Standard debrief summary"
+          ],
+          "cta": "book",
+          "bookLabel": "Book this plan",
+          "featured": false
+        },
+        {
+          "title": "Advanced · Trajectory",
+          "desc": "Follow-up and planning alignment for major life or career inflections.",
+          "amount": "¥7,600",
+          "amountSmall": "/ package",
+          "bullets": [
+            "2 observations (≥90 days apart)",
+            "Dedicated guide & encrypted archive",
+            "90-day async Q&A (not real-time)",
+            "Personalized path-map templates"
+          ],
+          "cta": "book",
+          "bookLabel": "Book this plan",
+          "featured": true
+        },
+        {
+          "title": "Enterprise · Institution",
+          "desc": "HR, schools, and incubators—workshops and batch programs.",
+          "amount": "Custom",
+          "bullets": [
+            "Compliance framework & legal liaison",
+            "On-site or virtual dedicated sessions",
+            "Anonymized rollup reports (no PII)"
+          ],
+          "cta": "contact",
+          "contactCta": "Request a quote",
+          "featured": false
+        }
+      ]
+    },
+    "pricingArtifact": {
+      "kicker": "Deliverable",
+      "title": "What the deliverable looks like",
+      "lead": "Debrief summaries and path maps aren’t mystic notes—they’re structured records in an encrypted archive: offline, redactable, auditable.",
+      "columnTitle": "Two formats",
+      "bold1": "Encrypted digital vault",
+      "part1": ": offline pack keyed only to you, with timestamps and integrity checks.",
+      "bold2": "Sealed summary folio",
+      "part2": ": physical redacted edition for clients who need hard-copy archives.",
+      "mockHeader": "SW-ARCHIVE / AES-256",
+      "mockSeal": "Redacted",
+      "mockPanelTitle": "PATH · optimized branch likelihood"
+    },
+    "billingFaq": {
+      "kicker": "Billing",
+      "title": "Invoices, refunds & procurement",
+      "items": [
+        {
+          "q": "Which payment methods do you support?",
+          "a": "Individuals: major cards and bank transfer per your booking confirmation. Institutions: invoicing and terms per contract."
+        },
+        {
+          "q": "Does the refund policy match the site FAQ?",
+          "a": "Yes: full refund up to 48 hours before the session; after start or final consent, only as the agreement allows. See FAQ and Terms on this site."
+        },
+        {
+          "q": "Minimums and lead time for enterprise?",
+          "a": "Depends on city and guide capacity—often 20–40 business days for the first workshop block plus compliance filing. Your quote letter is authoritative."
+        }
+      ]
     }
   },
   "team": {

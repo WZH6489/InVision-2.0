@@ -1,6 +1,9 @@
 import { Fragment } from "react";
+import { BillingFaqSection } from "@/components/inner-diagrams/BillingFaqSection";
 import { CaseStudyDiagram } from "@/components/inner-diagrams/CaseStudyDiagram";
+import { PricingArtifact } from "@/components/inner-diagrams/PricingArtifact";
 import { PricingCompareTable } from "@/components/inner-diagrams/PricingCompareTable";
+import { PricingTierCards } from "@/components/inner-diagrams/PricingTierCards";
 import { ProcessFlowDiagram } from "@/components/inner-diagrams/ProcessFlowDiagram";
 import { ProcessTimelineNarrative } from "@/components/inner-diagrams/ProcessTimelineNarrative";
 import type { InnerPagePayload } from "@/types/innerPages";
@@ -13,13 +16,18 @@ type Props = {
 
 export function InnerPageBody({ data, page }: Props) {
   const showProcessViz = page === "process";
-  const showPricingTable = page === "pricing" && data.compareTable;
+  const showPricingExtras = page === "pricing";
 
   return (
     <>
       {showProcessViz && data.flowLabels ? <ProcessFlowDiagram labels={data.flowLabels} /> : null}
       {showProcessViz && data.timeline ? <ProcessTimelineNarrative timeline={data.timeline} /> : null}
-      {showPricingTable && data.compareTable ? <PricingCompareTable table={data.compareTable} /> : null}
+      {showPricingExtras && data.compareTable ? <PricingCompareTable table={data.compareTable} /> : null}
+      {showPricingExtras && data.pricingTiersSection ? (
+        <PricingTierCards section={data.pricingTiersSection} />
+      ) : null}
+      {showPricingExtras && data.pricingArtifact ? <PricingArtifact data={data.pricingArtifact} /> : null}
+      {showPricingExtras && data.billingFaq ? <BillingFaqSection data={data.billingFaq} /> : null}
 
       {data.stepsIntro && data.steps?.length ? (
         <section className="reveal is-visible" aria-labelledby="inner-steps-title">

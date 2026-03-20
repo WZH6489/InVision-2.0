@@ -42,7 +42,7 @@ Then run `npm install`, `npm run dev`, or `npx vercel --prod`.
 - Shared styles: `../css/site.css` (imported from `src/app/[locale]/layout.tsx`).
 - Tokens and Next-specific overrides: `src/app/globals.css`.
 - UI strings: `messages/zh.json`, `messages/en.json`, `messages/zh-hant.json` (single DOM/CSS across locales).
-- Inner subpages (`/process`, `/rules`, …) and About/Services/Contact bodies: `messages/innerPages/{locale}.json`, merged in `src/i18n/request.ts` as `InnerPages`. Diagrams/tables from the legacy `.html` (flow SVG, process timeline slider, pricing compare table, testimonial case charts) live in `src/components/inner-diagrams/` and are wired from `InnerPageBody` + `flowLabels` / `timeline` / `compareTable` / `cases[].diagram` in that JSON.
+- Inner subpages (`/process`, `/rules`, …) and About/Services/Contact bodies: `messages/innerPages/{locale}.json`, merged in `src/i18n/request.ts` as `InnerPages`. Diagrams/tables from the legacy `.html` (flow SVG, process timeline, pricing **compare table + tier cards + artifact mock + billing FAQ**, testimonial case charts) live in `src/components/inner-diagrams/` and are wired from `InnerPageBody` + keys like `flowLabels`, `timeline`, `compareTable`, `pricingTiersSection`, `pricingArtifact`, `billingFaq`, `cases[].diagram`.
 
 ## Booking API + Supabase
 

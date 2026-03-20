@@ -38,6 +38,43 @@ export type InnerCompareTable = {
   rows: [string, string, string, string][];
 };
 
+export type InnerPricingTier = {
+  title: string;
+  desc: string;
+  amount: string;
+  amountSmall?: string;
+  bullets: string[];
+  cta: "book" | "contact";
+  bookLabel?: string;
+  contactCta?: string;
+  featured?: boolean;
+};
+
+export type InnerPricingTiersSection = {
+  title: string;
+  tiers: InnerPricingTier[];
+};
+
+export type InnerPricingArtifact = {
+  kicker: string;
+  title: string;
+  lead: string;
+  columnTitle: string;
+  bold1: string;
+  part1: string;
+  bold2: string;
+  part2: string;
+  mockHeader: string;
+  mockSeal: string;
+  mockPanelTitle: string;
+};
+
+export type InnerBillingFaq = {
+  kicker: string;
+  title: string;
+  items: InnerFaqItem[];
+};
+
 export type InnerTeamMember = {
   initial: string;
   name: string;
@@ -63,6 +100,9 @@ export type InnerPagePayload = {
   timeline?: InnerTimeline;
   /** Pricing page: comparison table. */
   compareTable?: InnerCompareTable;
+  pricingTiersSection?: InnerPricingTiersSection;
+  pricingArtifact?: InnerPricingArtifact;
+  billingFaq?: InnerBillingFaq;
   teamMission?: string;
   teamTagline?: string;
   teamMembers?: InnerTeamMember[];
