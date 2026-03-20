@@ -1,6 +1,4 @@
-import { BookButton } from "@/components/BookButton";
-import { HeroGridOverlay } from "@/components/hero/HeroGridOverlay";
-import { HeroFluid } from "@/components/hero/HeroFluid";
+import { HeroWithHorizon } from "@/components/HeroWithHorizon";
 import {
   ProblemPainArt,
   SolutionPanelArt,
@@ -8,9 +6,9 @@ import {
 } from "@/components/home/HomeSectionArt";
 import { RevealSection } from "@/components/RevealSection";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StaggerRevealHeading } from "@/components/StaggerRevealHeading";
 import { StickyBookBar } from "@/components/StickyBookBar";
 import { TeaserGlyph } from "@/components/TeaserGlyph";
-import { TimelineSlider } from "@/components/TimelineSlider";
 import { Link } from "@/i18n/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
@@ -42,60 +40,7 @@ export default async function HomePage({
   return (
     <div className="wrap wrap--wide wrap--sticky-safe page-next-home">
       <main>
-        <section className="hero hero--premium hero--atmospheric" style={{ position: "relative" }}>
-          <div className="hero-light-leak" aria-hidden />
-          <div
-            id="hero-sentinel"
-            style={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              width: "100%",
-              height: 1,
-              pointerEvents: "none",
-            }}
-            aria-hidden
-          />
-          <div className="hero-copy">
-            <h1>{t("heroTitle")}</h1>
-            <p className="lede">
-              {t.rich("heroLead", {
-                strong: (chunks) => <strong>{chunks}</strong>,
-              })}
-            </p>
-            <div className="cta-row">
-              <BookButton />
-              <Link className="btn btn-ghost" href="/process">
-                {t("ctaProcess")}
-                <span className="btn__arrow" aria-hidden>
-                  →
-                </span>
-              </Link>
-            </div>
-            <p className="price-tag">
-              {t.rich("priceTag", {
-                strong: (chunks) => <strong>{chunks}</strong>,
-                pricing: (chunks) => (
-                  <Link href="/pricing" style={{ color: "var(--signal)" }}>
-                    {chunks}
-                  </Link>
-                ),
-              })}
-            </p>
-          </div>
-          <div className="hero-visual">
-            <div className="hero-visual__frame hero-visual__frame--rich">
-              <div className="visual" style={{ position: "relative", overflow: "hidden", borderRadius: "50%" }}>
-                <HeroGridOverlay />
-                <HeroFluid />
-                <div className="glow" style={{ zIndex: 2, mixBlendMode: "screen", opacity: 0.4 }} />
-                <div className="portal-ring" style={{ zIndex: 3 }} />
-                <div className="portal" style={{ zIndex: 2, opacity: 0.78 }} />
-              </div>
-            </div>
-            <p className="visual-caption">{t("caption")}</p>
-          </div>
-        </section>
+        <HeroWithHorizon />
 
         <RevealSection>
           <div className="value-ribbon hub-section" role="presentation">
@@ -108,18 +53,14 @@ export default async function HomePage({
         </RevealSection>
 
         <RevealSection>
-          <TimelineSlider />
-        </RevealSection>
-
-        <RevealSection>
           <section className="problem-split hub-section" aria-labelledby="problem-h">
             <div className="problem-split__col problem-split__col--art">
               <ProblemPainArt />
               <div>
                 <p className="section-kicker">{t("problemKicker")}</p>
-                <h2 id="problem-h" className="section-title">
+                <StaggerRevealHeading id="problem-h" className="section-title">
                   {t("problemTitle")}
-                </h2>
+                </StaggerRevealHeading>
                 <p className="section-lead problem-split__prose">
                   {t.rich("problemBody", {
                     strong: (chunks) => <strong>{chunks}</strong>,

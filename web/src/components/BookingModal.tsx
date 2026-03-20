@@ -13,12 +13,13 @@ function validEmail(s: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim());
 }
 
-const STEPS = 6;
+const STEPS = 7;
 
 export function BookingModal({ open, onClose, locale }: Props) {
   const t = useTranslations("Booking");
   const [step, setStep] = useState(0);
   const [trajectory, setTrajectory] = useState<string | null>(null);
+  const [ethicsAck, setEthicsAck] = useState(false);
   const [tension, setTension] = useState<string | null>(null);
   const [tier, setTier] = useState<string | null>(null);
   const [date, setDate] = useState("");
@@ -35,6 +36,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
   const reset = useCallback(() => {
     setStep(0);
     setTrajectory(null);
+    setEthicsAck(false);
     setTension(null);
     setTier(null);
     setDate("");
@@ -69,9 +71,10 @@ export function BookingModal({ open, onClose, locale }: Props) {
 
   const goNext = () => {
     if (step === 0 && !trajectory) return;
-    if (step === 1 && !tension) return;
-    if (step === 2 && !tier) return;
-    if (step === 4) {
+    if (step === 1 && !ethicsAck) return;
+    if (step === 2 && !tension) return;
+    if (step === 3 && !tier) return;
+    if (step === 5) {
       if (!validateContact()) return;
     }
     setFormError("");
@@ -104,15 +107,20 @@ export function BookingModal({ open, onClose, locale }: Props) {
           fullName: fullName.trim(),
           email: email.trim(),
           phone: phone.trim() || null,
+          ethics_boundary_ack: true,
         }),
       });
-      const data = (await res.json()) as { ok?: boolean; id?: string };
+      const data = (await res.json()) as { ok?: boolean; id?: string; error?: string };
       if (data.ok !== false) {
         setQueueId(typeof data.id === "string" ? data.id : null);
         setDone(true);
+      } else if (data.error === "ethics") {
+        setFormError(t("ethicsRequired"));
+      } else {
+        setFormError(t("submitFailed"));
       }
     } catch {
-      setDone(true);
+      setFormError(t("submitFailed"));
     } finally {
       setPending(false);
     }
@@ -121,6 +129,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
   const stepTitle = (i: number) => {
     const keys = [
       "conciergeStep0",
+      "conciergeStepEthics",
       "conciergeStep1",
       "conciergeStep2",
       "conciergeStep3",
@@ -154,9 +163,15 @@ export function BookingModal({ open, onClose, locale }: Props) {
     ["other", "tensionOther"],
   ] as const;
 
+  const nextDisabled =
+    (step === 0 && !trajectory) ||
+    (step === 1 && !ethicsAck) ||
+    (step === 2 && !tension) ||
+    (step === 3 && !tier);
+
   return (
     <div
-      className="booking-overlay"
+      className="booking-overlay booking-overlay--immersive"
       role="dialog"
       aria-modal="true"
       aria-labelledby="booking-title"
@@ -164,7 +179,16 @@ export function BookingModal({ open, onClose, locale }: Props) {
         if (e.target === e.currentTarget) handleClose();
       }}
     >
-      <div className="booking-dialog">
+      <div className="booking-dialog booking-dialog--immersive">
+        <button
+          type="button"
+          className="booking-dialog__close cursor-magnetic"
+          onClick={handleClose}
+          aria-label={t("close")}
+        >
+          ×
+        </button>
+
         <h2 id="booking-title" className="section-title" style={{ marginTop: 0 }}>
           {t("title")}
         </h2>
@@ -174,14 +198,16 @@ export function BookingModal({ open, onClose, locale }: Props) {
 
         {done ? (
           <>
-            <p style={{ color: "var(--ink-bright, #e8ecf4)" }}>{t("success")}</p>
-            <p style={{ fontSize: "0.875rem", color: "var(--mist)" }}>{t("successDetail")}</p>
+            <p style={{ color: "var(--ink-bright, #e8ecf4)", fontWeight: 600 }}>{t("successKeyLine")}</p>
+            <p style={{ fontSize: "0.875rem", color: "var(--mist)", marginTop: "0.5rem" }}>
+              {t("successDetail")}
+            </p>
             {queueId ? (
               <p style={{ fontSize: "0.8125rem", color: "var(--signal)", marginTop: "0.75rem" }}>
                 {t("referenceId", { id: queueId })}
               </p>
             ) : null}
-            <button type="button" className="btn" style={{ marginTop: "1rem" }} onClick={handleClose}>
+            <button type="button" className="btn cursor-magnetic" style={{ marginTop: "1rem" }} onClick={handleClose}>
               {t("close")}
             </button>
           </>
@@ -202,7 +228,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
                   <button
                     key={id}
                     type="button"
-                    className={`tier-btn${trajectory === id ? " is-selected" : ""}`}
+                    className={`tier-btn cursor-magnetic${trajectory === id ? " is-selected" : ""}`}
                     onClick={() => setTrajectory(id)}
                   >
                     {t(labelKey)}
@@ -212,12 +238,26 @@ export function BookingModal({ open, onClose, locale }: Props) {
             )}
 
             {step === 1 && (
+              <div className="booking-ethics">
+                <p className="booking-ethics__body">{t("ethicsBody")}</p>
+                <label className="booking-ethics__check cursor-magnetic">
+                  <input
+                    type="checkbox"
+                    checked={ethicsAck}
+                    onChange={(e) => setEthicsAck(e.target.checked)}
+                  />
+                  <span>{t("ethicsCheckbox")}</span>
+                </label>
+              </div>
+            )}
+
+            {step === 2 && (
               <div className="tier-grid">
                 {tensionOpts.map(([id, labelKey]) => (
                   <button
                     key={id}
                     type="button"
-                    className={`tier-btn${tension === id ? " is-selected" : ""}`}
+                    className={`tier-btn cursor-magnetic${tension === id ? " is-selected" : ""}`}
                     onClick={() => setTension(id)}
                   >
                     {t(labelKey)}
@@ -226,7 +266,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
               </div>
             )}
 
-            {step === 2 && (
+            {step === 3 && (
               <div className="tier-grid">
                 {(
                   [
@@ -238,7 +278,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
                   <button
                     key={id}
                     type="button"
-                    className={`tier-btn${tier === id ? " is-selected" : ""}`}
+                    className={`tier-btn cursor-magnetic${tier === id ? " is-selected" : ""}`}
                     onClick={() => setTier(id)}
                   >
                     {t(labelKey)}
@@ -247,7 +287,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
               </div>
             )}
 
-            {step === 3 && (
+            {step === 4 && (
               <div className="form-grid" style={{ display: "grid", gap: "1rem" }}>
                 <div>
                   <label htmlFor="bk-date">{t("dateLabel")}</label>
@@ -275,7 +315,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
               </div>
             )}
 
-            {step === 4 && (
+            {step === 5 && (
               <div className="form-grid" style={{ display: "grid", gap: "0.85rem" }}>
                 <div>
                   <label htmlFor="bk-name">{t("nameLabel")}</label>
@@ -313,7 +353,7 @@ export function BookingModal({ open, onClose, locale }: Props) {
               </div>
             )}
 
-            {step === 5 && (
+            {step === 6 && (
               <div>
                 <label htmlFor="bk-notes">{t("questionLabel")}</label>
                 <textarea
@@ -337,26 +377,17 @@ export function BookingModal({ open, onClose, locale }: Props) {
               style={{ marginTop: "1.25rem", display: "flex", gap: "0.5rem", flexWrap: "wrap" }}
             >
               {step > 0 && (
-                <button type="button" className="btn btn-ghost" onClick={goBack}>
+                <button type="button" className="btn btn-ghost cursor-magnetic" onClick={goBack}>
                   {t("back")}
                 </button>
               )}
               {step < STEPS - 1 && (
-                <button
-                  type="button"
-                  className="btn"
-                  disabled={
-                    (step === 0 && !trajectory) ||
-                    (step === 1 && !tension) ||
-                    (step === 2 && !tier)
-                  }
-                  onClick={goNext}
-                >
+                <button type="button" className="btn cursor-magnetic" disabled={nextDisabled} onClick={goNext}>
                   {t("next")}
                 </button>
               )}
               {step === STEPS - 1 && (
-                <button type="button" className="btn" disabled={pending} onClick={submit}>
+                <button type="button" className="btn cursor-magnetic" disabled={pending} onClick={submit}>
                   {pending ? "…" : t("submit")}
                 </button>
               )}

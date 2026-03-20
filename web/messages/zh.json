@@ -6,6 +6,7 @@
   },
   "Nav": {
     "process": "流程",
+    "simulation": "模拟体验",
     "rules": "规则",
     "testimonials": "口碑",
     "pricing": "方案",
@@ -72,7 +73,10 @@
     "timelineHint": "拖动滑块，感受前瞻范围如何延展。",
     "timelinePresent": "当下",
     "timelineY10": "第十年",
-    "timelineYearsUnit": "年"
+    "timelineYearsUnit": "年",
+    "horizonMetricVariables": "变量演算量",
+    "horizonMetricDivergence": "分歧概率",
+    "horizonMetricClarity": "清晰度指数"
   },
   "Footer": {
     "tagline": "独家未来观测服务。",
@@ -89,7 +93,8 @@
   },
   "Booking": {
     "title": "礼宾预约",
-    "conciergeStep0": "您希望观测的主轴是？",
+    "conciergeStep0": "哪一条轨迹需要清晰度？",
+    "conciergeStepEthics": "确认十年伦理边界",
     "conciergeStep1": "当前最消耗你的是什么？",
     "conciergeStep2": "选择方案档位",
     "conciergeStep3": "意向日期与时间",
@@ -124,10 +129,30 @@
     "back": "上一步",
     "submit": "提交预约",
     "success": "预约请求已提交",
-    "successDetail": "顾问将在一个工作日内通过邮件与你确认时段与合规说明。若已配置数据库，你的请求已写入队列。",
+    "ethicsBody": "视未只观测本人轨迹，不窥视第三方；前瞻严格限制在十年内，并遵循「观测不干预」原则。这是有边界的未来洞察实践——并非预言或结果保证，也不能替代依法需要的医疗、法律或财务专业意见。",
+    "ethicsCheckbox": "我已阅读并确认接受十年伦理边界与本服务的「观测不干预」规则。",
+    "ethicsRequired": "请勾选确认伦理边界后继续。",
+    "submitFailed": "提交未成功，请稍后重试。",
+    "successKeyLine": "加密参考已生成 — 顾问将在 24 小时内与你联络。",
+    "successDetail": "请留意你的安全联络渠道。若已配置数据库，请求已进入合规队列。",
     "referenceId": "队列参考号：{id}",
     "close": "关闭",
     "demoNotice": "演示：未配置数据库时不会持久化。"
+  },
+  "Simulation": {
+    "title": "模拟体验",
+    "kicker": "引导式走览",
+    "lead": "随滚动预览观测弧线：校准、沉浸与合成。左侧界面会随阶段推进而变化。",
+    "stepKicker": "第 {n} 步",
+    "step0Title": "校准",
+    "step0Body": "基线 intake 与合规框定：锁定前瞻范围、确认同意，并进行感官预备，使观测场仅稳定在你的轨迹上。",
+    "step1Title": "沉浸",
+    "step1Body": "受控观测：结构化引导与环境 containment，让意象与结构浮现，同时避免叙事漂移或他人信息渗入。",
+    "step2Title": "合成",
+    "step2Body": "压缩为可复盘产出——摘要、路径模板与可审计线索，供你带回决策与协同。",
+    "vizPhase0": "场域待命",
+    "vizPhase1": "扫描进行中",
+    "vizPhase2": "输出锁定"
   },
   "Inner": {
     "breadcrumbHome": "首页",

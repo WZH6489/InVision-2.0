@@ -9,6 +9,7 @@ import { LangGlobeMenu } from "./LangGlobeMenu";
 
 const NAV = [
   { href: "/process", key: "process" as const },
+  { href: "/simulation", key: "simulation" as const },
   { href: "/rules", key: "rules" as const },
   { href: "/testimonials", key: "testimonials" as const },
   { href: "/pricing", key: "pricing" as const },

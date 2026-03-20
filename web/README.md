@@ -62,6 +62,7 @@ create table public.bookings (
   phone text,
   trajectory text,
   tension text,
+  ethics_boundary_ack boolean default false,
   created_at timestamptz default now()
 );
 ```
@@ -79,4 +80,7 @@ Add concierge intake columns:
 ```sql
 alter table public.bookings add column if not exists trajectory text;
 alter table public.bookings add column if not exists tension text;
+alter table public.bookings add column if not exists ethics_boundary_ack boolean default false;
 ```
+
+If `ethics_boundary_ack` is missing, the API retries the insert without that column so older databases keep working.

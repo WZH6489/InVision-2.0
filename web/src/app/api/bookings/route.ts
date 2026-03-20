@@ -36,6 +36,11 @@ export async function POST(req: Request) {
         : null;
   const trajectory = typeof b.trajectory === "string" ? b.trajectory.slice(0, 64) : "";
   const tension = typeof b.tension === "string" ? b.tension.slice(0, 64) : "";
+  const ethics_boundary_ack = b.ethics_boundary_ack === true;
+
+  if (!ethics_boundary_ack) {
+    return NextResponse.json({ ok: false, error: "ethics" }, { status: 400 });
+  }
 
   if (!TIERS.has(tier)) {
     return NextResponse.json({ ok: false, error: "tier" }, { status: 400 });
@@ -66,18 +71,25 @@ export async function POST(req: Request) {
       phone,
       trajectory,
       tension,
+      ethics_boundary_ack: true,
       created_at: new Date().toISOString(),
     };
 
-    const { data, error } = await supabase.from("bookings").insert(row).select("id").single();
+    let ins = await supabase.from("bookings").insert(row).select("id").single();
 
-    if (error) {
+    if (ins.error?.message?.includes("ethics_boundary")) {
+      const { ethics_boundary_ack: _drop, ...compat } = row;
+      ins = await supabase.from("bookings").insert(compat).select("id").single();
+    }
+
+    if (ins.error) {
       return NextResponse.json(
-        { ok: false, error: error.message, persisted: false },
+        { ok: false, error: ins.error.message, persisted: false },
         { status: 500 },
       );
     }
 
+    const data = ins.data;
     const id = data && typeof data === "object" && "id" in data ? String((data as { id: unknown }).id) : undefined;
     return NextResponse.json({ ok: true, persisted: true, id });
   }

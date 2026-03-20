@@ -6,6 +6,7 @@
   },
   "Nav": {
     "process": "Process",
+    "simulation": "Simulation",
     "rules": "Rules",
     "testimonials": "Stories",
     "pricing": "Plans",
@@ -72,7 +73,10 @@
     "timelineHint": "Drag the handle to feel how far ahead you’re looking.",
     "timelinePresent": "Present",
     "timelineY10": "Year 10",
-    "timelineYearsUnit": "years"
+    "timelineYearsUnit": "years",
+    "horizonMetricVariables": "Variables calculated",
+    "horizonMetricDivergence": "Divergence probability",
+    "horizonMetricClarity": "Clarity index"
   },
   "Footer": {
     "tagline": "Exclusive future observation.",
@@ -89,7 +93,8 @@
   },
   "Booking": {
     "title": "Concierge booking",
-    "conciergeStep0": "Which trajectory do you want to observe?",
+    "conciergeStep0": "Which trajectory requires clarity?",
+    "conciergeStepEthics": "Acknowledge the ten-year ethical boundary",
     "conciergeStep1": "What’s draining you most right now?",
     "conciergeStep2": "Choose your tier",
     "conciergeStep3": "Preferred date & time",
@@ -124,10 +129,30 @@
     "back": "Back",
     "submit": "Submit request",
     "success": "Request submitted",
-    "successDetail": "We’ll email you within one business day to confirm timing and compliance brief. If the database is configured, your row is already in the queue.",
+    "ethicsBody": "Shì Wèi observes only your trajectory, never third parties, within a strict ten-year horizon and an observe-don’t-intervene frame. This is a bounded foresight practice—not prophecy, not guaranteed outcomes, and not a substitute for professional medical, legal, or financial advice where those apply.",
+    "ethicsCheckbox": "I acknowledge and accept the ten-year ethical boundary and the observe-don’t-intervene rule for this service.",
+    "ethicsRequired": "Please confirm the ethical boundary to continue.",
+    "submitFailed": "Something went wrong. Please try again shortly.",
+    "successKeyLine": "Cryptographic reference generated — an advisor will contact you within 24 hours.",
+    "successDetail": "Check your secure channel for confirmation. If the database is configured, your request is already in the compliance queue.",
     "referenceId": "Queue reference: {id}",
     "close": "Close",
     "demoNotice": "Demo: no database configured."
+  },
+  "Simulation": {
+    "title": "Simulation",
+    "kicker": "Guided walkthrough",
+    "lead": "A scroll-driven preview of the observation arc: calibration, immersion, and synthesis. The interface on the left responds as you move through each phase.",
+    "stepKicker": "Step {n}",
+    "step0Title": "Calibration",
+    "step0Body": "Baseline intake and compliance framing: horizon lock, consent, and sensory priming so the field stabilizes around your trajectory only.",
+    "step1Title": "Immersion",
+    "step1Body": "Controlled observation: structured prompts and environmental containment so imagery and structure emerge without narrative drift or third-party bleed.",
+    "step2Title": "Synthesis",
+    "step2Body": "Compression into reviewable outputs—summaries, path templates, and audit cues you can carry back into decisions and delegation.",
+    "vizPhase0": "Field idle",
+    "vizPhase1": "Scan active",
+    "vizPhase2": "Output locked"
   },
   "Inner": {
     "breadcrumbHome": "Home",

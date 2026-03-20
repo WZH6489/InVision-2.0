@@ -6,6 +6,7 @@
   },
   "Nav": {
     "process": "流程",
+    "simulation": "模擬體驗",
     "rules": "規則",
     "testimonials": "口碑",
     "pricing": "方案",
@@ -72,7 +73,10 @@
     "timelineHint": "拖動滑塊，感受前瞻範圍如何延展。",
     "timelinePresent": "當下",
     "timelineY10": "第十年",
-    "timelineYearsUnit": "年"
+    "timelineYearsUnit": "年",
+    "horizonMetricVariables": "變數演算量",
+    "horizonMetricDivergence": "分歧機率",
+    "horizonMetricClarity": "清晰度指數"
   },
   "Footer": {
     "tagline": "獨家未來觀測服務。",
@@ -89,7 +93,8 @@
   },
   "Booking": {
     "title": "禮賓預約",
-    "conciergeStep0": "您希望觀測的主軸是？",
+    "conciergeStep0": "哪一條軌跡需要清晰度？",
+    "conciergeStepEthics": "確認十年倫理邊界",
     "conciergeStep1": "當前最消耗你的是什麼？",
     "conciergeStep2": "選擇方案檔位",
     "conciergeStep3": "意向日期與時間",
@@ -124,10 +129,30 @@
     "back": "上一步",
     "submit": "提交預約",
     "success": "預約請求已提交",
-    "successDetail": "顧問將在一個工作日內透過郵件與你確認時段與合規說明。若已配置資料庫，請求已寫入佇列。",
+    "ethicsBody": "視未只觀測本人軌跡，不窺視第三方；前瞻嚴格限制在十年內，並遵循「觀測不干預」原則。這是有邊界的未來洞察實踐——並非預言或結果保證，也不能替代依法需要的醫療、法律或財務專業意見。",
+    "ethicsCheckbox": "我已閱讀並確認接受十年倫理邊界與本服務的「觀測不干預」規則。",
+    "ethicsRequired": "請勾選確認倫理邊界後繼續。",
+    "submitFailed": "提交未成功，請稍後重試。",
+    "successKeyLine": "加密參考已生成 — 顧問將在 24 小時內與你聯絡。",
+    "successDetail": "請留意你的安全聯絡渠道。若已配置資料庫，請求已進入合規佇列。",
     "referenceId": "佇列參考號：{id}",
     "close": "關閉",
     "demoNotice": "演示：未配置資料庫時不會持久化。"
+  },
+  "Simulation": {
+    "title": "模擬體驗",
+    "kicker": "引導式走覽",
+    "lead": "隨捲動預覽觀測弧線：校準、沉浸與合成。左側介面會隨階段推進而變化。",
+    "stepKicker": "第 {n} 步",
+    "step0Title": "校準",
+    "step0Body": "基線 intake 與合規框定：鎖定前瞻範圍、確認同意，並進行感官預備，使觀測場僅穩定在你的軌跡上。",
+    "step1Title": "沉浸",
+    "step1Body": "受控觀測：結構化引導與環境 containment，讓意象與結構浮現，同時避免敘事漂移或他人資訊滲入。",
+    "step2Title": "合成",
+    "step2Body": "壓縮為可複盤產出——摘要、路徑模板與可審計線索，供你帶回決策與協同。",
+    "vizPhase0": "場域待命",
+    "vizPhase1": "掃描進行中",
+    "vizPhase2": "輸出鎖定"
   },
   "Inner": {
     "breadcrumbHome": "首頁",

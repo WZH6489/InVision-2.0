@@ -1,4 +1,6 @@
 import { BookingProvider } from "@/components/BookingProvider";
+import { CustomCursor } from "@/components/CustomCursor";
+import { FilmNoise } from "@/components/FilmNoise";
 import { SiteHeader } from "@/components/SiteHeader";
 import { localeToHtmlLang } from "@/lib/htmlLang";
 import type { AppLocale } from "@/i18n/routing";
@@ -125,6 +127,8 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <BookingProvider locale={locale}>
+            <FilmNoise />
+            <CustomCursor />
             <div className="stars" aria-hidden />
             <SiteHeader />
             {children}
