@@ -4,39 +4,130 @@ import { BookButton } from "@/components/BookButton";
 import { HeroGridOverlay } from "@/components/hero/HeroGridOverlay";
 import { HeroFluid } from "@/components/hero/HeroFluid";
 import { Link } from "@/i18n/navigation";
+import { animate, useMotionValue, useMotionValueEvent, useSpring } from "framer-motion";
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import type { CSSProperties } from "react";
-import { useId, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
+
+const HorizonDivergenceCanvas = dynamic(
+  () => import("./horizon/HorizonDivergenceCanvas").then((m) => m.HorizonDivergenceCanvas),
+  { ssr: false },
+);
 
 function clamp01(n: number) {
   return Math.min(1, Math.max(0, n));
 }
 
-type Branch = { d: string; side: number };
+function clarityPercent(t: number) {
+  if (t <= 0.5) return 99.9 + (64.2 - 99.9) * (t / 0.5);
+  return 64.2 + (12.8 - 64.2) * ((t - 0.5) / 0.5);
+}
 
-const BRANCHES: Branch[] = [
-  { d: "M 50 58 Q 50 42 22 18", side: -1 },
-  { d: "M 50 58 Q 48 38 36 14", side: -1 },
-  { d: "M 50 58 L 50 16", side: 0 },
-  { d: "M 50 58 Q 52 38 64 14", side: 1 },
-  { d: "M 50 58 Q 50 42 78 18", side: 1 },
-];
+function variablesKey(t: number): "locked" | "expanding" | "maximum" {
+  if (t < 0.42) return "locked";
+  if (t < 0.78) return "expanding";
+  return "maximum";
+}
+
+function stateKey(t: number): "present" | "near" | "ethical" {
+  if (t < 0.42) return "present";
+  if (t < 0.78) return "near";
+  return "ethical";
+}
 
 export function HeroWithHorizon() {
   const t = useTranslations("Home");
   const id = useId();
-  const [p, setP] = useState(0);
-  const pn = p / 100;
+  const trackRef = useRef<HTMLDivElement>(null);
+  const dragging = useRef(false);
+  const target = useMotionValue(0);
+  const smooth = useSpring(target, { stiffness: 210, damping: 36, mass: 1.15 });
+  const progressRef = useRef(0);
+  const lastVibrateYear = useRef(-1);
+
+  const [pn, setPn] = useState(0);
   const year = Math.round(pn * 10);
 
-  const metrics = useMemo(() => {
-    const variables = Math.round(1840 + pn * 4120);
-    const divergence = (pn * 7.82).toFixed(2);
-    const clarity = Math.round(58 + pn * 38);
-    return { variables, divergence, clarity };
-  }, [pn]);
+  useMotionValueEvent(smooth, "change", (v) => {
+    const n = clamp01(v);
+    progressRef.current = n;
+    setPn(n);
+  });
 
-  const stemOpacity = 1 - clamp01(pn * 1.15) * 0.72;
+  const setFromClientX = useCallback(
+    (clientX: number) => {
+      const el = trackRef.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const x = clamp01((clientX - r.left) / r.width);
+      target.set(x);
+    },
+    [target],
+  );
+
+  const snapNearestYear = useCallback(() => {
+    const y = Math.round(target.get() * 10) / 10;
+    animate(target, y, { type: "spring", stiffness: 260, damping: 30, mass: 1.02 });
+  }, [target]);
+
+  const skipHaptic = useRef(true);
+  useEffect(() => {
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    if (!coarse || typeof navigator === "undefined" || !navigator.vibrate) return;
+    if (skipHaptic.current) {
+      skipHaptic.current = false;
+      lastVibrateYear.current = year;
+      return;
+    }
+    if (lastVibrateYear.current !== year) {
+      lastVibrateYear.current = year;
+      navigator.vibrate(5);
+    }
+  }, [year]);
+
+  useEffect(() => {
+    const end = () => {
+      if (!dragging.current) return;
+      dragging.current = false;
+      snapNearestYear();
+    };
+    const move = (e: PointerEvent) => {
+      if (!dragging.current) return;
+      setFromClientX(e.clientX);
+    };
+    window.addEventListener("pointermove", move, { passive: true });
+    window.addEventListener("pointerup", end);
+    window.addEventListener("pointercancel", end);
+    return () => {
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", end);
+      window.removeEventListener("pointercancel", end);
+    };
+  }, [setFromClientX, snapNearestYear]);
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    e.preventDefault();
+    dragging.current = true;
+    setFromClientX(e.clientX);
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    const step = 0.1;
+    let v = target.get();
+    if (e.key === "ArrowRight" || e.key === "ArrowUp") v = clamp01(v + step);
+    else if (e.key === "ArrowLeft" || e.key === "ArrowDown") v = clamp01(v - step);
+    else if (e.key === "Home") v = 0;
+    else if (e.key === "End") v = 1;
+    else return;
+    e.preventDefault();
+    animate(target, v, { type: "spring", stiffness: 260, damping: 30 });
+  };
+
+  const vk = variablesKey(pn);
+  const sk = stateKey(pn);
+  const clarityStr = clarityPercent(pn).toFixed(1);
+
   const gridIntensity = 0.28 + pn * 0.62;
   const depthOpacity = 0.06 + pn * 0.38;
 
@@ -47,53 +138,14 @@ export function HeroWithHorizon() {
         {
           position: "relative",
           "--horizon-p": String(pn),
-          "--timeline-p": `${p}%`,
-        } as React.CSSProperties
+          "--timeline-p": `${pn * 100}%`,
+        } as CSSProperties
       }
     >
       <div className="hero-horizon__depth" aria-hidden style={{ opacity: depthOpacity }} />
-      <div className="hero-horizon__divergence" aria-hidden>
-        <svg
-          className="hero-horizon__svg"
-          viewBox="0 0 100 62"
-          preserveAspectRatio="xMidYMax meet"
-        >
-          <defs>
-            <filter id={`${id}-glow`} x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="0.35" result="b" />
-              <feMerge>
-                <feMergeNode in="b" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-          <path
-            d="M 50 62 L 50 20"
-            className="hero-horizon__stem"
-            fill="none"
-            stroke="rgba(212, 196, 168, 0.95)"
-            strokeWidth="0.22"
-            strokeLinecap="round"
-            filter={`url(#${id}-glow)`}
-            style={{ opacity: stemOpacity }}
-          />
-          {BRANCHES.map((b, i) => {
-            const stagger = i * 0.07;
-            const branchOn = clamp01((pn - 0.08 - stagger) / 0.55);
-            return (
-              <path
-                key={b.d}
-                d={b.d}
-                fill="none"
-                stroke="rgba(196, 181, 154, 0.55)"
-                strokeWidth="0.14"
-                strokeLinecap="round"
-                filter={`url(#${id}-glow)`}
-                style={{ opacity: branchOn * (0.35 + pn * 0.5) }}
-              />
-            );
-          })}
-        </svg>
+
+      <div className="hero-horizon__divergence hero-horizon__divergence--webgl" aria-hidden>
+        <HorizonDivergenceCanvas progressRef={progressRef} />
       </div>
 
       <div className="hero-light-leak" aria-hidden />
@@ -154,19 +206,19 @@ export function HeroWithHorizon() {
         <p className="visual-caption">{t("caption")}</p>
       </div>
 
-      <div className="hero-horizon-interface cursor-magnetic">
-        <div className="hero-horizon-metrics" aria-live="polite">
-          <div className="hero-horizon-metric">
-            <span className="hero-horizon-metric__label">{t("horizonMetricVariables")}</span>
-            <span className="hero-horizon-metric__value tabular-nums">{metrics.variables}</span>
+      <div className="hero-horizon-interface">
+        <div className="hero-horizon-telemetry" aria-live="polite">
+          <div className="hero-horizon-telemetry__row">
+            <span className="hero-horizon-telemetry__label">{t("telemetryClarity")}</span>
+            <span className="hero-horizon-telemetry__value tabular-nums">{clarityStr}%</span>
           </div>
-          <div className="hero-horizon-metric">
-            <span className="hero-horizon-metric__label">{t("horizonMetricDivergence")}</span>
-            <span className="hero-horizon-metric__value tabular-nums">{metrics.divergence}%</span>
+          <div className="hero-horizon-telemetry__row">
+            <span className="hero-horizon-telemetry__label">{t("telemetryVariables")}</span>
+            <span className="hero-horizon-telemetry__value">{t(`telemetryVar_${vk}`)}</span>
           </div>
-          <div className="hero-horizon-metric">
-            <span className="hero-horizon-metric__label">{t("horizonMetricClarity")}</span>
-            <span className="hero-horizon-metric__value tabular-nums">{metrics.clarity}</span>
+          <div className="hero-horizon-telemetry__row">
+            <span className="hero-horizon-telemetry__label">{t("telemetryState")}</span>
+            <span className="hero-horizon-telemetry__value">{t(`telemetryState_${sk}`)}</span>
           </div>
         </div>
 
@@ -177,21 +229,32 @@ export function HeroWithHorizon() {
           </div>
           <div
             className="timeline-slider__track-wrap"
-            style={{ "--timeline-p": `${p}%` } as CSSProperties}
+            style={{ "--timeline-p": `${pn * 100}%` } as CSSProperties}
+            data-cursor-glass
           >
             <div className="timeline-slider__glow" aria-hidden />
-            <label htmlFor={id} className="sr-only">
+            <div
+              ref={trackRef}
+              className="horizon-drag-track"
+              role="slider"
+              tabIndex={0}
+              aria-valuemin={0}
+              aria-valuemax={10}
+              aria-valuenow={year}
+              aria-valuetext={`+${year} ${t("timelineYearsUnit")}`}
+              aria-labelledby={id}
+              onPointerDown={onPointerDown}
+              onKeyDown={onKeyDown}
+            >
+              <div className="horizon-drag-track__rail" />
+              <div
+                className="horizon-drag-track__thumb"
+                style={{ left: `${pn * 100}%`, transform: "translate(-50%, -50%)" }}
+              />
+            </div>
+            <p id={id} className="sr-only">
               {t("timelineTitle")}
-            </label>
-            <input
-              id={id}
-              type="range"
-              min={0}
-              max={100}
-              value={p}
-              onChange={(e) => setP(Number(e.target.value))}
-              className="timeline-slider__input"
-            />
+            </p>
             <div className="timeline-slider__labels">
               <span>{t("timelinePresent")}</span>
               <span className="timeline-slider__year">

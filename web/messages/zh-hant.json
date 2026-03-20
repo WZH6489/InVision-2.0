@@ -74,9 +74,15 @@
     "timelinePresent": "當下",
     "timelineY10": "第十年",
     "timelineYearsUnit": "年",
-    "horizonMetricVariables": "變數演算量",
-    "horizonMetricDivergence": "分歧機率",
-    "horizonMetricClarity": "清晰度指數"
+    "telemetryClarity": "清晰度",
+    "telemetryVariables": "變數",
+    "telemetryState": "狀態",
+    "telemetryVar_locked": "鎖定",
+    "telemetryVar_expanding": "擴張中",
+    "telemetryVar_maximum": "已達上限",
+    "telemetryState_present": "當下",
+    "telemetryState_near": "近界",
+    "telemetryState_ethical": "已達倫理邊界"
   },
   "Footer": {
     "tagline": "獨家未來觀測服務。",
@@ -152,7 +158,23 @@
     "step2Body": "壓縮為可複盤產出——摘要、路徑模板與可審計線索，供你帶回決策與協同。",
     "vizPhase0": "場域待命",
     "vizPhase1": "掃描進行中",
-    "vizPhase2": "輸出鎖定"
+    "vizPhase2": "輸出鎖定",
+    "ambientOn": "環境音 · 開",
+    "ambientOff": "環境音 · 關",
+    "ambientAria": "切換低頻環境音"
+  },
+  "Deliverables": {
+    "kicker": "你帶走什麼",
+    "title": "可觸達的交付物",
+    "lead": "加密數位檔案、實體冊與匿名化控制台——均可複盤、審計，並以研究機構同級的標準留存。",
+    "watermark": "絕密 · 僅限本人",
+    "dossierH": "加密數位檔案",
+    "dossierP": "深色介面平板或筆電示意：軌跡藍圖、時間軸與類生醫遙測——邊緣虛化強調隱私。",
+    "portfolioH": "實體檔案冊",
+    "portfolioP": "啞光黑軟觸封套，火漆或金屬扣，置於深色大理石檯面——適合家族辦公室與董事會存檔。",
+    "dashReportTitle": "未來合成報告",
+    "dashboardH": "匿名案例控制台",
+    "dashboardP": "客戶側儀表板示意：姓名模糊，展示合成報告、線索與審計時間線的互動方式。"
   },
   "Inner": {
     "breadcrumbHome": "首頁",

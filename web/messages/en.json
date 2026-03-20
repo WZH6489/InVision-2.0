@@ -74,9 +74,15 @@
     "timelinePresent": "Present",
     "timelineY10": "Year 10",
     "timelineYearsUnit": "years",
-    "horizonMetricVariables": "Variables calculated",
-    "horizonMetricDivergence": "Divergence probability",
-    "horizonMetricClarity": "Clarity index"
+    "telemetryClarity": "Clarity",
+    "telemetryVariables": "Variables",
+    "telemetryState": "State",
+    "telemetryVar_locked": "Locked",
+    "telemetryVar_expanding": "Expanding",
+    "telemetryVar_maximum": "Maximum",
+    "telemetryState_present": "Present",
+    "telemetryState_near": "Near-Horizon",
+    "telemetryState_ethical": "Ethical Limit Reached"
   },
   "Footer": {
     "tagline": "Exclusive future observation.",
@@ -152,7 +158,23 @@
     "step2Body": "Compression into reviewable outputs—summaries, path templates, and audit cues you can carry back into decisions and delegation.",
     "vizPhase0": "Field idle",
     "vizPhase1": "Scan active",
-    "vizPhase2": "Output locked"
+    "vizPhase2": "Output locked",
+    "ambientOn": "Ambient · on",
+    "ambientOff": "Ambient · off",
+    "ambientAria": "Toggle low-frequency ambient sound"
+  },
+  "Deliverables": {
+    "kicker": "What you leave with",
+    "title": "Tangible artifacts",
+    "lead": "Encrypted digital dossiers, physical archives, and anonymized dashboards—each designed to be reviewed, audited, and held to the same standard as institutional research.",
+    "watermark": "TOP SECRET · EYES ONLY",
+    "dossierH": "Encrypted digital dossier",
+    "dossierP": "Dark-mode tablet or laptop mockup with trajectory blueprint, timelines, and biometric-style telemetry—blurred at the edges to signal privacy.",
+    "portfolioH": "Physical portfolio",
+    "portfolioP": "Matte-black soft-touch folio with wax seal / clasp on marble—an archival object for boards and family offices.",
+    "dashReportTitle": "Future Synthesis Report",
+    "dashboardH": "Anonymized case console",
+    "dashboardP": "Client dashboard UX with names blurred—shows how synthesis reports, threads, and audit trails surface after the session."
   },
   "Inner": {
     "breadcrumbHome": "Home",

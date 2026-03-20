@@ -74,9 +74,15 @@
     "timelinePresent": "当下",
     "timelineY10": "第十年",
     "timelineYearsUnit": "年",
-    "horizonMetricVariables": "变量演算量",
-    "horizonMetricDivergence": "分歧概率",
-    "horizonMetricClarity": "清晰度指数"
+    "telemetryClarity": "清晰度",
+    "telemetryVariables": "变量",
+    "telemetryState": "状态",
+    "telemetryVar_locked": "锁定",
+    "telemetryVar_expanding": "扩张中",
+    "telemetryVar_maximum": "已达上限",
+    "telemetryState_present": "当下",
+    "telemetryState_near": "近界",
+    "telemetryState_ethical": "已达伦理边界"
   },
   "Footer": {
     "tagline": "独家未来观测服务。",
@@ -152,7 +158,23 @@
     "step2Body": "压缩为可复盘产出——摘要、路径模板与可审计线索，供你带回决策与协同。",
     "vizPhase0": "场域待命",
     "vizPhase1": "扫描进行中",
-    "vizPhase2": "输出锁定"
+    "vizPhase2": "输出锁定",
+    "ambientOn": "环境音 · 开",
+    "ambientOff": "环境音 · 关",
+    "ambientAria": "切换低频环境音"
+  },
+  "Deliverables": {
+    "kicker": "你带走什么",
+    "title": "可触达的交付物",
+    "lead": "加密数字档案、实体册与匿名化控制台——均可复盘、审计，并以研究机构同级的标准留存。",
+    "watermark": "绝密 · 仅限本人",
+    "dossierH": "加密数字档案",
+    "dossierP": "深色界面平板或笔电示意：轨迹蓝图、时间轴与类生医遥测——边缘虚化强调隐私。",
+    "portfolioH": "实体档案册",
+    "portfolioP": "哑光黑软触封套，火漆或金属扣，置于深色大理石台面——适合家族办公室与董事会存档。",
+    "dashReportTitle": "未来合成报告",
+    "dashboardH": "匿名案例控制台",
+    "dashboardP": "客户侧仪表盘示意：姓名模糊，展示合成报告、线索与审计时间线的交互方式。"
   },
   "Inner": {
     "breadcrumbHome": "首页",

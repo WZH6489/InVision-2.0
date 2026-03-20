@@ -6,6 +6,7 @@ export function CustomCursor() {
   const [on, setOn] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [magnetic, setMagnetic] = useState(false);
+  const [glass, setGlass] = useState(false);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -17,29 +18,36 @@ export function CustomCursor() {
 
     const move = (e: MouseEvent) => {
       setPos({ x: e.clientX, y: e.clientY });
-    };
-
-    const over = (e: MouseEvent) => {
-      const t = e.target;
-      if (!(t instanceof Element)) return;
-      setMagnetic(!!t.closest("a, button, [role='button'], input, textarea, select, .cursor-magnetic"));
+      const el = document.elementFromPoint(e.clientX, e.clientY);
+      if (!el || !(el instanceof Element)) {
+        setMagnetic(false);
+        setGlass(false);
+        return;
+      }
+      setMagnetic(
+        !!el.closest("a, button, [role='button'], input, textarea, select, .cursor-magnetic"),
+      );
+      setGlass(
+        !!el.closest("[data-cursor-glass], img, picture, .deliverable-mock, .horizon-webgl"),
+      );
     };
 
     window.addEventListener("mousemove", move, { passive: true });
-    window.addEventListener("mouseover", over, { passive: true });
 
     return () => {
       document.body.classList.remove("has-custom-cursor");
       window.removeEventListener("mousemove", move);
-      window.removeEventListener("mouseover", over);
     };
   }, []);
 
   if (!on) return null;
 
+  const ringClass =
+    glass || magnetic ? ` custom-cursor--mag${glass ? " custom-cursor--glass" : ""}` : "";
+
   return (
     <div
-      className={`custom-cursor${magnetic ? " custom-cursor--mag" : ""}`}
+      className={`custom-cursor${ringClass}`}
       style={{ left: pos.x, top: pos.y }}
       aria-hidden
     >

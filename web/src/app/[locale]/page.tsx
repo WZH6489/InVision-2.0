@@ -84,9 +84,9 @@ export default async function HomePage({
 
         <RevealSection>
           <section className="hub-values hub-section" aria-labelledby="hv-title">
-            <h2 id="hv-title" className="section-title section-title--hub">
+            <StaggerRevealHeading id="hv-title" className="section-title section-title--hub">
               {t("valuesTitle")}
-            </h2>
+            </StaggerRevealHeading>
             <div className="hub-values hub-values--icons">
               <div className="hub-value">
                 <ValueArt variant="clarity" />
@@ -110,9 +110,9 @@ export default async function HomePage({
         <RevealSection>
           <section className="hub-section explore-section" aria-labelledby="teasers-title">
             <p className="section-kicker">{t("exploreKicker")}</p>
-            <h2 id="teasers-title" className="section-title section-title--hub">
+            <StaggerRevealHeading id="teasers-title" className="section-title section-title--hub">
               {t("exploreTitle")}
-            </h2>
+            </StaggerRevealHeading>
             <p className="section-lead section-lead--explore">{t("exploreLead")}</p>
 
             <div className="hub-teasers">

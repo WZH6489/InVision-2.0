@@ -3,6 +3,7 @@ import { BillingFaqSection } from "@/components/inner-diagrams/BillingFaqSection
 import { CaseStudyDiagram } from "@/components/inner-diagrams/CaseStudyDiagram";
 import { PricingArtifact } from "@/components/inner-diagrams/PricingArtifact";
 import { PricingCompareTable } from "@/components/inner-diagrams/PricingCompareTable";
+import { PricingDeliverablesShowcase } from "@/components/PricingDeliverablesShowcase";
 import { PricingTierCards } from "@/components/inner-diagrams/PricingTierCards";
 import { ProcessFlowDiagram } from "@/components/inner-diagrams/ProcessFlowDiagram";
 import { ProcessTimelineNarrative } from "@/components/inner-diagrams/ProcessTimelineNarrative";
@@ -22,10 +23,11 @@ export function InnerPageBody({ data, page }: Props) {
     <>
       {showProcessViz && data.flowLabels ? <ProcessFlowDiagram labels={data.flowLabels} /> : null}
       {showProcessViz && data.timeline ? <ProcessTimelineNarrative timeline={data.timeline} /> : null}
-      {showPricingExtras && data.compareTable ? <PricingCompareTable table={data.compareTable} /> : null}
       {showPricingExtras && data.pricingTiersSection ? (
         <PricingTierCards section={data.pricingTiersSection} />
       ) : null}
+      {showPricingExtras && data.compareTable ? <PricingCompareTable table={data.compareTable} /> : null}
+      {showPricingExtras ? <PricingDeliverablesShowcase /> : null}
       {showPricingExtras && data.pricingArtifact ? <PricingArtifact data={data.pricingArtifact} /> : null}
       {showPricingExtras && data.billingFaq ? <BillingFaqSection data={data.billingFaq} /> : null}
 
