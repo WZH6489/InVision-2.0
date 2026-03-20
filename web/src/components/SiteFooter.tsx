@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
@@ -10,11 +11,18 @@ export async function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="site-footer__grid">
-        <div className="site-footer__brand">
-          <p className="mark" style={{ margin: 0 }}>
-            视<span>未</span>
-          </p>
-          <p>{t("tagline")}</p>
+        <div className="site-footer__brand site-footer__brand--logo">
+          <Image
+            src="/brand/shiwei-mark.png"
+            alt={tm("siteName")}
+            width={44}
+            height={44}
+            className="site-footer__logo"
+            sizes="44px"
+          />
+          <div>
+            <p className="site-footer__tagline">{t("tagline")}</p>
+          </div>
         </div>
         <div className="site-footer__col">
           <h4>{t("services")}</h4>

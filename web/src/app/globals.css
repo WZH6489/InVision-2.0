@@ -822,3 +822,53 @@ body[data-app="next"] .compare-table tbody th[scope="row"] {
 body[data-app="next"] .compare-table tr:last-child th {
   border-bottom: none;
 }
+
+/* Brand mark image (header / footer) */
+body[data-app="next"] .site-header__mark {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+body[data-app="next"] .site-header__logo {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 899px) {
+  body[data-app="next"] .site-header__logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+body[data-app="next"] .mark.mark--logo-lockup .sub {
+  margin-top: 0;
+}
+
+body[data-app="next"] .site-header__mark:hover .site-header__logo {
+  box-shadow: 0 0 0 1px rgba(196, 181, 154, 0.35);
+}
+
+body[data-app="next"] .site-footer__brand--logo {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+body[data-app="next"] .site-footer__logo {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+body[data-app="next"] .site-footer__tagline {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  max-width: 22em;
+}

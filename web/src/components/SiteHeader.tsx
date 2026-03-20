@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -17,6 +18,7 @@ const NAV = [
 
 export function SiteHeader() {
   const t = useTranslations("Nav");
+  const tMeta = useTranslations("Metadata");
   const loc = useLocale();
   const pathname = usePathname();
   const { openBooking } = useBooking();
@@ -34,27 +36,17 @@ export function SiteHeader() {
       <header className="site-header">
         <div className="site-header__inner">
           <Link href="/" className="site-header__mark">
-            <p className="mark">
-              {loc === "en" ? (
-                <>
-                  Shì <span>Wèi</span>
-                  <span className="sub">Future observation</span>
-                </>
-              ) : (
-                <>
-                  {loc === "zh-hant" ? (
-                    <>
-                      視<span>未</span>
-                      <span className="sub">未來觀測 · 獨家服務</span>
-                    </>
-                  ) : (
-                    <>
-                      视<span>未</span>
-                      <span className="sub">未来观测 · 独家服务</span>
-                    </>
-                  )}
-                </>
-              )}
+            <Image
+              src="/brand/shiwei-mark.png"
+              alt={tMeta("siteName")}
+              width={48}
+              height={48}
+              className="site-header__logo"
+              priority
+              sizes="48px"
+            />
+            <p className="mark mark--logo-lockup">
+              <span className="sub">{t("brandTagline")}</span>
             </p>
           </Link>
 
