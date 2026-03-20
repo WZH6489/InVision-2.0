@@ -39,9 +39,6 @@ export async function InnerShell({ params, page }: Props) {
           <h1>{t(title)}</h1>
           <p>{t(lead)}</p>
         </header>
-        <div className="prose reveal is-visible">
-          <p>{t("stubNote")}</p>
-        </div>
       </main>
       <SiteFooter />
     </div>

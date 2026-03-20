@@ -131,7 +131,7 @@
   "Inner": {
     "breadcrumbHome": "首頁",
     "processTitle": "流程與時間軸",
-    "processLead": "從合規審查到觀測室複盤，四步閉環。可於 messages 擴寫；完整圖文見專案根目錄 .html。",
+    "processLead": "從合規審查、觀測室體驗到複盤總結——四步閉環，一條可問責的軌跡。",
     "rulesTitle": "規則與倫理",
     "rulesLead": "十年上限、不可窺視他人、觀測不干預——邊界即保護。",
     "testimonialsTitle": "口碑與案例",
@@ -142,23 +142,22 @@
     "teamLead": "研究背景與職責分工。",
     "faqTitle": "常見問題",
     "faqLead": "摺疊式問答，快速掃讀。",
-    "stubNote": "完整靜態頁仍保留於專案根目錄 .html，可作遷移參考。",
     "termsTitle": "服務條款",
-    "termsLead": "示範文本；上線前應由法律顧問審閱。詳見專案根目錄 terms.html。",
+    "termsLead": "說明視未服務的提供方式與您可預期的權利義務。以雙方簽署的協議與適用法律為準；正式對外前請法律顧問審閱。",
     "privacyTitle": "隱私政策",
-    "privacyLead": "示範資料處理說明。完整版見 privacy.html。"
+    "privacyLead": "我們如何為預約與會話收集、使用與保護個人資料。保密與邊界內建於產品設計。"
   },
   "About": {
     "title": "關於視未",
-    "lead": "概念站點：使命、方法與邊界。完整圖文見專案根目錄 about.html。"
+    "lead": "使命、方法與不可逾越的邊界——讓您清楚這是一次怎樣的體驗，以及我們絕不承諾什麼。"
   },
   "Services": {
     "title": "服務詳情",
-    "lead": "交付物、合規流程與企業採購。完整排版見 services.html。"
+    "lead": "交付物、流程中的合規節點，以及團隊如何採購高管會話與檔案服務。"
   },
   "Contact": {
     "title": "聯絡我們",
-    "lead": "商務、媒體與個人預約。表單演示見 contact.html。"
+    "lead": "商務合作、媒體與個人預約諮詢——我們力爭在一個工作日內回覆。"
   },
   "Portal": {
     "title": "客戶門戶",
