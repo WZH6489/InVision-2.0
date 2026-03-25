@@ -25,6 +25,7 @@
   },
   "Home": {
     "heroTitle": "See your future self",
+    "heroSubtitle": "Shì Wèi is a guided, private “future observation” for you alone—structured foresight within strict rules, not fortune-telling and never about other people.",
     "heroLead": "Decision fatigue and endless feeds rarely fix what hurts—you need <strong>one bounded session that aligns you with a plausible you</strong>. Shì Wèi, within strict ethics and time limits, lets you preview <strong>only your</strong> trajectory fragments—then bring that clarity back to the present.",
     "ctaBook": "Book a session",
     "ctaProcess": "How it works",
@@ -82,7 +83,40 @@
     "telemetryVar_maximum": "Maximum",
     "telemetryState_present": "Present",
     "telemetryState_near": "Near-Horizon",
-    "telemetryState_ethical": "Ethical Limit Reached"
+    "telemetryState_ethical": "Ethical Limit Reached",
+    "plainSummaryTitle": "New here? Start with this",
+    "plainSummaryLead": "In plain terms: what this is, who it’s for—then you can skim the rest with context.",
+    "plainWhatLabel": "Product",
+    "plainWhatHeading": "What does Shì Wèi actually do?",
+    "plainWhatPoints": [
+      "Under confidentiality and ethics rules, a single ~10–20 minute guided experience helps you “see” forward imagery and structure tied to your own decisions—not motivational content, and not us choosing for you.",
+      "You leave with a reviewable summary and path cues you can use with family, cofounders, or your team.",
+      "Only your trajectory, up to ten years out; no third-party viewing; inside the session you observe without altering what you see—that boundary is intentional."
+    ],
+    "plainWhoLabel": "Audience",
+    "plainWhoHeading": "Who is it a good fit for?",
+    "plainWhoPoints": [
+      "People at real forks: relocation, career change, whether to start a company, mid-career pivots, family and long-horizon planning.",
+      "Founders, executives, and professionals who already perform at a high level but want a reference frame that belongs only to them.",
+      "Anyone tired of comparing their life to other people’s highlight reels and wants something accountable and debriefable."
+    ],
+    "demoSectionKicker": "Samples",
+    "demoSectionTitle": "What might it look like?",
+    "demoSectionLead": "Fictional examples so you can picture outputs after a session—real content varies; your agreement governs what you receive.",
+    "demoCard1Kicker": "Sample deliverable",
+    "demoCard1Title": "Debrief excerpt (illustrative)",
+    "demoCard1Sample": "SESSION_REF: SW-DEMO-8F2A\nHORIZON: T0 → T+10y (hard cap)\nFOCUS: career pivot / burnout risk\n---\n- Near-term (0–18m): consolidation > new bets\n- T+3y checkpoint: team debt surfaces if hiring frozen\nNOTE: demo placeholder · not a prediction",
+    "demoCard2Kicker": "UI cue",
+    "demoCard2Title": "Timeline readouts",
+    "demoTelemetryLabelA": "Clarity index (demo)",
+    "demoTelemetryLabelB": "Field state",
+    "demoTelemetryState": "Near-horizon scan",
+    "demoCard2Caption": "Drag the timeline on the hero to feel how readouts shift from “now” toward year ten.",
+    "demoCard3Kicker": "Try it",
+    "demoCard3Title": "Scroll-driven walkthrough",
+    "demoCard3Body": "On Simulation, SVG paths draw as you scroll—similar to calibration → immersion → synthesis in the live flow.",
+    "demoCard3Cta": "Open simulation",
+    "demoDisclaimer": "All fields, numbers, and copy are placeholders—not real cases or promised outcomes."
   },
   "Footer": {
     "tagline": "Exclusive future observation.",

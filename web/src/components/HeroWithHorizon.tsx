@@ -164,6 +164,7 @@ export function HeroWithHorizon() {
 
       <div className="hero-copy">
         <h1>{t("heroTitle")}</h1>
+        <p className="hero-subline">{t("heroSubtitle")}</p>
         <p className="lede">
           {t.rich("heroLead", {
             strong: (chunks) => <strong>{chunks}</strong>,

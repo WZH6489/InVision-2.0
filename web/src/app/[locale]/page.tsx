@@ -4,6 +4,8 @@ import {
   SolutionPanelArt,
   ValueArt,
 } from "@/components/home/HomeSectionArt";
+import { HomeDemoShowcase } from "@/components/home/HomeDemoShowcase";
+import { HomePlainSummary } from "@/components/home/HomePlainSummary";
 import { RevealSection } from "@/components/RevealSection";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StaggerRevealHeading } from "@/components/StaggerRevealHeading";
@@ -41,6 +43,10 @@ export default async function HomePage({
     <div className="wrap wrap--wide wrap--sticky-safe page-next-home">
       <main>
         <HeroWithHorizon />
+
+        <RevealSection>
+          <HomePlainSummary />
+        </RevealSection>
 
         <RevealSection>
           <div className="value-ribbon hub-section" role="presentation">
@@ -105,6 +111,10 @@ export default async function HomePage({
               </div>
             </div>
           </section>
+        </RevealSection>
+
+        <RevealSection>
+          <HomeDemoShowcase />
         </RevealSection>
 
         <RevealSection>
