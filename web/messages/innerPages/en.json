@@ -59,7 +59,7 @@
       {
         "num": "STEP 03",
         "h": "Observation session",
-        "p": "10–20 minutes in a controlled setting. View only—no touching, no changing what you see."
+        "p": "At the confirmed site you enter a private sleeping pod, don the calibrated head interface and VR headset: encrypted signals route to our isolated systems while you view your own forward trajectory. 10–20 minutes, view only—no touching, no changing what you see."
       },
       {
         "num": "STEP 04",
@@ -74,7 +74,7 @@
       },
       {
         "h": "Observation room environment",
-        "p": "Temperature, light, and acoustics follow a calm-focus profile; no camera on your face (only access and safety-channel footage as required). Your guide syncs from an adjacent protocol room to reduce performative pressure. City-specific notes ship with your confirmation."
+        "p": "Each venue offers a dedicated sleeping pod: light-tight, acoustically damped, and reserved for one client at a time. A fitted head interface acquires the minimal biological and neural correlates needed to align your trajectory model; transmission is end-to-end encrypted, confined to our confidential compute enclave, and never used for ads or resale. You then wear a sealed VR display that renders the observation—your guide stays in an adjacent protocol room with safety and compliance telemetry only, not the visual stream itself. No surveillance camera is aimed at your face (door and safety-corridor compliance recording only, where required). City-specific notes ship with your confirmation."
       }
     ],
     "footnote": "Previous: home · Next: Rules & ethics (site navigation).",
@@ -422,6 +422,10 @@
   },
   "services": {
     "legalProse": [
+      {
+        "h": "What you do on site",
+        "p": "Observation happens only at a Shì Wèi–designated location you receive after clearance. You recline in a private sleeping pod engineered for stillness and sensory control. A head-mounted interface securely acquires and transmits—confidentially and in encrypted form—the signal bundle our systems need to project your personal trajectory; nothing leaves the session path without encryption, and raw streams are purged per our data policy after synthesis. You then wear a VR headset to experience the forward imagery yourself: structured, horizon-bounded, and observe-only. Staff never watch what you see; they monitor session health and abort lines only."
+      },
       {
         "h": "Deliverables",
         "p": "Pre-session compliance summary and window recommendation; one controlled 10–20 minute observation; structured debrief notes (optional encrypted offline pack); advanced tiers add path templates and async Q&A allowance."
