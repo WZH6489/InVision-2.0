@@ -12,8 +12,8 @@
     "pricing": "方案",
     "team": "团队",
     "faq": "问答",
-    "portal": "客户门户",
-    "book": "预约时段",
+    "portal": "登陆账号",
+    "book": "预约",
     "langZh": "简体",
     "langZhHant": "繁體",
     "langEn": "English",
@@ -27,7 +27,7 @@
     "heroTitle": "看见未来的你",
     "heroSubtitle": "「视未」是一次有导师陪同的「个人未来观测」：在规则范围内，让你看清自己接下来几年的走向线索——不是算命，也不窥探他人。",
     "heroLead": "决策困难、信息过载、盲目羡慕别人的路径——很多时候，我们缺的不是更多建议，而是<strong>一次与「可能的自己」对焦的体验</strong>。视未在<strong>严格的伦理与时长边界</strong>内，让你预览<strong>只属于你的</strong>轨迹片段，再把<strong>这份清晰</strong>带回当下。",
-    "ctaBook": "预约时段",
+    "ctaBook": "预约",
     "ctaProcess": "了解完整流程",
     "priceTag": "<strong>单次体验</strong> · 一对一引导 · 合规存档 · <pricing>查看方案</pricing>",
     "caption": "观测视界 · 仅映你一人",
@@ -68,7 +68,7 @@
     "teaserFaqP": "应验、排期、退款、数据与未成年人等折叠问答。",
     "teaserFaqCta": "打开问答",
     "footnote": "需要书面服务说明？请见 <services>服务详情</services> 或 <contact>联络我们</contact>。「视未」为概念站点；实际服务以协议与监管为准。如有任何疑问可随时联系我们。",
-    "stickyCta": "预约时段",
+    "stickyCta": "预约",
     "stickyHint": "合规队列 · 一个工作日内回访",
     "timelineTitle": "时间轴：从此刻到十年",
     "timelineHint": "滑动滑块，感受视野如何向前延展。",
@@ -250,7 +250,7 @@
     "lead": "商务合作、媒体与个人预约咨询——我们力争在一个工作日内回复。"
   },
   "Portal": {
-    "title": "客户门户",
+    "title": "登陆账号",
     "lead": "登录后可查看加密观测纪要、预约状态与交付物下载。当前为概念演示：尚未接入身份提供方；按钮与路由已预留，便于后续对接 Supabase Auth 或企业 SSO。",
     "backHome": "返回首页"
   }

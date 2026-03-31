@@ -12,7 +12,7 @@
     "pricing": "Plans",
     "team": "Team",
     "faq": "FAQ",
-    "portal": "Client portal",
+    "portal": "Log in",
     "book": "Book",
     "langZh": "简体",
     "langZhHant": "繁體",
@@ -27,7 +27,7 @@
     "heroTitle": "See your future self",
     "heroSubtitle": "Shì Wèi is a guided, private “future observation” for you alone—structured foresight within strict rules, not fortune-telling and never about other people.",
     "heroLead": "Decision fatigue and endless feeds rarely fix what hurts—you need <strong>one bounded session that aligns you with a plausible you</strong>. Shì Wèi, within strict ethics and time limits, lets you preview <strong>only your</strong> trajectory fragments—then bring that clarity back to the present.",
-    "ctaBook": "Book a session",
+    "ctaBook": "Book",
     "ctaProcess": "How it works",
     "priceTag": "<strong>Single session</strong> · Private facilitation · Compliance log · <pricing>View plans</pricing>",
     "caption": "Observation field · you only",
@@ -68,7 +68,7 @@
     "teaserFaqP": "Validation, scheduling, refunds, data, minors—skimmable Q&A.",
     "teaserFaqCta": "Open FAQ",
     "footnote": "Need a statement of work or enterprise procurement? See <services>Services</services> or <contact>Contact</contact>. Concept site; real offerings subject to contract and regulation.",
-    "stickyCta": "Book observation",
+    "stickyCta": "Book",
     "stickyHint": "Compliance queue · reply within one business day",
     "timelineTitle": "Timeline: from now to year ten",
     "timelineHint": "Drag the handle to feel how far ahead you’re looking.",
@@ -251,7 +251,7 @@
     "lead": "Partnerships, press, and personal session requests—we aim to respond within one business day."
   },
   "Portal": {
-    "title": "Client portal",
+    "title": "Log in",
     "lead": "After sign-in: encrypted observation logs, booking status, and deliverables. This is a concept shell—no IdP wired yet. The route is ready for Supabase Auth or enterprise SSO.",
     "backHome": "Back home"
   }

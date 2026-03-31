@@ -14,8 +14,8 @@
     "pricing": "名额与档位",
     "team": "核心成员",
     "faq": "简报台",
-    "portal": "私人门户",
-    "book": "申请观测名额",
+    "portal": "登入帳號",
+    "book": "預約",
     "langZh": "简体",
     "langZhHant": "繁體",
     "langEn": "English",
@@ -39,7 +39,7 @@
     "heroTitle": "看见轨迹，承担后果。",
     "heroSubtitle": "专有时间轴观测，服务高杠杆个人与高管决策。",
     "heroLead": "高管瘫痪、传承风险与关键拐点，不会在信息流里自愈。你需要一次<strong>边界内的时间校准（Temporal Calibration）</strong>，以及可呈交协理层的<strong>观测合成协议（OSP）</strong>。",
-    "ctaBook": "申请观测名额",
+    "ctaBook": "預約",
     "ctaProcess": "阅读协议流程",
     "priceTag": "<strong>限名额分配</strong> · 私密引导 · 合规台账 · <pricing>查看档位</pricing>",
     "caption": "观测场 · 单主体锁",
@@ -297,7 +297,7 @@
     "lead": "商务、媒体与名额问询——在容量允许时，我们于一个工作日内回执。"
   },
   "Portal": {
-    "title": "私人门户",
+    "title": "登入帳號",
     "lead": "已通过强认证的主体：加密观测纪要、名额状态、OSP 工件。生产环境应在硬件级会话内终结 TLS。",
     "backHome": "返回首页",
     "gateKicker": "安全飞地",
