@@ -137,7 +137,7 @@
       },
       {
         "q": "Is there a free trial?",
-        "a": "Yes. Trial · Pulse is free, capped at one minute of observation after a brief ethics check—no debrief document. Paid sessions stay 10–20 minutes per plan."
+        "a": "Yes. Trial · Pulse is free, capped at five minutes of observation after a brief ethics check—no debrief document. Paid sessions stay 10–20 minutes per plan."
       },
       {
         "q": "Can I get a refund?",
@@ -201,11 +201,11 @@
     "prose": [
       {
         "h": "Choosing a tier",
-        "p": "Trial “Pulse”: a free, capped one-minute observation slice so you can feel the format and UI rhythm before committing (eligibility and daily slots apply). Intro “First light”: one 10–20 minute observation plus a standard debrief summary. Advanced “Trajectory”: two sessions (≥90 days apart), a dedicated guide, and 90 days of async Q&A. Enterprise “Institution”: schools and companies—custom compliance and on-site guides per contract."
+        "p": "Trial “Pulse”: a free, capped five-minute observation slice so you can feel the format and UI rhythm before committing (eligibility and daily slots apply). Intro “First light”: one 10–20 minute observation plus a standard debrief summary. Advanced “Trajectory”: two sessions (≥90 days apart), a dedicated guide, and 90 days of async Q&A. Enterprise “Institution”: schools and companies—custom compliance and on-site guides per contract."
       },
       {
         "h": "Comparison highlights",
-        "p": "The trial is not a substitute for a full session: no debrief pack and a hard 1-minute cap on observation time. Paid tiers include compliance review; intro excludes a dedicated guide and encrypted archive async channel; advanced adds path templates and longer follow-up; enterprise adds SLA and bulk audit hooks per contract."
+        "p": "The trial is not a substitute for a full session: no debrief pack and a hard 5-minute cap on observation time. Paid tiers include compliance review; intro excludes a dedicated guide and encrypted archive async channel; advanced adds path templates and longer follow-up; enterprise adds SLA and bulk audit hooks per contract."
       },
       {
         "h": "Teams & procurement",
@@ -231,7 +231,7 @@
         ],
         [
           "Sessions / duration",
-          "1× (1 min max)",
+          "1× (5 min max)",
           "1× (10–20 min)",
           "2× (≥90 days apart)",
           "Per contract"
@@ -285,11 +285,11 @@
       "tiers": [
         {
           "title": "Trial · Pulse",
-          "desc": "Free one-minute taste of the observation flow—same ethics gate, capped time, no deliverable pack.",
+          "desc": "Free five-minute taste of the observation flow—same ethics gate, capped time, no deliverable pack.",
           "amount": "Free",
-          "amountSmall": "1 min cap",
+          "amountSmall": "5 min cap",
           "bullets": [
-            "1 session, hard-stopped at 1 minute",
+            "1 session, hard-stopped at 5 minutes",
             "Orientation + compliance mini-check",
             "No debrief document or archive (upgrade to Intro+)"
           ],
@@ -364,7 +364,7 @@
         },
         {
           "q": "What is the free trial?",
-          "a": "Trial · Pulse is no charge and limited to one minute of observation after a short ethics gate. It does not include a debrief pack; full sessions remain 10–20 minutes on paid tiers."
+          "a": "Trial · Pulse is no charge and limited to five minutes of observation after a short ethics gate. It does not include a debrief pack; full sessions remain 10–20 minutes on paid tiers."
         },
         {
           "q": "Does the refund policy match the site FAQ?",
@@ -489,7 +489,7 @@
       },
       {
         "h": "Deliverables",
-        "p": "Optional Trial · Pulse: free, one-minute observation slice after a brief ethics gate—no debrief pack. Paid: pre-session compliance summary and window recommendation; one controlled 10–20 minute observation; structured debrief notes (optional encrypted offline pack); advanced tiers add path templates and async Q&A allowance."
+        "p": "Optional Trial · Pulse: free, five-minute observation slice after a brief ethics gate—no debrief pack. Paid: pre-session compliance summary and window recommendation; one controlled 10–20 minute observation; structured debrief notes (optional encrypted offline pack); advanced tiers add path templates and async Q&A allowance."
       },
       {
         "h": "Tools & methods (overview)",
