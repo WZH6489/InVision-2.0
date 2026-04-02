@@ -10,23 +10,35 @@ type Props = {
   children: string;
 };
 
+const wordItem = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.52, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
+const blockItem = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
 export function StaggerRevealHeading({ as: Tag = "h2", className, id, children }: Props) {
   const locale = useLocale();
-  const parts = locale === "en" ? children.split(/\s+/).filter(Boolean) : Array.from(children);
+  const isEn = locale === "en";
+  const words = isEn ? children.split(/\s+/).filter(Boolean) : [];
 
   const container = {
     hidden: {},
     visible: {
-      transition: { staggerChildren: locale === "en" ? 0.035 : 0.028, delayChildren: 0.06 },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
+      transition: isEn
+        ? { staggerChildren: 0.038, delayChildren: 0.05 }
+        : { staggerChildren: 0, delayChildren: 0 },
     },
   };
 
@@ -35,24 +47,23 @@ export function StaggerRevealHeading({ as: Tag = "h2", className, id, children }
   return (
     <MotionTag
       id={id}
-      className={className}
+      className={`stagger-reveal-heading${className ? ` ${className}` : ""}`}
       variants={container}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "0px 0px -12% 0px" }}
     >
-      {parts.map((chunk, i) => (
-        <motion.span
-          key={`${i}-${chunk}`}
-          variants={item}
-          style={{
-            display: "inline-block",
-            marginRight: locale === "en" && i < parts.length - 1 ? "0.28em" : undefined,
-          }}
-        >
-          {chunk}
+      {isEn ? (
+        words.map((word, i) => (
+          <motion.span key={`${i}-${word}`} variants={wordItem} className="stagger-reveal-heading__word">
+            {word}
+          </motion.span>
+        ))
+      ) : (
+        <motion.span variants={blockItem} className="stagger-reveal-heading__block">
+          {children}
         </motion.span>
-      ))}
+      )}
     </MotionTag>
   );
 }

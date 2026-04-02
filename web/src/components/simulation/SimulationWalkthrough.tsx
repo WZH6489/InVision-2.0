@@ -1,9 +1,14 @@
 "use client";
 
-import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
+import {
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { SimulationAmbientSound } from "./SimulationAmbientSound";
 
 const STEPS = 3;
@@ -29,14 +34,23 @@ export function SimulationWalkthrough() {
     offset: ["start start", "end end"],
   });
 
-  const p1 = useTransform(scrollYProgress, [0.02, 0.32], [0, 1]);
-  const p2 = useTransform(scrollYProgress, [0.2, 0.48], [0, 1]);
-  const p3 = useTransform(scrollYProgress, [0.38, 0.68], [0, 1]);
-  const p4 = useTransform(scrollYProgress, [0.55, 0.88], [0, 1]);
-  const p5 = useTransform(scrollYProgress, [0.72, 0.98], [0, 1]);
+  const springConfig = useMemo(
+    () =>
+      reduceMotion
+        ? { stiffness: 420, damping: 38, mass: 0.2, restDelta: 0.05 }
+        : { stiffness: 72, damping: 28, mass: 0.45, restDelta: 0.0008 },
+    [reduceMotion],
+  );
+  const smoothProgress = useSpring(scrollYProgress, springConfig);
 
-  const varsMotion = useTransform(scrollYProgress, [0, 1], [0, 14029]);
-  const clarityMotion = useTransform(scrollYProgress, [0, 1], [99.9, 12.4]);
+  const p1 = useTransform(smoothProgress, [0.02, 0.32], [0, 1]);
+  const p2 = useTransform(smoothProgress, [0.2, 0.48], [0, 1]);
+  const p3 = useTransform(smoothProgress, [0.38, 0.68], [0, 1]);
+  const p4 = useTransform(smoothProgress, [0.55, 0.88], [0, 1]);
+  const p5 = useTransform(smoothProgress, [0.72, 0.98], [0, 1]);
+
+  const varsMotion = useTransform(smoothProgress, [0, 1], [0, 14029]);
+  const clarityMotion = useTransform(smoothProgress, [0, 1], [99.9, 12.4]);
 
   useMotionValueEvent(varsMotion, "change", (v) => setVarCount(Math.round(v)));
   useMotionValueEvent(clarityMotion, "change", (v) => setClarityPct(Math.round(v * 10) / 10));
@@ -56,9 +70,16 @@ export function SimulationWalkthrough() {
             >
               <defs>
                 <filter id="sim-glow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="1.2" result="b" />
+                  <feGaussianBlur stdDeviation="1.35" result="b" />
                   <feMerge>
                     <feMergeNode in="b" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                <filter id="sim-glow-cyan" x="-25%" y="-25%" width="150%" height="150%">
+                  <feGaussianBlur stdDeviation="1.6" result="bc" />
+                  <feMerge>
+                    <feMergeNode in="bc" />
                     <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
@@ -68,6 +89,8 @@ export function SimulationWalkthrough() {
                 stroke="#D5C098"
                 strokeWidth="2.2"
                 strokeLinecap="round"
+                strokeLinejoin="round"
+                vectorEffect="non-scaling-stroke"
                 filter="url(#sim-glow)"
                 style={{ pathLength: reduceMotion ? 1 : p1 }}
               />
@@ -76,6 +99,8 @@ export function SimulationWalkthrough() {
                 stroke="rgba(213,192,152,0.55)"
                 strokeWidth="1.4"
                 strokeLinecap="round"
+                strokeLinejoin="round"
+                vectorEffect="non-scaling-stroke"
                 filter="url(#sim-glow)"
                 style={{ pathLength: reduceMotion ? 1 : p2 }}
               />
@@ -84,6 +109,8 @@ export function SimulationWalkthrough() {
                 stroke="rgba(213,192,152,0.5)"
                 strokeWidth="1.35"
                 strokeLinecap="round"
+                strokeLinejoin="round"
+                vectorEffect="non-scaling-stroke"
                 filter="url(#sim-glow)"
                 style={{ pathLength: reduceMotion ? 1 : p3 }}
               />
@@ -92,15 +119,19 @@ export function SimulationWalkthrough() {
                 stroke="rgba(213,192,152,0.38)"
                 strokeWidth="1.15"
                 strokeLinecap="round"
+                strokeLinejoin="round"
+                vectorEffect="non-scaling-stroke"
                 filter="url(#sim-glow)"
                 style={{ pathLength: reduceMotion ? 1 : p4 }}
               />
               <motion.path
                 d="M 110 128 Q 132 96 176 68 Q 198 52 188 28"
-                stroke="rgba(213,192,152,0.35)"
-                strokeWidth="1.1"
+                stroke="rgba(110, 231, 255, 0.72)"
+                strokeWidth="1.35"
                 strokeLinecap="round"
-                filter="url(#sim-glow)"
+                strokeLinejoin="round"
+                vectorEffect="non-scaling-stroke"
+                filter="url(#sim-glow-cyan)"
                 style={{ pathLength: reduceMotion ? 1 : p5 }}
               />
             </svg>

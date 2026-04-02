@@ -128,6 +128,7 @@ export default async function HomePage({
             <StaggerRevealHeading id="teasers-title" className="section-title section-title--hub">
               {t("exploreTitle")}
             </StaggerRevealHeading>
+            <p className="section-lead section-lead--explore-bridge">{t("exploreBridge")}</p>
             <p className="section-lead section-lead--explore">{t("exploreLead")}</p>
 
             <div className="hub-teasers">

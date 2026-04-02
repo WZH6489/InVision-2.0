@@ -1,17 +1,18 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
 export async function SiteFooter() {
   const t = await getTranslations("Footer");
   const tn = await getTranslations("Nav");
   const tm = await getTranslations("Metadata");
+  const locale = await getLocale();
   const year = new Date().getFullYear();
 
   return (
     <footer className="site-footer">
       <div className="site-footer__grid">
-        <div className="site-footer__brand site-footer__brand--logo">
+        <Link href="/" locale={locale} className="site-footer__brand site-footer__brand--logo site-footer__brand-link">
           <Image
             src="/brand/shiwei-mark.png"
             alt={tm("siteName")}
@@ -23,7 +24,7 @@ export async function SiteFooter() {
           <div>
             <p className="site-footer__tagline">{t("tagline")}</p>
           </div>
-        </div>
+        </Link>
         <div className="site-footer__col">
           <h4>{t("services")}</h4>
           <ul>

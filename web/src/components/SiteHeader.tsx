@@ -37,7 +37,7 @@ export function SiteHeader() {
     <>
       <header className="site-header">
         <div className="site-header__inner">
-          <Link href="/" className="site-header__mark">
+          <Link href="/" locale={loc} className="site-header__mark">
             <Image
               src="/brand/shiwei-mark.png"
               alt={tMeta("siteName")}
