@@ -225,8 +225,8 @@
         [
           "Price",
           "Free",
-          "¥2,800",
-          "¥7,600",
+          "¥599",
+          "¥999",
           "Custom"
         ],
         [
@@ -300,7 +300,7 @@
         {
           "title": "Intro · First light",
           "desc": "First session for anyone validating fit before going deeper.",
-          "amount": "¥2,800",
+          "amount": "¥599",
           "amountSmall": "/ session",
           "bullets": [
             "1 observation (10–20 minutes)",
@@ -314,7 +314,7 @@
         {
           "title": "Advanced · Trajectory",
           "desc": "Follow-up and planning alignment for major life or career inflections.",
-          "amount": "¥7,600",
+          "amount": "¥999",
           "amountSmall": "/ package",
           "bullets": [
             "2 observations (≥90 days apart)",
