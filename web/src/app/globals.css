@@ -1240,6 +1240,12 @@ body.page-next .explore-card:focus-within .explore-card__cta .btn__arrow {
   letter-spacing: 0.06em;
 }
 
+body[data-app="next"] .compare-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Compare table: row header cells (Next inner pricing page). */
 body[data-app="next"] .compare-table tbody th[scope="row"] {
   background: rgba(255, 255, 255, 0.03);

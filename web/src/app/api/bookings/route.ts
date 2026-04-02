@@ -1,7 +1,7 @@
 import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { NextResponse } from "next/server";
 
-const TIERS = new Set(["essential", "standard", "full"]);
+const TIERS = new Set(["trial", "essential", "standard", "full"]);
 const SLOTS = new Set(["morning", "afternoon", "evening"]);
 
 function validEmail(s: string) {

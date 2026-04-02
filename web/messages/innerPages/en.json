@@ -136,6 +136,10 @@
         "a": "Compliance review is typically 3–5 business days; scheduling depends on city and guide load. Rush lanes are for advanced and enterprise tiers."
       },
       {
+        "q": "Is there a free trial?",
+        "a": "Yes. Trial · Pulse is free, capped at one minute of observation after a brief ethics check—no debrief document. Paid sessions stay 10–20 minutes per plan."
+      },
+      {
         "q": "Can I get a refund?",
         "a": "Full refund up to 48 hours before the session starts; after start or final consent, only as the agreement allows."
       },
@@ -197,11 +201,11 @@
     "prose": [
       {
         "h": "Choosing a tier",
-        "p": "Intro “First light”: one 10–20 minute observation plus a standard debrief summary. Advanced “Trajectory”: two sessions (≥90 days apart), a dedicated guide, and 90 days of async Q&A. Enterprise “Institution”: schools and companies—custom compliance and on-site guides per contract."
+        "p": "Trial “Pulse”: a free, capped one-minute observation slice so you can feel the format and UI rhythm before committing (eligibility and daily slots apply). Intro “First light”: one 10–20 minute observation plus a standard debrief summary. Advanced “Trajectory”: two sessions (≥90 days apart), a dedicated guide, and 90 days of async Q&A. Enterprise “Institution”: schools and companies—custom compliance and on-site guides per contract."
       },
       {
         "h": "Comparison highlights",
-        "p": "All tiers include compliance review. Intro excludes a dedicated guide and encrypted archive async channel; advanced adds path templates and longer follow-up; enterprise adds SLA and bulk audit hooks per contract."
+        "p": "The trial is not a substitute for a full session: no debrief pack and a hard 1-minute cap on observation time. Paid tiers include compliance review; intro excludes a dedicated guide and encrypted archive async channel; advanced adds path templates and longer follow-up; enterprise adds SLA and bulk audit hooks per contract."
       },
       {
         "h": "Teams & procurement",
@@ -212,25 +216,36 @@
     "compareTable": {
       "headers": [
         "Feature",
+        "Trial · Pulse",
         "Intro · First light",
         "Advanced · Trajectory",
         "Enterprise · Institution"
       ],
       "rows": [
         [
+          "Price",
+          "Free",
+          "¥2,800",
+          "¥7,600",
+          "Custom"
+        ],
+        [
           "Sessions / duration",
+          "1× (1 min max)",
           "1× (10–20 min)",
           "2× (≥90 days apart)",
           "Per contract"
         ],
         [
           "Compliance review",
+          "Brief gate",
           "✓",
           "✓",
           "✓"
         ],
         [
           "Standard debrief summary",
+          "—",
           "✓",
           "✓",
           "✓"
@@ -238,11 +253,13 @@
         [
           "Dedicated guide",
           "—",
+          "—",
           "✓",
           "✓"
         ],
         [
           "Encrypted archive / async Q&A",
+          "—",
           "—",
           "90-day async",
           "Per SLA"
@@ -250,11 +267,13 @@
         [
           "Path map templates",
           "—",
+          "—",
           "✓",
           "✓"
         ],
         [
           "On-site / anonymized rollup report",
+          "—",
           "—",
           "—",
           "✓"
@@ -264,6 +283,20 @@
     "pricingTiersSection": {
       "title": "Choose a plan",
       "tiers": [
+        {
+          "title": "Trial · Pulse",
+          "desc": "Free one-minute taste of the observation flow—same ethics gate, capped time, no deliverable pack.",
+          "amount": "Free",
+          "amountSmall": "1 min cap",
+          "bullets": [
+            "1 session, hard-stopped at 1 minute",
+            "Orientation + compliance mini-check",
+            "No debrief document or archive (upgrade to Intro+)"
+          ],
+          "cta": "book",
+          "bookLabel": "Book free trial",
+          "featured": false
+        },
         {
           "title": "Intro · First light",
           "desc": "First session for anyone validating fit before going deeper.",
@@ -328,6 +361,10 @@
         {
           "q": "Which payment methods do you support?",
           "a": "Individuals: major cards and bank transfer per your booking confirmation. Institutions: invoicing and terms per contract."
+        },
+        {
+          "q": "What is the free trial?",
+          "a": "Trial · Pulse is no charge and limited to one minute of observation after a short ethics gate. It does not include a debrief pack; full sessions remain 10–20 minutes on paid tiers."
         },
         {
           "q": "Does the refund policy match the site FAQ?",
@@ -452,7 +489,7 @@
       },
       {
         "h": "Deliverables",
-        "p": "Pre-session compliance summary and window recommendation; one controlled 10–20 minute observation; structured debrief notes (optional encrypted offline pack); advanced tiers add path templates and async Q&A allowance."
+        "p": "Optional Trial · Pulse: free, one-minute observation slice after a brief ethics gate—no debrief pack. Paid: pre-session compliance summary and window recommendation; one controlled 10–20 minute observation; structured debrief notes (optional encrypted offline pack); advanced tiers add path templates and async Q&A allowance."
       },
       {
         "h": "Tools & methods (overview)",

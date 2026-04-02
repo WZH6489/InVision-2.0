@@ -33,9 +33,10 @@ export type InnerTimeline = {
   blurbs: string[];
 };
 
+/** Feature column + one column per plan (e.g. trial + paid tiers). */
 export type InnerCompareTable = {
-  headers: [string, string, string, string];
-  rows: [string, string, string, string][];
+  headers: string[];
+  rows: string[][];
 };
 
 export type InnerPricingTier = {
