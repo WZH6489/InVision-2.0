@@ -82,6 +82,23 @@ export type InnerTeamMember = {
   bio: string;
 };
 
+/** Process page: facility photo (designated venue / pods). */
+export type InnerVenuePhoto = {
+  kicker?: string;
+  alt: string;
+  caption: string;
+};
+
+/** Process page: headset / forward-imagery gallery (fixed asset order in UI). */
+export type InnerFutureViewItem = { alt: string; caption: string };
+
+export type InnerFutureViewGallery = {
+  kicker?: string;
+  title: string;
+  lead?: string;
+  items: InnerFutureViewItem[];
+};
+
 /** Body below page hero for InnerShell routes; all fields optional per page. */
 export type InnerPagePayload = {
   prose?: InnerProseItem[];
@@ -107,6 +124,10 @@ export type InnerPagePayload = {
   teamTagline?: string;
   teamMembers?: InnerTeamMember[];
   footnote?: string;
+  /** Process page: sleeping-pod / venue imagery. */
+  venuePhoto?: InnerVenuePhoto;
+  /** Process page: how sealed display presents forward imagery. */
+  futureViewGallery?: InnerFutureViewGallery;
 };
 
 export type InnerPagesMessages = Record<string, InnerPagePayload>;

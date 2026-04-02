@@ -7,6 +7,8 @@ import { PricingDeliverablesShowcase } from "@/components/PricingDeliverablesSho
 import { PricingTierCards } from "@/components/inner-diagrams/PricingTierCards";
 import { ProcessFlowDiagram } from "@/components/inner-diagrams/ProcessFlowDiagram";
 import { ProcessTimelineNarrative } from "@/components/inner-diagrams/ProcessTimelineNarrative";
+import { ProcessFutureViewGallery } from "@/components/ProcessFutureViewGallery";
+import { ProcessVenuePhoto } from "@/components/ProcessVenuePhoto";
 import type { InnerPagePayload } from "@/types/innerPages";
 
 type Props = {
@@ -50,6 +52,8 @@ export function InnerPageBody({ data, page }: Props) {
         </section>
       ) : null}
 
+      {showProcessViz && data.venuePhoto ? <ProcessVenuePhoto {...data.venuePhoto} /> : null}
+
       {data.prose?.length ? (
         <div className="prose-block reveal is-visible">
           {data.prose.map((item, i) => (
@@ -59,6 +63,10 @@ export function InnerPageBody({ data, page }: Props) {
             </Fragment>
           ))}
         </div>
+      ) : null}
+
+      {showProcessViz && data.futureViewGallery ? (
+        <ProcessFutureViewGallery {...data.futureViewGallery} />
       ) : null}
 
       {data.legalProse?.length ? (

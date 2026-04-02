@@ -5,6 +5,7 @@ import {
   ValueArt,
 } from "@/components/home/HomeSectionArt";
 import { HomeDemoShowcase } from "@/components/home/HomeDemoShowcase";
+import { HomeEditorialIllustrations } from "@/components/home/HomeEditorialIllustrations";
 import { HomePlainSummary } from "@/components/home/HomePlainSummary";
 import { RevealSection } from "@/components/RevealSection";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -86,6 +87,10 @@ export default async function HomePage({
               </p>
             </div>
           </section>
+        </RevealSection>
+
+        <RevealSection>
+          <HomeEditorialIllustrations />
         </RevealSection>
 
         <RevealSection>

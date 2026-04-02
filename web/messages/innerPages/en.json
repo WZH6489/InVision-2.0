@@ -77,6 +77,30 @@
         "p": "Each venue offers a dedicated sleeping pod: light-tight, acoustically damped, and reserved for one client at a time. A fitted head interface acquires the minimal biological and neural correlates needed to align your trajectory model; transmission is end-to-end encrypted, confined to our confidential compute enclave, and never used for ads or resale. You then wear a sealed VR display that renders the observation—your guide stays in an adjacent protocol room with safety and compliance telemetry only, not the visual stream itself. No surveillance camera is aimed at your face (door and safety-corridor compliance recording only, where required). City-specific notes ship with your confirmation."
       }
     ],
+    "venuePhoto": {
+      "kicker": "On site",
+      "alt": "A row of sleek white sleeping pods with reclining seats in a calm, modern lounge with plants and soft lighting.",
+      "caption": "Representative layout at a designated partner venue—your confirmation names the exact city and room type; fittings may vary."
+    },
+    "futureViewGallery": {
+      "kicker": "What you see",
+      "title": "How forward imagery is experienced",
+      "lead": "In the pod, after calibration, the sealed headset presents horizon-bounded observation—not a social feed. The stills below illustrate display class and sense of scale; on-site hardware follows each venue’s technical protocol.",
+      "items": [
+        {
+          "alt": "A person wearing a sealed mixed-reality headset, seated calmly in a bright minimalist room.",
+          "caption": "Calibrated head-mounted display: you remain present in the physical suite while the forward layer is rendered privately."
+        },
+        {
+          "alt": "A seated guest views a large curved virtual window of mountains and water in a dim living room.",
+          "caption": "Panoramic forward imagery can fill your visual field; the room stays in peripheral awareness—observe only, no manipulating the virtual layer during the session."
+        },
+        {
+          "alt": "A standing person seen from behind, wearing a headset and facing a wide curved virtual landscape of peaks and a lake.",
+          "caption": "Wide spatial layouts are tuned for comfort inside the strict 10–20 minute observation window."
+        }
+      ]
+    },
     "footnote": "Previous: home · Next: Rules & ethics (site navigation).",
     "flowLabels": [
       "Intent",
